@@ -789,14 +789,21 @@ def pbdDict_bisosRoot(
               .format(fullDestPathGet=fullDestPathGet('venv/dev-py3-bisos-3')))
 
     
-    directory('vcAuth')
-    directory('vcAuth/git')
+    # directory('vcAuth')
+    # directory('vcAuth/git')
     
-    directory('vcAnon')
-    directory('vcAnon/git')
+    # directory('vcAnon')
+    # directory('vcAnon/git')
 
-    symLink(  'vc', 'vcAuth')    
+    # symLink(  'vc', 'vcAuth')
 
+    directory('git')
+    directory('git/auth')
+    directory('git/auth/bxRepos')
+    directory('git/anon')    
+    directory('git/anon/bxRepos')
+    symLink( 'git/bxRepos',  'git/auth/bxRepos' )    
+    
     directory('control')
     directory('control/bisos')    
     directory('control/bisos/site')    
@@ -1751,6 +1758,8 @@ comment={comment}
                 os.symlink(srcFullPath, destFullPath)
             except OSError:
                 if not os.path.islink(destFullPath):
+                    #print(srcFullPath)
+                    #print(destFullPath)
                     raise
             icm.ANN_write("Created {} SymLink pointing to: {}".format(
                 destFullPath, srcFullPath))

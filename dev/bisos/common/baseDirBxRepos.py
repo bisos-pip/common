@@ -368,6 +368,11 @@ def examples_bxReposBaseDirsCommon():
     icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/vc/git/bxRepos/anon; sudo chown {}:{} /bisos/vc/git/bxRepos/anon"""
                          .format(bxReposUserName_obtain(), bxReposGroupName_obtain()))
 
+    icm.ex_gExecMenuItem(execLine="""ls -l /bisos/git/auth/bxRepos/*""")   
+    icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/git/auth/bxRepos; sudo chown {}:{} /bisos/git/auth/bxRepos"""
+                         .format(bxReposUserName_obtain(), bxReposGroupName_obtain()))
+    icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/git/anon/bxRepos; sudo chown {}:{} /bisos/git/anon/bxRepos"""
+                         .format(bxReposUserName_obtain(), bxReposGroupName_obtain()))
 
 ####+BEGIN: bx:dblock:python:func :funcName "examples_bxReposBaseDirs" :comment "bx-bases.py module information" :funcType "examples" :retType "none" :deco "" :argsList ""
 """
@@ -438,6 +443,16 @@ def examples_bxReposBaseDirsFull():
     
     cmndName = "pbdUpdate" ; cmndArgs = "/ bin" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/tmp/BXREPOS'; cps['pbdName'] = 'bxReposRoot' 
+    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+
+    cmndName = "pbdUpdate" ; cmndArgs = "all" ;
+    cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/anon/bxRepos';
+    cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'anon'
+    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+
+    cmndName = "pbdUpdate" ; cmndArgs = "all" ;
+    cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/auth/bxRepos';
+    cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'auth'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
     
     cmndName = "pbdUpdate" ; cmndArgs = "all" ;

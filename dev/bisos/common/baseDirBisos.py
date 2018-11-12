@@ -790,12 +790,19 @@ def pbdDict_bisosRoot(
               .format(fullDestPathGet=fullDestPathGet('venv/dev-py3-bisos-3')))
 
     
-    directory('vcAuth')
-    directory('vcAuth/bisos')
+    # directory('vcAuth')
+    # directory('vcAuth/bisos')
     
-    directory('vcAnon')
-    directory('vcAnon/bisos')    
+    # directory('vcAnon')
+    # directory('vcAnon/bisos')
 
+    directory('git')
+    directory('git/auth')
+    directory('git/auth/bxRepos')
+    directory('git/anon')    
+    directory('git/anon/bxRepos')
+    symLink(  'git/bxRepos', 'git/auth/bxRepos')    
+    
     directory('control')
     directory('control/bisos')    
     directory('control/bisos/site')    
@@ -803,7 +810,6 @@ def pbdDict_bisosRoot(
     directory('var')
     directory('var/bisos')
     directory('var/bisos/icmsPkg')        
-    
     
     directory('tmp')
     
