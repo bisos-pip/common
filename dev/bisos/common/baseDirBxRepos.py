@@ -414,6 +414,34 @@ def examples_bxReposBaseDirsFull():
     cps = collections.OrderedDict()
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
     
+    icm.cmndExampleMenuChapter(' =BxReposContainer DirBases=  *pbdShow/pbdVerify/pbdUpdate Of Relevant PBDs*')    
+
+    icm.cmndExampleMenuSection(' =BxReposContainer DirBases=  *pbdVerify*')            
+
+    cmndName = "pbdVerify" ; cmndArgs = "all" ;
+    cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/anon';
+    cps['pbdName'] = 'bxReposContainer' ; cps['vcMode'] = 'anon'
+    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+
+    cmndName = "pbdVerify" ; cmndArgs = "all" ;
+    cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/auth';
+    cps['pbdName'] = 'bxReposContainer' ; cps['vcMode'] = 'auth'
+    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+    
+   
+    icm.cmndExampleMenuSection(' =BxReposContainer DirBases=  *pbdUpdate*')
+
+    cmndName = "pbdUpdate" ; cmndArgs = "all" ;
+    cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/anon';
+    cps['pbdName'] = 'bxReposContainer' ; cps['vcMode'] = 'anon'
+    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+
+    cmndName = "pbdUpdate" ; cmndArgs = "all" ;
+    cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/auth';
+    cps['pbdName'] = 'bxReposContainer' ; cps['vcMode'] = 'auth'
+    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+
+    
     icm.cmndExampleMenuChapter(' =BxRepos DirBases=  *pbdShow/pbdVerify/pbdUpdate Of Relevant PBDs*')    
 
     icm.cmndExampleMenuSection(' =BxRepos DirBases=  *pbdShow*')        
@@ -464,6 +492,7 @@ def examples_bxReposBaseDirsFull():
     cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/vc/git/bxRepos/auth';
     cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'auth'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+
     
     icm.cmndExampleMenuSection(' *bx-platformInfoManage.py -- Specifiy Platform Defaults*')
 
@@ -561,6 +590,121 @@ def bxReposGroupName_obtain():
 ####+END:
 
 
+####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxReposContainer" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None" :deco ""
+"""
+*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposContainer/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None)  [[elisp:(org-cycle)][| ]]
+"""
+def pbdDict_bxReposContainer(
+    baseDir,
+    vcMode=None,
+):
+####+END:
+    """
+** In /lcnt/lgpc/bystar/permanent/common/clips/bxReposBasesInstall.tex
+*** See: \section{/bxRepos Bases Directory Structure Overview}
+    """
+
+    pbdDict = collections.OrderedDict()
+
+    root = bxReposRoot_baseObtain(baseDir)
+    pbdDict['/'] = bxpBaseDir.bxpObjGet_baseDir(root, '')
+
+    if not vcMode:
+        vcMode = "anon"
+    
+    
+    def fullDestPathGet(dstPathRel):
+        return( os.path.join(
+            root, dstPathRel,
+        ))
+
+    def directory(pathRel):
+        pbdDict[pathRel] = bxpBaseDir.bxpObjGet_baseDir(root, pathRel)
+
+    def symLink(dstPathRel, srcPath, srcPathType='internal'):
+        pbdDict[dstPathRel] = bxpBaseDir.bxpObjGet_symLink(root, dstPathRel, srcPath, srcPathType=srcPathType)
+
+    def command(dstPathRel, createCmnd):
+        pbdDict[dstPathRel] = bxpBaseDir.BxpBaseDir_Command(
+            destPathRoot=root,
+            destPathRel=dstPathRel,
+            createCommand=createCmnd,
+        )
+
+    def gitClone(dstPathRel, gitRepoPath, vcMode):
+        pathComps = os.path.split(dstPathRel)
+        baseDir = pathComps[0]
+        #repoName = pathComps[1]
+        if vcMode == "anon":
+            # git clone git://github.com/SomeUser/SomeRepo.git
+            command(  dstPathRel,
+              "cd {root}/{baseDir}; git clone git@github.com:{gitRepoPath}.git"
+              .format(root=root, baseDir=baseDir, gitRepoPath=gitRepoPath)
+            )
+        elif vcMode == "auth":
+            command(  dstPathRel,
+              "cd {root}/{baseDir}; git clone https://{gitUserName}:{gitPasswd}@github.com/{gitRepoPath}"
+              .format(root=root, baseDir=baseDir, gitUserName=gitUserName, gitPasswd=gitPasswd, gitRepoPath=gitRepoPath)
+            )
+        else:
+            icm.EH_problem_usageError("")
+            
+
+    def gitCloneBase(dstPathRel, gitRepoPath, vcMode):
+        pathComps = os.path.split(gitRepoPath)
+        baseDir = pathComps[0]
+        repoName = pathComps[1]
+        if vcMode == "anon":
+            # git clone git://github.com/SomeUser/SomeRepo.git
+            command(  dstPathRel,
+              "cd {root}; git clone git@github.com:{gitRepoPath}.git"
+              .format(root=root, baseDir=baseDir, gitRepoPath=gitRepoPath)
+            )
+            command(  dstPathRel,
+              "cd {root}; mv {repoName} {dstPathRel}".format(root=root, repoName=repoName, dstPathRel=dstPathRel))
+            
+        elif vcMode == "auth":
+            command(  dstPathRel,
+              "cd {root}; git clone https://{gitUserName}:{gitPasswd}@github.com/{gitRepoPath}"
+              .format(root=root, baseDir=baseDir, gitUserName=gitUserName, gitPasswd=gitPasswd, gitRepoPath=gitRepoPath)
+            )
+            command(  gitRepoPath,            
+                      "cd {root}; mv {repoName} {dstPathRel}".format(root=root, repoName=repoName, dstPathRel=dstPathRel)
+            )
+            
+        else:
+            icm.EH_problem_usageError("")
+            
+            
+    #
+    # NOTYET, this is a hack for now. To Be replaced by bue.credentials
+    #
+
+    with open('/acct/employee/lsipusr/gitUserName', 'r') as myfile:
+        gitUserName=myfile.read().replace('\n', '')        
+
+    with open('/acct/employee/lsipusr/gitPasswd', 'r') as myfile:
+        gitPasswd=myfile.read().replace('\n', '')        
+
+    #
+    # NOTYET, the model of specifying one command here is wrong.
+    # We should be dealing with abstract directory bases, where
+    # each directory base has a create and verify method.
+    # Things like update and clean, etc should then be driven
+    # with the fto (File Tree Objects).
+    #
+    # So, gitCloneBase should be renamed gitReposCollectionBase and gitRepoBase
+    #
+
+    command(  'bxReposBasedir',
+              "mkdir -p {root}".format(root=root))
+    
+    gitCloneBase( 'bxRepos',  'ByStar/bxReposBase', vcMode)    
+    
+    return pbdDict
+
+
+
 ####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxReposRoot" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None" :deco ""
 """
 *  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposRoot/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None)  [[elisp:(org-cycle)][| ]]
@@ -605,7 +749,7 @@ def pbdDict_bxReposRoot(
     def gitClone(dstPathRel, gitRepoPath, vcMode):
         pathComps = os.path.split(dstPathRel)
         baseDir = pathComps[0]
-        repoName = pathComps[1]
+        #repoName = pathComps[1]
         if vcMode == "anon":
             # git clone git://github.com/SomeUser/SomeRepo.git
             command(  dstPathRel,
@@ -619,10 +763,10 @@ def pbdDict_bxReposRoot(
             )
         else:
             icm.EH_problem_usageError("")
-            
+
 
     def gitCloneBase(dstPathRel, gitRepoPath, vcMode):
-        pathComps = os.path.split(dstPathRel)
+        pathComps = os.path.split(gitRepoPath)
         baseDir = pathComps[0]
         repoName = pathComps[1]
         if vcMode == "anon":
@@ -632,7 +776,7 @@ def pbdDict_bxReposRoot(
               .format(root=root, baseDir=baseDir, gitRepoPath=gitRepoPath)
             )
             command(  dstPathRel,
-              "cd {root}; mv base {dstPathRel}".format(root=root, dstPathRel=dstPathRel))
+              "cd {root}; mv {repoName} {dstPathRel}".format(root=root, repoName=repoName, dstPathRel=dstPathRel))
             
         elif vcMode == "auth":
             command(  dstPathRel,
@@ -640,7 +784,7 @@ def pbdDict_bxReposRoot(
               .format(root=root, baseDir=baseDir, gitUserName=gitUserName, gitPasswd=gitPasswd, gitRepoPath=gitRepoPath)
             )
             command(  gitRepoPath,            
-                "cd {root}; mv base {dstPathRel}".format(root=root, dstPathRel=dstPathRel)
+                      "cd {root}; mv {repoName} {dstPathRel}".format(root=root, repoName=repoName, dstPathRel=dstPathRel)
             )
             
         else:
@@ -758,6 +902,8 @@ def pbdDict_bxReposRoot(
     
     
     return pbdDict
+
+
 
 
 
