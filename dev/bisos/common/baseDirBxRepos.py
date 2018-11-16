@@ -742,8 +742,9 @@ def pbdDict_bxReposRoot(
 
     gitClone( 'blee-pip/icmPlayer',  'blee-pip/icmPlayer', vcMode)
 
-    directory('roPerf-pip')
-    gitClone( 'roPerf-pip/overview',  'roPerf-pip/overview', vcMode)
+    
+    gitCloneBase( 'roPerf-pip',  'roPerf-pip/base', vcMode)
+    gitClone( 'roPerf-pip/overview',  'roPerf-pip/overview', vcMode)    
 
     gitClone( 'roPerf-pip/namespace',  'roPerf-pip/namespace', vcMode)
 
