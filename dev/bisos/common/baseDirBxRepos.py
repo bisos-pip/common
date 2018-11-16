@@ -681,7 +681,13 @@ def pbdDict_bxReposRoot(
     
     gitCloneBase( 'blee',  'bx-blee/base',  vcMode)
     gitClone( 'blee/overview',  'bx-blee/overview',  vcMode)
-    
+
+
+    gitCloneBase( 'bxGenesis',  'bxGenesis/base', vcMode)
+    gitClone( 'bxGenesis/overview',  'bxGenesis/overview', vcMode)
+
+    gitClone( 'bxGenesis/vagrants',  'bxGenesis/vagrants', vcMode)
+
 
     gitCloneBase( 'unisos-pip',  'unisos-pip/base', vcMode)
     gitClone( 'unisos-pip/overview',  'unisos-pip/overview', vcMode)    
