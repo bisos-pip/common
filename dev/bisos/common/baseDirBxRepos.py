@@ -621,6 +621,32 @@ def pbdDict_bxReposRoot(
             icm.EH_problem_usageError("")
             
 
+    def gitCloneBase(dstPathRel, gitRepoPath, vcMode):
+        pathComps = os.path.split(dstPathRel)
+        baseDir = pathComps[0]
+        repoName = pathComps[1]
+        if vcMode == "anon":
+            # git clone git://github.com/SomeUser/SomeRepo.git
+            command(  dstPathRel,
+              "cd {root}; git clone git@github.com:{gitRepoPath}.git"
+              .format(root=root, baseDir=baseDir, gitRepoPath=gitRepoPath)
+            )
+            command(  dstPathRel,
+              "cd {root}; mv base {dstPathRel}".format(root=root, dstPathRel=dstPathRel))
+            
+        elif vcMode == "auth":
+            command(  dstPathRel,
+              "cd {root}; git clone https://{gitUserName}:{gitPasswd}@github.com/{gitRepoPath}"
+              .format(root=root, baseDir=baseDir, gitUserName=gitUserName, gitPasswd=gitPasswd, gitRepoPath=gitRepoPath)
+            )
+            command(  gitRepoPath,            
+                "cd {root}; mv base {dstPathRel}".format(root=root, dstPathRel=dstPathRel)
+            )
+            
+        else:
+            icm.EH_problem_usageError("")
+            
+            
     #
     # NOTYET, this is a hack for now. To Be replaced by bue.credentials
     #
@@ -630,22 +656,35 @@ def pbdDict_bxReposRoot(
 
     with open('/acct/employee/lsipusr/gitPasswd', 'r') as myfile:
         gitPasswd=myfile.read().replace('\n', '')        
-        
 
-    directory('ByStar')
+    #
+    # NOTYET, the model of specifying one command here is wrong.
+    # We should be dealing with abstract directory bases, where
+    # each directory base has a create and verify method.
+    # Things like update and clean, etc should then be driven
+    # with the fto (File Tree Objects).
+    #
+    # So, gitCloneBase should be renamed gitReposCollectionBase and gitRepoBase
+    #
+
+    gitCloneBase( 'ByStar',  'ByStar/base', vcMode)    
     gitClone( 'ByStar/overview',  'ByStar/overview', vcMode)
 
-    directory('unisos')
+    
+    gitCloneBase( 'unisos',  'bx-unisos/base', vcMode)
     gitClone( 'unisos/overview',  'bx-unisos/overview', vcMode)
+    
 
-    directory('bisos')
+    gitCloneBase( 'bisos',  'bisos/base', vcMode)
     gitClone( 'bisos/overview',  'bisos/overview', vcMode)
     
-    directory('blee')
+    
+    gitCloneBase( 'blee',  'bx-blee/base',  vcMode)
     gitClone( 'blee/overview',  'bx-blee/overview',  vcMode)
+    
 
-    directory('unisos-pip')
-    gitClone( 'unisos-pip/overview',  'unisos-pip/overview', vcMode)
+    gitCloneBase( 'unisos-pip',  'unisos-pip/base', vcMode)
+    gitClone( 'unisos-pip/overview',  'unisos-pip/overview', vcMode)    
 
     gitClone( 'unisos-pip/namespace',  'unisos-pip/namespace', vcMode)
 
@@ -660,8 +699,8 @@ def pbdDict_bxReposRoot(
     gitClone( 'unisos-pip/x822Msg',  'unisos-pip/x822Msg', vcMode)
 
     
-    directory('bisos-pip')
-    gitClone( 'bisos-pip/overview',  'bisos-pip/overview', vcMode)
+    gitCloneBase( 'bisos-pip',  'bisos-pip/base', vcMode)
+    gitClone( 'bisos-pip/overview',  'bisos-pip/overview', vcMode)    
 
     gitClone( 'bisos-pip/namespace',  'bisos-pip/namespace', vcMode)
 
@@ -694,8 +733,8 @@ def pbdDict_bxReposRoot(
     gitClone( 'bisos-pip/full',  'bisos-pip/full', vcMode)
 
 
-    directory('blee-pip')
-    gitClone( 'blee-pip/overview',  'blee-pip/overview', vcMode)
+    gitCloneBase( 'blee-pip',  'blee-pip/base', vcMode)
+    gitClone( 'blee-pip/overview',  'blee-pip/overview', vcMode)    
 
     gitClone( 'blee-pip/namespace',  'blee-pip/namespace', vcMode)
 

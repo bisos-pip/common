@@ -1853,9 +1853,9 @@ comment={comment}
 
     def update(self):
         destFullPath = self.destPathFullGet()
-        if os.path.isdir(destFullPath):
-            icm.ANN_here("{} Exists -- mkdir Skipped".format(destFullPath))
-            return None
+        #if os.path.isdir(destFullPath):
+            #icm.ANN_here("{} Exists -- mkdir Skipped".format(destFullPath))
+            #return None
 
         outcome = icm.subProc_bash(
             self.createCommand,
