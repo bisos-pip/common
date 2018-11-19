@@ -226,7 +226,7 @@ def bxReposRootBaseDirPtrUserFile_obtain():
 def bxReposRootBaseDirDefault_obtain():
 ####+END:
     return os.path.abspath(
-        "/bxRepos"
+        "/bisos/git/auth/bxRepos"
     )
 
 
@@ -361,17 +361,18 @@ def examples_bxReposBaseDirsCommon():
 
     icm.ex_gExecMenuItem(execLine="""cat {}""".format(bxReposRootBaseDirPtrUserFile_obtain()),)
     #icm.ex_gExecMenuItem(execLine="""cat {}""".format(bxReposRootBaseDirPtrSysFile_obtain()),)
-    icm.ex_gExecMenuItem(execLine="""ls -l {}""".format(bxReposRootBaseDirDefault_obtain(),)) 
-    icm.ex_gExecMenuItem(execLine="""ls -l /bisos/vc/git/bxRepos/*""")   
-    icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/vc/git/bxRepos/auth; sudo chown {}:{} /bisos/vc/git/bxRepos/auth"""
-                         .format(bxReposUserName_obtain(), bxReposGroupName_obtain()))
-    icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/vc/git/bxRepos/anon; sudo chown {}:{} /bisos/vc/git/bxRepos/anon"""
-                         .format(bxReposUserName_obtain(), bxReposGroupName_obtain()))
+    icm.ex_gExecMenuItem(execLine="""ls -l {}""".format(bxReposRootBaseDirDefault_obtain(),))
+    
+    # icm.ex_gExecMenuItem(execLine="""ls -l /bisos/vc/git/bxRepos/*""")   
+    # icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/vc/git/bxRepos/auth; sudo chown {}:{} /bisos/vc/git/bxRepos/auth"""
+    #                      .format(bxReposUserName_obtain(), bxReposGroupName_obtain()))
+    # icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/vc/git/bxRepos/anon; sudo chown {}:{} /bisos/vc/git/bxRepos/anon"""
+    #                      .format(bxReposUserName_obtain(), bxReposGroupName_obtain()))
 
-    icm.ex_gExecMenuItem(execLine="""ls -l /bisos/git/auth/bxRepos/*""")   
-    icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/git/auth/bxRepos; sudo chown {}:{} /bisos/git/auth/bxRepos"""
+    #icm.ex_gExecMenuItem(execLine="""ls -l /bisos/git/auth/bxRepos/*""")   
+    icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/git/auth; sudo chown {}:{} /bisos/git/auth"""
                          .format(bxReposUserName_obtain(), bxReposGroupName_obtain()))
-    icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/git/anon/bxRepos; sudo chown {}:{} /bisos/git/anon/bxRepos"""
+    icm.ex_gExecMenuItem(execLine="""sudo mkdir -p /bisos/git/anon; sudo chown {}:{} /bisos/git/anon"""
                          .format(bxReposUserName_obtain(), bxReposGroupName_obtain()))
 
 ####+BEGIN: bx:dblock:python:func :funcName "examples_bxReposBaseDirs" :comment "bx-bases.py module information" :funcType "examples" :retType "none" :deco "" :argsList ""
@@ -414,42 +415,42 @@ def examples_bxReposBaseDirsFull():
     cps = collections.OrderedDict()
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
     
-    icm.cmndExampleMenuChapter(' =BxReposContainer DirBases=  *pbdShow/pbdVerify/pbdUpdate Of Relevant PBDs*')    
+    icm.cmndExampleMenuChapter(' =BxReposCollection DirBases=  *pbdShow/pbdVerify/pbdUpdate Of Relevant PBDs*')    
 
-    icm.cmndExampleMenuSection(' =BxReposContainer DirBases=  *pbdVerify*')            
+    icm.cmndExampleMenuSection(' =BxReposCollection DirBases=  *pbdVerify*')            
 
     cmndName = "pbdVerify" ; cmndArgs = "all" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/anon';
-    cps['pbdName'] = 'bxReposContainer' ; cps['vcMode'] = 'anon'
+    cps['pbdName'] = 'bxReposCollection' ; cps['vcMode'] = 'anon'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
     cmndName = "pbdVerify" ; cmndArgs = "all" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/auth';
-    cps['pbdName'] = 'bxReposContainer' ; cps['vcMode'] = 'auth'
+    cps['pbdName'] = 'bxReposCollection' ; cps['vcMode'] = 'auth'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
     
    
-    icm.cmndExampleMenuSection(' =BxReposContainer DirBases=  *pbdUpdate*')
+    icm.cmndExampleMenuSection(' =BxReposCollection DirBases=  *pbdUpdate*')
 
     cmndName = "pbdUpdate" ; cmndArgs = "all" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/anon';
-    cps['pbdName'] = 'bxReposContainer' ; cps['vcMode'] = 'anon'
+    cps['pbdName'] = 'bxReposCollection' ; cps['vcMode'] = 'anon'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
     cmndName = "pbdUpdate" ; cmndArgs = "all" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/auth';
-    cps['pbdName'] = 'bxReposContainer' ; cps['vcMode'] = 'auth'
+    cps['pbdName'] = 'bxReposCollection' ; cps['vcMode'] = 'auth'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
     
     icm.cmndExampleMenuChapter(' =BxRepos DirBases=  *pbdShow/pbdVerify/pbdUpdate Of Relevant PBDs*')    
 
-    icm.cmndExampleMenuSection(' =BxRepos DirBases=  *pbdShow*')        
-    cmndName = "pbdShow" ; cmndArgs = "/ bin" ;
-    cps = collections.OrderedDict() ;
-    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little', comment="# default pbdName")
+    # icm.cmndExampleMenuSection(' =BxRepos DirBases=  *pbdShow*')        
+    # cmndName = "pbdShow" ; cmndArgs = "/ blee-pip" ;
+    # cps = collections.OrderedDict() ;
+    # icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little', comment="# default pbdName")
 
-    cmndName = "pbdShow" ; cmndArgs = "/ bin" ;
+    cmndName = "pbdShow" ; cmndArgs = "/ blee-pip" ;
     cps = collections.OrderedDict() ; cps['pbdName'] = 'bxReposRoot' 
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
@@ -459,7 +460,7 @@ def examples_bxReposBaseDirsFull():
     
     icm.cmndExampleMenuSection(' =BxRepos DirBases=  *pbdVerify*')            
     
-    cmndName = "pbdVerify" ; cmndArgs = "/ bin" ;
+    cmndName = "pbdVerify" ; cmndArgs = "/ blee-pip" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/tmp/BXREPOS'; cps['pbdName'] = 'bxReposRoot' 
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
     
@@ -469,7 +470,7 @@ def examples_bxReposBaseDirsFull():
     
     icm.cmndExampleMenuSection(' =BxRepos DirBases=  *pbdUpdate*')
     
-    cmndName = "pbdUpdate" ; cmndArgs = "/ bin" ;
+    cmndName = "pbdUpdate" ; cmndArgs = "/ blee-pip" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/tmp/BXREPOS'; cps['pbdName'] = 'bxReposRoot' 
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
@@ -483,15 +484,15 @@ def examples_bxReposBaseDirsFull():
     cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'auth'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
     
-    cmndName = "pbdUpdate" ; cmndArgs = "all" ;
-    cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/vc/git/bxRepos/anon';
-    cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'anon'
-    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+    # cmndName = "pbdUpdate" ; cmndArgs = "all" ;
+    # cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/vc/git/bxRepos/anon';
+    # cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'anon'
+    # icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
-    cmndName = "pbdUpdate" ; cmndArgs = "all" ;
-    cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/vc/git/bxRepos/auth';
-    cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'auth'
-    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+    # cmndName = "pbdUpdate" ; cmndArgs = "all" ;
+    # cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/vc/git/bxRepos/auth';
+    # cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'auth'
+    # icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
     
     icm.cmndExampleMenuSection(' *bx-platformInfoManage.py -- Specifiy Platform Defaults*')
@@ -590,11 +591,11 @@ def bxReposGroupName_obtain():
 ####+END:
 
 
-####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxReposContainer" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None" :deco ""
+####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxReposCollection" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None" :deco ""
 """
-*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposContainer/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None)  [[elisp:(org-cycle)][| ]]
+*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposCollection/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None)  [[elisp:(org-cycle)][| ]]
 """
-def pbdDict_bxReposContainer(
+def pbdDict_bxReposCollection(
     baseDir,
     vcMode=None,
 ):
@@ -1154,7 +1155,7 @@ class bxReposRootGet(icm.Cmnd):
                 break
 
             #retVal = bxReposlatformConfig.rootDir_bxRepos_fpObtain(None)
-            retVal = "/bisos/vc/git"
+            retVal = "/bisos/git/anon"
             break
 
             # The Rest Is Now Obsolete
