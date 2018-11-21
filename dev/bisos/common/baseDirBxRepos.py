@@ -747,45 +747,64 @@ def pbdDict_bxReposRoot(
             createCommand=createCmnd,
         )
 
+    #
+    # NOTYET, Change the name to: gitMapClone,
+    # Make it be
+    #    gitCloneBase(locPathRel, remGitRepoPath, vcMode)
+    #  A single gitMapClone can then do both gitClone() and gitCloneBase()
+    #  If basename of locPathRel and remGitRepoPath are the same, we then have gitClone()
+    #  Otherwise, gitCloneBase() which includes the move.
+    #
+        
     def gitClone(dstPathRel, gitRepoPath, vcMode):
+        """ repoName of remGitRepoPath, is same as basename of dstPathRel"""
         pathComps = os.path.split(dstPathRel)
         baseDir = pathComps[0]
         #repoName = pathComps[1]
         if vcMode == "anon":
             # git clone git://github.com/SomeUser/SomeRepo.git
             command(  dstPathRel,
-              "cd {root}/{baseDir}; git clone git@github.com:{gitRepoPath}.git"
+              "cd {root}/{baseDir} && git clone git@github.com:{gitRepoPath}.git"
               .format(root=root, baseDir=baseDir, gitRepoPath=gitRepoPath)
             )
         elif vcMode == "auth":
             command(  dstPathRel,
-              "cd {root}/{baseDir}; git clone https://{gitUserName}:{gitPasswd}@github.com/{gitRepoPath}"
+              "cd {root}/{baseDir} && git clone https://{gitUserName}:{gitPasswd}@github.com/{gitRepoPath}"
               .format(root=root, baseDir=baseDir, gitUserName=gitUserName, gitPasswd=gitPasswd, gitRepoPath=gitRepoPath)
             )
         else:
             icm.EH_problem_usageError("")
 
 
-    def gitCloneBase(dstPathRel, gitRepoPath, vcMode):
-        pathComps = os.path.split(gitRepoPath)
-        baseDir = pathComps[0]
-        repoName = pathComps[1]
+    def gitCloneBase(locPathRel, remGitRepoPath, vcMode):
+        locBasenameRel = os.path.basename(locPathRel)
+        locDirnameRel =  os.path.dirname(locPathRel)
+        
+        locDirnameFull = os.path.join(root, locDirnameRel)
+        
+        repoName = os.path.basename(remGitRepoPath)
+
+        # This is the before the move to locPathRel location
+        locDirnamePlusRepoRel = os.path.join(locDirnameRel, repoName)        
+        
         if vcMode == "anon":
             # git clone git://github.com/SomeUser/SomeRepo.git
-            command(  dstPathRel,
-              "cd {root}; git clone git@github.com:{gitRepoPath}.git"
-              .format(root=root, baseDir=baseDir, gitRepoPath=gitRepoPath)
+            command(  locPathRel,
+              "cd {locDirnameFull} && git clone git@github.com:{remGitRepoPath}.git"
+                          .format(locDirnameFull=locDirnameFull, remGitRepoPath=remGitRepoPath)
             )
-            command(  dstPathRel,
-              "cd {root}; mv {repoName} {dstPathRel}".format(root=root, repoName=repoName, dstPathRel=dstPathRel))
+            command(  locPathRel,
+              "cd {locDirnameFull} && mv {repoName} {locBasenameRel}"
+                          .format(locDirnameFull=locDirnameFull, repoName=repoName, locBasenameRel=locBasenameRel))
             
         elif vcMode == "auth":
-            command(  dstPathRel,
-              "cd {root}; git clone https://{gitUserName}:{gitPasswd}@github.com/{gitRepoPath}"
-              .format(root=root, baseDir=baseDir, gitUserName=gitUserName, gitPasswd=gitPasswd, gitRepoPath=gitRepoPath)
+            command(  locDirnamePlusRepoRel,
+              "cd {locDirnameFull} && git clone https://{gitUserName}:{gitPasswd}@github.com/{remGitRepoPath}"
+              .format(locDirnameFull=locDirnameFull, gitUserName=gitUserName, gitPasswd=gitPasswd, remGitRepoPath=remGitRepoPath)
             )
-            command(  gitRepoPath,            
-                      "cd {root}; mv {repoName} {dstPathRel}".format(root=root, repoName=repoName, dstPathRel=dstPathRel)
+            command(  locPathRel,            
+                      "cd {locDirnameFull} && mv {repoName} {locBasenameRel}"
+                          .format(locDirnameFull=locDirnameFull, repoName=repoName, locBasenameRel=locBasenameRel)
             )
             
         else:
@@ -858,6 +877,9 @@ def pbdDict_bxReposRoot(
     gitClone( 'bisos-pip/mmwsIcm',  'bisos-pip/mmwsIcm', vcMode)
 
     gitClone( 'bisos-pip/bootstrap',  'bisos-pip/bootstrap', vcMode)
+
+    # /bisos/git/auth/bxRepos/bisos-pip/bootstrap/dev/bisos
+    gitCloneBase( 'bisos-pip/bootstrap/dev/bisos/bootstrap-vagrants',  'bxGenesis/vagrants', vcMode)    
 
     gitClone( 'bisos-pip/bx-bases',  'bisos-pip/bx-bases', vcMode)
 
