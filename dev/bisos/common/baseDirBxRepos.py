@@ -872,6 +872,8 @@ def pbdDict_bxReposRoot(
 
     gitClone( 'unisos-pip/x822Msg',  'unisos-pip/x822Msg', vcMode)
 
+    gitClone( 'unisos-pip/utils',  'unisos-pip/utils', vcMode)    
+
     
     gitCloneBase( 'bisos-pip',  'bisos-pip/base', vcMode)
     gitClone( 'bisos-pip/overview',  'bisos-pip/overview', vcMode)    
