@@ -856,10 +856,9 @@ def pbdDict_bxReposRoot(
     gitClone( 'bxGenesis/overview',  'bxGenesis/overview', vcMode)
 
     gitClone( 'bxGenesis/vagrants',  'bxGenesis/vagrants', vcMode)
-
     gitClone( 'bxGenesis/vagrantBue',  'bxGenesis/vagrantBue', vcMode)    
-
-    gitClone( 'bxGenesis/fbxoPkgs',  'bxGenesis/fbxoPkgs', vcMode)    
+    gitClone( 'bxGenesis/fbxoPkgs',  'bxGenesis/fbxoPkgs', vcMode)
+    gitClone( 'bxGenesis/provisioners',  'bxGenesis/provisioners', vcMode)    
 
 
     gitCloneBase( 'unisos-pip',  'unisos-pip/base', vcMode)
