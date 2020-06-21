@@ -191,7 +191,7 @@ This module is part of BISOS and its primary documentation is in  http://www.by-
 """
 def bisosAccountName():
 ####+END:
-    return "lsipusr"
+    return "bisos"
     
 ####+BEGIN: bx:icm:python:func :funcName "bisosGroupName" :funcType "anyOrNone" :retType "str" :deco "" :argsList ""
 """
@@ -199,7 +199,24 @@ def bisosAccountName():
 """
 def bisosGroupName():
 ####+END:
-    return "employee"
+    return "bisos"
+
+####+BEGIN: bx:icm:python:func :funcName "bystarAccountName" :funcType "anyOrNone" :retType "str" :deco "" :argsList ""
+"""
+*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-anyOrNone :: /bystarAccountName/ retType=str argsList=nil  [[elisp:(org-cycle)][| ]]
+"""
+def bystarAccountName():
+####+END:
+    return "bystar"
+    
+####+BEGIN: bx:icm:python:func :funcName "bystarGroupName" :funcType "anyOrNone" :retType "str" :deco "" :argsList ""
+"""
+*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-anyOrNone :: /bystarGroupName/ retType=str argsList=nil  [[elisp:(org-cycle)][| ]]
+"""
+def bystarGroupName():
+####+END:
+    return "bisos"
+
 
 ####+BEGIN: bx:icm:python:func :funcName "rootDir_bisos" :funcType "anyOrNone" :retType "str" :deco "" :argsList ""
 """
