@@ -24,7 +24,7 @@ __libName__ = "bxpBaseDir"
 ####+END:
 
 ####+BEGIN: bx:global:timestamp:version-py :style "date"
-__version__ = "201805254923"
+__version__ = "202006240204"
 ####+END:
 
 ####+BEGIN: bx:global:icm:status-py :status "Production"
@@ -776,16 +776,16 @@ def pbdDict_bisosRoot(
 
     directory('venv')
     command(  'venv/py2-bisos-3',
-              "virtualenv --no-site-packages --python=python2 {fullDestPathGet}"
+              "virtualenv --python=python2 {fullDestPathGet}"
               .format(fullDestPathGet=fullDestPathGet('venv/py2-bisos-3')))
     command(  'venv/dev-py2-bisos-3',
-              "virtualenv --no-site-packages --python=python2 {fullDestPathGet}"
+              "virtualenv --python=python2 {fullDestPathGet}"
               .format(fullDestPathGet=fullDestPathGet('venv/dev-py2-bisos-3')))
     command(  'venv/py3-bisos-3',
-              "virtualenv --no-site-packages --python=python3 {fullDestPathGet}"
+              "virtualenv --python=python3 {fullDestPathGet}"
               .format(fullDestPathGet=fullDestPathGet('venv/py3-bisos-3')))
     command(  'venv/dev-py3-bisos-3',
-              "virtualenv --no-site-packages --python=python3 {fullDestPathGet}"
+              "virtualenv --python=python3 {fullDestPathGet}"
               .format(fullDestPathGet=fullDestPathGet('venv/dev-py3-bisos-3')))
 
     
@@ -1951,16 +1951,16 @@ def pbdDict_bxpRootObsoleted(
     directory('dist')
     directory('dist/venv')
     command(  'dist/venv/py2-bisos-3',
-              "virtualenv --no-site-packages --python=python2 {fullDestPathGet}"
+              "virtualenv --python=python2 {fullDestPathGet}"
               .format(fullDestPathGet=fullDestPathGet('dist/venv/py2-bisos-3')))
     command(  'dist/venv/dev-py2-bisos-3',
-              "virtualenv --no-site-packages --python=python2 {fullDestPathGet}"
+              "virtualenv --python=python2 {fullDestPathGet}"
               .format(fullDestPathGet=fullDestPathGet('dist/venv/dev-py2-bisos-3')))
     command(  'dist/venv/py3-bisos-3',
-              "virtualenv --no-site-packages --python=python3 {fullDestPathGet}"
+              "virtualenv --python=python3 {fullDestPathGet}"
               .format(fullDestPathGet=fullDestPathGet('dist/venv/py3-bisos-3')))
     command(  'dist/venv/dev-py3-bisos-3',
-              "virtualenv --no-site-packages --python=python3 {fullDestPathGet}"
+              "virtualenv --python=python3 {fullDestPathGet}"
               .format(fullDestPathGet=fullDestPathGet('dist/venv/dev-py3-bisos-3')))
     directory('dist/pip')
     directory('dist/pip/bisos')
