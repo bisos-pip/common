@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """\
 *    *[Summary]* ::  A /library/ with ICM Cmnds to support BxRepos bases (/bisos/vc/git) creation facilities
+** if anon git clone git://github.com/SomeUser/SomeRepo.git if auth git clone git@github.com:UserName/OtherRepo.git
 """
 
 ####+BEGIN: bx:icm:python:top-of-file :partof "bystar" :copyleft ""
@@ -95,6 +96,11 @@ import copy
 *  [[elisp:(beginning-of-buffer)][Top]] ############## [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(delete-other-windows)][(1)]]    *Library Description (Overview)*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] 
 """
 ####+END:
+
+"""
+** TODO gitClone needs to support anon, auth=authSsh and authHttp. 
+   SCHEDULED: <2020-06-25 Thu>
+"""
 
 ####+BEGIN: bx:icm:python:cmnd:classHead :cmndName "bxReposBaseDir_libOverview" :parsMand "" :parsOpt "" :argsMin "0" :argsMax "3" :asFunc "" :interactiveP ""
 """
@@ -638,8 +644,9 @@ def pbdDict_bxReposCollection(
         #repoName = pathComps[1]
         if vcMode == "anon":
             # git clone git://github.com/SomeUser/SomeRepo.git
+            # "cd {root}/{baseDir}; git clone git@github.com:{gitRepoPath}.git"
             command(  dstPathRel,
-              "cd {root}/{baseDir}; git clone git@github.com:{gitRepoPath}.git"
+              "cd {root}/{baseDir}; git clone git://github.com/{gitRepoPath}.git"
               .format(root=root, baseDir=baseDir, gitRepoPath=gitRepoPath)
             )
         elif vcMode == "auth":
@@ -657,8 +664,9 @@ def pbdDict_bxReposCollection(
         repoName = pathComps[1]
         if vcMode == "anon":
             # git clone git://github.com/SomeUser/SomeRepo.git
+            # "cd {root}; git clone git@github.com:{gitRepoPath}.git"
             command(  dstPathRel,
-              "cd {root}; git clone git@github.com:{gitRepoPath}.git"
+              "cd {root}; git clone git://github.com/{gitRepoPath}.git"                      
               .format(root=root, baseDir=baseDir, gitRepoPath=gitRepoPath)
             )
             command(  dstPathRel,
@@ -741,6 +749,7 @@ def pbdDict_bxReposRoot(
         pbdDict[dstPathRel] = bxpBaseDir.bxpObjGet_symLink(root, dstPathRel, srcPath, srcPathType=srcPathType)
 
     def command(dstPathRel, createCmnd):
+        # print("AAAA Entering command {createCmnd}".format(createCmnd=createCmnd))
         pbdDict[dstPathRel] = bxpBaseDir.BxpBaseDir_Command(
             destPathRoot=root,
             destPathRel=dstPathRel,
@@ -763,8 +772,9 @@ def pbdDict_bxReposRoot(
         #repoName = pathComps[1]
         if vcMode == "anon":
             # git clone git://github.com/SomeUser/SomeRepo.git
+            #               "cd {root}/{baseDir} && git clone git@github.com:{gitRepoPath}.git"
             command(  dstPathRel,
-              "cd {root}/{baseDir} && git clone git@github.com:{gitRepoPath}.git"
+              "cd {root}/{baseDir} && git clone git://github.com/{gitRepoPath}.git"
               .format(root=root, baseDir=baseDir, gitRepoPath=gitRepoPath)
             )
         elif vcMode == "auth":
@@ -789,22 +799,31 @@ def pbdDict_bxReposRoot(
         
         if vcMode == "anon":
             # git clone git://github.com/SomeUser/SomeRepo.git
+            # "cd {locDirnameFull} && git clone git@github.com:{remGitRepoPath}.git"
+            #
+            # Note: Strange: You can not use multiple command() below.
+            # Not understood yet. To be revisited. MB-20200625
+            #
             command(  locPathRel,
-              "cd {locDirnameFull} && git clone git@github.com:{remGitRepoPath}.git"
-                          .format(locDirnameFull=locDirnameFull, remGitRepoPath=remGitRepoPath)
+                      "cd {locDirnameFull} && git clone git://github.com/{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
+                      .format(locDirnameFull=locDirnameFull, remGitRepoPath=remGitRepoPath, repoName=repoName, locBasenameRel=locBasenameRel)
             )
-            command(  locPathRel,
-              "cd {locDirnameFull} && mv {repoName} {locBasenameRel}"
-                          .format(locDirnameFull=locDirnameFull, repoName=repoName, locBasenameRel=locBasenameRel))
             
         elif vcMode == "auth":
+            #
+            # Note: Strange: You can not use multiple command() below.
+            # Not understood yet. To be revisited. MB-20200625
+            #
             command(  locDirnamePlusRepoRel,
-              "cd {locDirnameFull} && git clone https://{gitUserName}:{gitPasswd}@github.com/{remGitRepoPath}"
-              .format(locDirnameFull=locDirnameFull, gitUserName=gitUserName, gitPasswd=gitPasswd, remGitRepoPath=remGitRepoPath)
-            )
-            command(  locPathRel,            
-                      "cd {locDirnameFull} && mv {repoName} {locBasenameRel}"
-                          .format(locDirnameFull=locDirnameFull, repoName=repoName, locBasenameRel=locBasenameRel)
+              "cd {locDirnameFull} && git clone https://{gitUserName}:{gitPasswd}@github.com/{remGitRepoPath} && mv {repoName} {locBasenameRel}"
+              .format(
+                  locDirnameFull=locDirnameFull,
+                  gitUserName=gitUserName,
+                  gitPasswd=gitPasswd,
+                  remGitRepoPath=remGitRepoPath,
+                  repoName=repoName,
+                  locBasenameRel=locBasenameRel
+              )
             )
             
         else:
