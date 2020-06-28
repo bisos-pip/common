@@ -874,7 +874,21 @@ def pbdDict_bxReposRoot(
     
     
     gitCloneBase( 'blee',  'bx-blee/base',  vcMode)
-    gitClone( 'blee/overview',  'bx-blee/overview',  vcMode)
+    gitClone(
+        'blee/overview',
+        'bx-blee/overview',
+        vcMode
+    )
+    gitClone(
+        'blee/env',
+        'bx-blee/env,
+        vcMode
+    )
+    gitClone(
+        'blee/org-img-link',
+        'bx-blee/org-img-link',
+        vcMode
+    )
     gitClone(
         'blee/org-img-link',
         'bx-blee/org-img-link',
