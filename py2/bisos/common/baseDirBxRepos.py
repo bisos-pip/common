@@ -875,7 +875,17 @@ def pbdDict_bxReposRoot(
     
     gitCloneBase( 'blee',  'bx-blee/base',  vcMode)
     gitClone( 'blee/overview',  'bx-blee/overview',  vcMode)
-
+    gitClone(
+        'blee/org-img-link',
+        'bx-blee/org-img-link',
+        vcMode
+    )
+    gitClone(
+        'blee/persian-input-method',
+        'bx-blee/persian-input-method',
+        vcMode
+    )
+    
 
     gitCloneBase( 'bxGenesis',  'bxGenesis/base', vcMode)
     gitClone( 'bxGenesis/overview',  'bxGenesis/overview', vcMode)
@@ -1117,19 +1127,16 @@ def pbdDict_extRepos(
         'manateelazycat/emacs-application-framework',
         vcMode
     )
-
     gitClone(
         'emacs/frame-cmds',
         'emacsmirror/frame-cmds',
         vcMode
     )
-   
     gitClone(
         'emacs/frame-fns',
         'emacsmirror/frame-fns',
         vcMode
     )
-
     gitClone(
         'emacs/thumb-frm',
         'emacsmirror/thumb-frm',
