@@ -881,7 +881,7 @@ def pbdDict_bxReposRoot(
     )
     gitClone(
         'blee/env',
-        'bx-blee/env,
+        'bx-blee/env',
         vcMode
     )
     gitClone(
