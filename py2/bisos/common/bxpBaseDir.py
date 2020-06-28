@@ -578,6 +578,10 @@ def examples_bxPlatformBaseDirsFull():
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
     cmndName = "pbdShow" ; cmndArgs = "all" ;
+    cps = collections.OrderedDict() ; cps['pbdName'] = 'bleeRoot'
+    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+
+    cmndName = "pbdShow" ; cmndArgs = "all" ;
     cps = collections.OrderedDict() ; cps['pbdName'] = 'deRunRoot'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
@@ -619,6 +623,10 @@ def examples_bxPlatformBaseDirsFull():
     
     cmndName = "pbdUpdate" ; cmndArgs = "all" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos'; cps['pbdName'] = 'bisosRoot' 
+    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+
+    cmndName = "pbdUpdate" ; cmndArgs = "all" ;
+    cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos'; cps['pbdName'] = 'bleeRoot' 
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
     cmndName = "pbdUpdate" ; cmndArgs = "all" ;
@@ -814,7 +822,7 @@ def pbdDict_bisosRoot(
     
     
     directory('tmp')
-    
+
     directory('log')
     directory('log/bisos')
 
@@ -823,10 +831,10 @@ def pbdDict_bisosRoot(
     symLink(  'core/input', 'dist/pip/core/input')
     symLink(  'core/var', 'var/core')
     symLink(  'core/tmp', 'tmp')
-    symLink(  'core/log', 'log/core')                
-              
+    symLink(  'core/log', 'log/core')
+
     directory('bsip')
-    
+
     directory('blee')
 
     return pbdDict
@@ -850,9 +858,8 @@ def pbdDict_deRunRoot(
     root = bxpRoot_baseObtain(baseDir)
     pbdDict['/'] = bxpObjGet_baseDir(root, '')
 
-    
     def fullDestPathGet(dstPathRel):
-        return( os.path.join(
+        return(os.path.join(
             root, dstPathRel,
         ))
 
@@ -870,14 +877,14 @@ def pbdDict_deRunRoot(
         )
 
     # Assuming /de/run as default
-        
+
     directory('bisos')
     directory('bisos/r3')
     directory('bisos/r3/pkgs')
     directory('bisos/r3/pkgs/marmee')
     directory('bisos/r3/pkgs/marmee/control')
     directory('bisos/r3/pkgs/marmee/pkgInfo')
-    directory('bisos/r3/pkgs/marmee/admin')            
+    directory('bisos/r3/pkgs/marmee/admin')
 
     return pbdDict
 
@@ -935,6 +942,95 @@ def pbdDict_bxoRoot(
     return pbdDict
 
 
+####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bleeRoot" :comment "pbd Dictionary" :funcType "Init" :retType "bxpRootBaseDirsDict" :argsList "baseDir" :deco ""
+"""
+*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bleeRoot/ =pbd Dictionary= retType=bxpRootBaseDirsDict argsList=(baseDir)  [[elisp:(org-cycle)][| ]]
+"""
+def pbdDict_bleeRoot(
+    baseDir,
+):
+####+END:
+    """
+** baseDir is typically '/bisos'
+    """
+
+    pbdDict = collections.OrderedDict()
+
+    root = bxpRoot_baseObtain(baseDir)
+    pbdDict['/'] = bxpObjGet_baseDir(root, '')
+
+    def fullDestPathGet(dstPathRel):
+        return(os.path.join(
+            root, dstPathRel,
+        ))
+
+    def directory(pathRel):
+        pbdDict[pathRel] = bxpObjGet_baseDir(root, pathRel)
+
+    def symLink(dstPathRel, srcPath, srcPathType='internal'):
+        pbdDict[dstPathRel] = bxpObjGet_symLink(
+            root,
+            dstPathRel,
+            srcPath,
+            srcPathType=srcPathType
+        )
+
+    def command(dstPathRel, createCmnd):
+        pbdDict[dstPathRel] = BxpBaseDir_Command(
+            destPathRoot=root,
+            destPathRel=dstPathRel,
+            createCommand=createCmnd,
+        )
+
+    directory('blee')
+
+    directory('blee/26f')
+    directory('blee/26f/elpa')
+    directory('blee/26f/run')
+    directory('blee/26f/tmp')
+
+    directory('blee/27f')
+    directory('blee/27f/elpa')
+    directory('blee/27f/run')
+    directory('blee/27f/tmp')
+
+    directory('blee/28f')
+    directory('blee/28f/elpa')
+    directory('blee/28f/run')
+    directory('blee/28f/tmp')
+
+    symLink('blee/env',
+            'git/bxRepos/blee/env'
+            )
+
+    directory('blee/nativePkgs')
+
+    symLink('blee/nativePkgs/org-img-link',
+            'git/bxRepos/blee/org-img-link'
+            )
+    symLink('blee/nativePkgs/persian-input-method',
+            'git/bxRepos/blee/persian-input-method'
+            )
+
+    directory('blee/extPkgs')
+
+    # /bisos/git/anon/ext/emacs/
+    symLink('blee/extPkgs/emacs-application-framework',
+            'git/anon/ext/emacs/emacs-application-framework'
+            )
+    symLink('blee/extPkgs/frame-cmds',
+            'git/anon/ext/emacs/frame-cmds'
+            )
+    symLink('blee/extPkgs/frame-fns',
+            'git/anon/ext/emacs/frame-fns'
+            )
+    symLink('blee/extPkgs/thumb-frm',
+            'git/anon/ext/emacs/thumb-frm'
+            )
+
+    return pbdDict
+
+
 ####+BEGIN: bx:dblock:python:section :title "ICM Commands"
 """
 *  [[elisp:(beginning-of-buffer)][Top]] ################ [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(delete-other-windows)][(1)]]    *ICM Commands*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] 
@@ -954,11 +1050,11 @@ def bxpRoot_baseObtain(
         interactive=False,
         baseDir=baseDir,
     )
-    if outcome.isProblematic(): return icm.EH_badOutcome(outcome)    
+    if outcome.isProblematic(): return icm.EH_badOutcome(outcome)
 
     return outcome.results
 
-    
+
 ####+BEGIN: bx:icm:python:cmnd:classHead :modPrefix "new" :cmndName "bxpRootGet" :parsMand "" :parsOpt "baseDir" :argsMin "0" :argsMax "0" :asFunc "" :interactiveP ""
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || ICM-Cmnd       :: /bxpRootGet/ parsMand= parsOpt=baseDir argsMin=0 argsMax=0 asFunc= interactive=  [[elisp:(org-cycle)][| ]]
@@ -1088,6 +1184,7 @@ class pbdShow(icm.Cmnd):
         if not self.cmndArgsValidate(effectiveArgsList, cmndArgsSpecDict, outcome=cmndOutcome):
             return cmndOutcome
 ####+END:
+
 	def cmndDesc(): """
 ** for each arg, output bxp parameters.
 """
@@ -1114,7 +1211,7 @@ class pbdShow(icm.Cmnd):
                 opResults=None,
             )
  
-        for each in  effectiveArgsList:
+        for each in effectiveArgsList:
             procEach(each)
             
         return cmndOutcome.set(
@@ -1251,7 +1348,7 @@ class pbdUpdate(icm.Cmnd):
                 opResults=None,
             )
  
-        for each in  effectiveArgsList:
+        for each in effectiveArgsList:
             procEach(each)
             
         return cmndOutcome.set(
