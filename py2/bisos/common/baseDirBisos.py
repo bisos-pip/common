@@ -741,6 +741,89 @@ def pbdDict_bisosRoot(
     """
 ** In /lcnt/lgpc/bystar/permanent/common/clips/bisosBasesInstall.tex
 *** See: \section{/bisos Bases Directory Structure Overview}
+***  Panel documentation::  [[elisp:(blee:bnsm:panel-goto "../bisosBaseDirs")][bisosBaseDirs]]
+    """
+
+    pbdDict = collections.OrderedDict()
+
+    root = bxpRoot_baseObtain(baseDir)
+    pbdDict['/'] = bxpObjGet_baseDir(root, '')
+
+    
+    def fullDestPathGet(dstPathRel):
+        return( os.path.join(
+            root, dstPathRel,
+        ))
+
+    def directory(pathRel):
+        pbdDict[pathRel] = bxpObjGet_baseDir(root, pathRel)
+
+    def symLink(dstPathRel, srcPath, srcPathType='internal'):
+        pbdDict[dstPathRel] = bxpObjGet_symLink(root, dstPathRel, srcPath, srcPathType=srcPathType)
+
+    def command(dstPathRel, createCmnd):
+        pbdDict[dstPathRel] = BxpBaseDir_Command(
+            destPathRoot=root,
+            destPathRel=dstPathRel,
+            createCommand=createCmnd,
+        )
+        
+    directory('venv')
+    command(  'venv/py2-bisos-3',
+              "virtualenv --no-site-packages --python=python2 {fullDestPathGet}"
+              .format(fullDestPathGet=fullDestPathGet('venv/py2-bisos-3')))
+    command(  'venv/dev-py2-bisos-3',
+              "virtualenv --no-site-packages --python=python2 {fullDestPathGet}"
+              .format(fullDestPathGet=fullDestPathGet('venv/dev-py2-bisos-3')))
+    command(  'venv/py3-bisos-3',
+              "virtualenv --no-site-packages --python=python3 {fullDestPathGet}"
+              .format(fullDestPathGet=fullDestPathGet('venv/py3-bisos-3')))
+    command(  'venv/dev-py3-bisos-3',
+              "virtualenv --no-site-packages --python=python3 {fullDestPathGet}"
+              .format(fullDestPathGet=fullDestPathGet('venv/dev-py3-bisos-3')))
+
+
+    directory('git')
+    directory('git/auth')
+    directory('git/auth/bxRepos')
+    directory('git/anon')    
+    directory('git/anon/bxRepos')
+    symLink(  'git/bxRepos', 'git/anon/bxRepos')
+    directory('git/anon/ext')    # base for external repos
+    
+    
+    directory('control')
+    directory('control/bisos')    
+    directory('control/bisos/site')    
+
+    directory('var')
+    directory('var/core')
+    directory('var/core/icmsPkg')
+    directory('var/log')
+    directory('var/log/core')
+    
+    directory('tmp')
+    directory('core')
+
+     directory('panels')
+    symLink(   'panels/blee', 'git/bxRepos/NOTYET')    
+    
+    directory('blee')
+
+    return pbdDict
+
+
+####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bisosRootOrig" :comment "pbd Dictionary" :funcType "Init" :retType "bxpRootBaseDirsDict" :argsList "baseDir" :deco ""
+"""
+*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bisosRootOrig/ =pbd Dictionary= retType=bxpRootBaseDirsDict argsList=(baseDir)  [[elisp:(org-cycle)][| ]]
+"""
+def pbdDict_bisosRootOrig(
+    baseDir,
+):
+####+END:
+    """
+** In /lcnt/lgpc/bystar/permanent/common/clips/bisosBasesInstall.tex
+*** See: \section{/bisos Bases Directory Structure Overview}
     """
 
     pbdDict = collections.OrderedDict()
@@ -828,6 +911,8 @@ def pbdDict_bisosRoot(
     directory('blee')
 
     return pbdDict
+
+
 
 
 ####+BEGIN: bx:dblock:python:func :funcName "pbdDict_deRunRoot" :comment "pbd Dictionary" :funcType "Init" :retType "bxpRootBaseDirsDict" :argsList "baseDir" :deco ""
