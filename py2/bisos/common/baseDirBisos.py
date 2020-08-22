@@ -803,10 +803,12 @@ def pbdDict_bisosRoot(
     directory('var/log/core')
     
     directory('tmp')
-    directory('core')
 
      directory('panels')
-    symLink(   'panels/blee', 'git/bxRepos/NOTYET')    
+    symLink(   'panels/blee', 'git/bxRepos/NOTYET')
+    symLink(   'panels/core', 'git/bxRepos/NOTYET')
+    symLink(   'panels/site', 'git/bxRepos/NOTYET')
+    symLink(   'panels/user', 'git/bxRepos/NOTYET')        
     
     directory('blee')
 

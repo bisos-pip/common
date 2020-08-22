@@ -774,13 +774,13 @@ def pbdDict_bisosRoot(
             createCommand=createCmnd,
         )
         
-    directory('dist')
-    directory('dist/pip')
-    directory('dist/pip/bisos')
-    directory('dist/pip/bisos/bin')
-    directory('dist/pip/bisos/input')                
-    directory('dist/pip/blee')
-    directory('dist/pip/bsip')
+    # directory('dist')
+    # directory('dist/pip')
+    # directory('dist/pip/bisos')
+    # directory('dist/pip/bisos/bin')
+    # directory('dist/pip/bisos/input')                
+    # directory('dist/pip/blee')
+    # directory('dist/pip/bsip')
 
     directory('venv')
     command(  'venv/py2-bisos-3',
@@ -820,20 +820,23 @@ def pbdDict_bisosRoot(
     directory('var/bisos')
     directory('var/bisos/icmsPkg')        
     
-    
     directory('tmp')
 
     directory('log')
     directory('log/bisos')
 
     directory('core')
-    symLink(  'core/bin', 'dist/pip/core/bin')
-    symLink(  'core/input', 'dist/pip/core/input')
-    symLink(  'core/var', 'var/core')
-    symLink(  'core/tmp', 'tmp')
-    symLink(  'core/log', 'log/core')
+    # symLink(  'core/bin', 'dist/pip/core/bin')
+    # symLink(  'core/input', 'dist/pip/core/input')
+    symLink('core/bsip3', 'git/bxRepos/bisos/bsip3')
+    symLink('core/var', 'var/core')
+    symLink('core/tmp', 'tmp')
+    symLink('core/log', 'log/core')
 
-    directory('bsip')
+    # directory('bsip')
+
+    directory('apps')
+    symLink('apps/bxtex', 'git/bxRepos/bxlcnt/bxtex')
 
     directory('blee')
 

@@ -863,16 +863,14 @@ def pbdDict_bxReposRoot(
 
     gitCloneBase( 'ByStar',  'ByStar/base', vcMode)    
     gitClone( 'ByStar/overview',  'ByStar/overview', vcMode)
-
-    
+  
     gitCloneBase( 'unisos',  'bx-unisos/base', vcMode)
     gitClone( 'unisos/overview',  'bx-unisos/overview', vcMode)
-    
 
     gitCloneBase( 'bisos',  'bisos/base', vcMode)
     gitClone( 'bisos/overview',  'bisos/overview', vcMode)
-    
-    
+    gitClone( 'bisos/bsip3',  'bisos/bsip3', vcMode)
+   
     gitCloneBase( 'blee',  'bx-blee/base',  vcMode)
     gitClone(
         'blee/overview',
@@ -988,10 +986,29 @@ def pbdDict_bxReposRoot(
     gitClone( 'efficientProtocols/overview',  'efficientProtocols/overview', vcMode)    
 
     gitClone( 'efficientProtocols/OCP',  'efficientProtocols/OCP', vcMode)        
-    gitClone( 'efficientProtocols/ESRO',  'efficientProtocols/ESRO', vcMode)
+    gitClone('efficientProtocols/ESRO',  'efficientProtocols/ESRO', vcMode)
     gitClone( 'efficientProtocols/EMSD',  'efficientProtocols/EMSD', vcMode)        
     
-    
+
+    directory('blee-binders')
+    gitClone('blee-binders/bisos-core',  'blee-binders/bisos-core', vcMode)
+    gitClone('blee-binders/bisos-model',  'blee-binders/bisos-model', vcMode)
+    gitClone('blee-binders/bisos-dev',  'blee-binders/bisos-dev', vcMode)
+    gitClone('blee-binders/blee-core',  'blee-binders/blee-core', vcMode)
+    gitClone('blee-binders/blee-model',  'blee-binders/blee-model', vcMode)
+    gitClone('blee-binders/blee-dev',  'blee-binders/blee-dev', vcMode)
+    gitClone('blee-binders/bxde-core',  'blee-binders/bxde-core', vcMode)
+    gitClone('blee-binders/bxde-model',  'blee-binders/bxde-model', vcMode)
+    gitClone('blee-binders/bxde-dev',  'blee-binders/bxde-dev', vcMode)
+
+    gitCloneBase( 'bxexamples',  'bxexamples/base', vcMode)
+    gitClone('bxexamples/bashIcm',  'bxexamples/bashIcm', vcMode)
+
+    directory('bxlcnt')
+    gitClone('bxlcnt/bxtex',  'bxlcnt/bxtex', vcMode)
+    gitClone('bxlcnt/facilities',  'bxlcnt/facilities', vcMode)
+    gitClone('bxlcnt/results',  'bxlcnt/results', vcMode)
+
     return pbdDict
 
 
