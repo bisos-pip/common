@@ -810,7 +810,7 @@ def pbdDict_bisosRoot(
     directory('git/auth/bxRepos')
     directory('git/anon')    
     directory('git/anon/bxRepos')
-    symLink( 'git/bxRepos',  'git/auth/bxRepos' )    
+    symLink('git/bxRepos',  'git/anon/bxRepos')    
     
     directory('control')
     directory('control/bisos')    
@@ -828,7 +828,10 @@ def pbdDict_bisosRoot(
     directory('core')
     # symLink(  'core/bin', 'dist/pip/core/bin')
     # symLink(  'core/input', 'dist/pip/core/input')
-    symLink('core/bsip3', 'git/bxRepos/bisos/bsip3')
+    symLink('core/bsip4', 'git/bxRepos/bisos/bsip4')
+    symLink('core/bsip', 'git/bxRepos/bisos/bsip4')    
+    symLink('core/bpip1', 'git/bxRepos/bisos/bpip1')
+    symLink('core/bpip', 'git/bxRepos/bisos/bpip1')    
     symLink('core/var', 'var/core')
     symLink('core/tmp', 'tmp')
     symLink('core/log', 'log/core')
@@ -837,8 +840,24 @@ def pbdDict_bisosRoot(
 
     directory('apps')
     symLink('apps/bxtex', 'git/bxRepos/bxlcnt/bxtex')
+    symLink('apps/comeega', 'git/bxRepos/bisos/comeega')    
 
+    directory('panels')
+    directory('panels/bisos')
+    directory('panels/blee')
+    directory('panels/bxde')            
+    symLink('panels/bisos/core', 'git/bxRepos/blee-binders/bisos-core')
+    symLink('panels/bisos/dev', 'git/bxRepos/blee-binders/bisos-dev')
+    symLink('panels/bisos/model', 'git/bxRepos/blee-binders/bisos-model')        
+    symLink('panels/blee/core', 'git/bxRepos/blee-binders/blee-core')
+    symLink('panels/blee/dev', 'git/bxRepos/blee-binders/blee-dev')
+    symLink('panels/blee/model', 'git/bxRepos/blee-binders/blee-model')        
+    symLink('panels/bxde/core', 'git/bxRepos/blee-binders/bxde-core')
+    symLink('panels/bxde/dev', 'git/bxRepos/blee-binders/bxde-dev')
+    symLink('panels/bxde/model', 'git/bxRepos/blee-binders/bxde-model')        
+    
     directory('blee')
+    # blee directory is then populated with pbdDict_bleeRoot
 
     return pbdDict
 
