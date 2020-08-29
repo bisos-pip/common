@@ -783,20 +783,28 @@ def pbdDict_bisosRoot(
     # directory('dist/pip/bsip')
 
     directory('venv')
-    command(  'venv/py2-bisos-3',
-              "virtualenv --python=python2 {fullDestPathGet}"
-              .format(fullDestPathGet=fullDestPathGet('venv/py2-bisos-3')))
-    command(  'venv/dev-py2-bisos-3',
-              "virtualenv --python=python2 {fullDestPathGet}"
-              .format(fullDestPathGet=fullDestPathGet('venv/dev-py2-bisos-3')))
-    command(  'venv/py3-bisos-3',
-              "virtualenv --python=python3 {fullDestPathGet}"
-              .format(fullDestPathGet=fullDestPathGet('venv/py3-bisos-3')))
-    command(  'venv/dev-py3-bisos-3',
-              "virtualenv --python=python3 {fullDestPathGet}"
-              .format(fullDestPathGet=fullDestPathGet('venv/dev-py3-bisos-3')))
+    directory('venv/py2')    
 
+    command('venv/py2/bisos3',
+            "virtualenv --python=python2 {fullDestPathGet}"
+            .format(fullDestPathGet=fullDestPathGet('venv/py2/bisos3')))
     
+    directory('venv/py2/dev')        
+    command('venv/py2/dev/bisos3',
+            "virtualenv --python=python2 {fullDestPathGet}"
+            .format(fullDestPathGet=fullDestPathGet('venv/py2/dev/bisos3')))
+
+    directory('venv/py3')
+    
+    command('venv/py3/bisos3',
+            "virtualenv --python=python3 {fullDestPathGet}"
+            .format(fullDestPathGet=fullDestPathGet('venv/py3/bisos3')))
+
+    directory('venv/py3/dev')            
+    command('venv/py3/dev/bisos3',
+            "virtualenv --python=python3 {fullDestPathGet}"
+            .format(fullDestPathGet=fullDestPathGet('venv/py3/dev/bisos3')))
+
     # directory('vcAuth')
     # directory('vcAuth/git')
     
@@ -855,7 +863,9 @@ def pbdDict_bisosRoot(
     symLink('panels/bxde/core', 'git/bxRepos/blee-binders/bxde-core')
     symLink('panels/bxde/dev', 'git/bxRepos/blee-binders/bxde-dev')
     symLink('panels/bxde/model', 'git/bxRepos/blee-binders/bxde-model')        
-    
+
+    directory('groupAcct')
+     
     directory('blee')
     # blee directory is then populated with pbdDict_bleeRoot
 
@@ -951,15 +961,17 @@ def pbdDict_bxoRoot(
         )
         
     directory('r3')                          # BISOS Release 3 account Bases
-    directory('r3/so')                       # Service Objects
-    directory('r3/io')                       # Information Objects
-    directory('r3/fso')                      # Foreign Service Objects
-    directory('r3/fio')                      # Foreign Information Objects
+    # directory('r3/so')                       # Service Objects
+    directory('r3/iso')                       # Information Objects
+    # directory('r3/fso')                      # Foreign Service Objects
+    directory('r3/fiso')                      # Foreign Information Objects
+    directory('r3/usg')                      # Base for usage accounts    
     
-    symLink(  'so', 'r3/so')                 # Canonical Symlink
-    symLink(  'io', 'r3/io')                 # Canonical Symlink
-    symLink(  'fso', 'r3/fso')                 # Canonical Symlink
-    symLink(  'fio', 'r3/fio')                 # Canonical Symlink
+    # symLink('so', 'r3/so')                 # Canonical Symlink
+    symLink('iso', 'r3/iso')                 # Canonical Symlink
+    # symLink('fso', 'r3/fso')                 # Canonical Symlink
+    symLink('fiso', 'r3/fiso')                 # Canonical Symlink
+    symLink('usg', 'r3/usg')                 # Canonical Symlink    
 
     return pbdDict
 
