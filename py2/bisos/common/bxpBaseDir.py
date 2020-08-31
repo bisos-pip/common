@@ -848,8 +848,10 @@ def pbdDict_bisosRoot(
 
     directory('apps')
     symLink('apps/bxtex', 'git/bxRepos/bxlcnt/bxtex')
-    symLink('apps/comeega', 'git/bxRepos/bisos/comeega')    
-
+    symLink('apps/comeega', 'git/bxRepos/bisos/comeega')
+    directory('apps/defaults')
+    symLink('apps/defaults/bashrc', 'git/bxRepos/bisos/defaults/bashrc')    
+    
     directory('panels')
     directory('panels/bisos')
     directory('panels/blee')
@@ -910,14 +912,21 @@ def pbdDict_deRunRoot(
 
     # Assuming /de/run as default
 
-    directory('bisos')
-    directory('bisos/r3')
-    directory('bisos/r3/pkgs')
-    directory('bisos/r3/pkgs/marmee')
-    directory('bisos/r3/pkgs/marmee/control')
-    directory('bisos/r3/pkgs/marmee/pkgInfo')
-    directory('bisos/r3/pkgs/marmee/admin')
+    directory('bisos-r3')
+    
+    directory('bisos-r3/pkgs')
+    directory('bisos-r3/pkgs/marmee')
+    directory('bisos-r3/pkgs/marmee/control')
+    directory('bisos-r3/pkgs/marmee/pkgInfo')
+    directory('bisos-r3/pkgs/marmee/admin')
 
+    directory('bisos-r3/gatherer')
+    directory('bisos-r3/gatherer/here')
+    symLink('bisos-r3/gatherer/here/collective', '/bisos/git/bxRepos/bisos/gatherer/collective')
+    symLink('bisos-r3/gatherer/bisos', '/bisos/git/bxRepos/bisos/gatherer')
+    symLink('bisos-r3/gatherer/active', 'bisos-r3/gatherer/bisos')
+    symLink('bisos', 'bisos-r3')    
+    
     return pbdDict
 
 
