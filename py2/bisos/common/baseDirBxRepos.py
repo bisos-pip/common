@@ -613,6 +613,7 @@ def pbdDict_bxReposCollection(
 ):
 ####+END:
     """
+** TODO PROBLEM -- NOTYET, still uses https git auth -- 
 ** In /lcnt/lgpc/bystar/permanent/common/clips/bxReposBasesInstall.tex
 *** See: \section{/bxRepos Bases Directory Structure Overview}
     """
@@ -695,11 +696,11 @@ def pbdDict_bxReposCollection(
     # NOTYET, this is a hack for now. To Be replaced by bue.credentials
     #
 
-    with open('/acct/employee/lsipusr/gitUserName', 'r') as myfile:
-        gitUserName=myfile.read().replace('\n', '')        
+    # with open('/acct/employee/lsipusr/gitUserName', 'r') as myfile:
+    #     gitUserName=myfile.read().replace('\n', '')        
 
-    with open('/acct/employee/lsipusr/gitPasswd', 'r') as myfile:
-        gitPasswd=myfile.read().replace('\n', '')        
+    # with open('/acct/employee/lsipusr/gitPasswd', 'r') as myfile:
+    #     gitPasswd=myfile.read().replace('\n', '')        
 
     #
     # NOTYET, the model of specifying one command here is wrong.
@@ -871,11 +872,11 @@ def pbdDict_bxReposRoot(
     # NOTYET, this is a hack for now. To Be replaced by bue.credentials
     #
 
-    with open('/acct/employee/lsipusr/gitUserName', 'r') as myfile:
-        gitUserName=myfile.read().replace('\n', '')        
+    # with open('/acct/employee/lsipusr/gitUserName', 'r') as myfile:
+    #     gitUserName=myfile.read().replace('\n', '')        
 
-    with open('/acct/employee/lsipusr/gitPasswd', 'r') as myfile:
-        gitPasswd=myfile.read().replace('\n', '')        
+    # with open('/acct/employee/lsipusr/gitPasswd', 'r') as myfile:
+    #     gitPasswd=myfile.read().replace('\n', '')        
 
     #
     # NOTYET, the model of specifying one command here is wrong.
@@ -1197,16 +1198,6 @@ def pbdDict_extRepos(
             
             
     #
-    # NOTYET, this is a hack for now. To Be replaced by bue.credentials
-    #
-
-    with open('/acct/employee/lsipusr/gitUserName', 'r') as myfile:
-        gitUserName=myfile.read().replace('\n', '')        
-
-    with open('/acct/employee/lsipusr/gitPasswd', 'r') as myfile:
-        gitPasswd=myfile.read().replace('\n', '')        
-
-    #
     # NOTYET, the model of specifying one command here is wrong.
     # We should be dealing with abstract directory bases, where
     # each directory base has a create and verify method.
@@ -1238,195 +1229,6 @@ def pbdDict_extRepos(
         'emacsmirror/thumb-frm',
         vcMode
     )
-
-    
-    
-    return pbdDict
-
-
-
-####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxReposRootObsoleted" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None" :deco ""
-"""
-*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposRootObsoleted/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None)  [[elisp:(org-cycle)][| ]]
-"""
-def pbdDict_bxReposRootObsoleted(
-    baseDir,
-    vcMode=None,
-):
-####+END:
-    """
-** In /lcnt/lgpc/bystar/permanent/common/clips/bxReposBasesInstall.tex
-*** See: \section{/bxRepos Bases Directory Structure Overview}
-    """
-
-    pbdDict = collections.OrderedDict()
-
-    root = bxReposRoot_baseObtain(baseDir)
-    pbdDict['/'] = bxpBaseDir.bxpObjGet_baseDir(root, '')
-
-    if not vcMode:
-        vcMode = "anon"
-    
-    
-    def fullDestPathGet(dstPathRel):
-        return( os.path.join(
-            root, dstPathRel,
-        ))
-
-    def directory(pathRel):
-        pbdDict[pathRel] = bxpBaseDir.bxpObjGet_baseDir(root, pathRel)
-
-    def symLink(dstPathRel, srcPath, srcPathType='internal'):
-        pbdDict[dstPathRel] = bxpBaseDir.bxpObjGet_symLink(root, dstPathRel, srcPath, srcPathType=srcPathType)
-
-    def command(dstPathRel, createCmnd):
-        pbdDict[dstPathRel] = bxpBaseDir.BxpBaseDir_Command(
-            destPathRoot=root,
-            destPathRel=dstPathRel,
-            createCommand=createCmnd,
-        )
-
-    def gitClone(dstPathRel, vcMode):
-        pathComps = os.path.split(dstPathRel)
-        baseDir = pathComps[0]
-        repoName = pathComps[1]
-        if vcMode == "anon":
-            # git clone git://github.com/SomeUser/SomeRepo.git
-            command(  dstPathRel,
-              "cd {root}/{baseDir}; git clone git@github.com:{dstPathRel}.git"
-              .format(root=root, baseDir=baseDir, dstPathRel=dstPathRel)
-            )
-        elif vcMode == "auth":
-            command(  dstPathRel,
-              "cd {root}/{baseDir}; git clone https://{gitUserName}:{gitPasswd}@github.com/{dstPathRel}"
-              .format(root=root, baseDir=baseDir, gitUserName=gitUserName, gitPasswd=gitPasswd, dstPathRel=dstPathRel)
-            )
-        else:
-            icm.EH_problem_usageError("")
-            
-
-    #
-    # NOTYET, this is a hack for now. To Be replaced by bue.credentials
-    #
-
-    with open('/acct/employee/lsipusr/gitUserName', 'r') as myfile:
-        gitUserName=myfile.read().replace('\n', '')        
-
-    with open('/acct/employee/lsipusr/gitPasswd', 'r') as myfile:
-        gitPasswd=myfile.read().replace('\n', '')        
-        
-
-    directory('ByStar')
-    # command(  'ByStar/overview',
-    #           "cd {root}/ByStar; git clone https://{gitUserName}:{gitPasswd}@github.com/ByStar/overview"
-    #           .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    gitClone('ByStar/overview', vcMode)
-
-    directory('unisos')
-    command(  'unisos/overview',
-              "cd {root}/unisos; git clone https://{gitUserName}:{gitPasswd}@github.com/bx-unisos/overview"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-
-    directory('bisos')
-    command(  'bisos/overview',
-              "cd {root}/bisos; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos/overview"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    
-    directory('blee')
-    command(  'blee/overview',
-              "cd {root}/blee; git clone https://{gitUserName}:{gitPasswd}@github.com/bx-blee/overview"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-
-
-    directory('unisos-pip')
-    command(  'unisos-pip/overview',
-              "cd {root}/unisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/unisos-pip/overview"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'unisos-pip/namespace',
-              "cd {root}/unisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/unisos-pip/namespace"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'unisos-pip/common',
-              "cd {root}/unisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/unisos-pip/common"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'unisos-pip/ucf',
-              "cd {root}/unisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/unisos-pip/ucf"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'unisos-pip/icm',
-              "cd {root}/unisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/unisos-pip/icm"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'unisos-pip/icmExamples',
-              "cd {root}/unisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/unisos-pip/icmExamples"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'unisos-pip/x822Msg',
-              "cd {root}/unisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/unisos-pip/x822Msg"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-
-    
-    directory('bisos-pip')
-    command(  'bisos-pip/overview',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/overview"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/namespace',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/namespace"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/mmwsIcm',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/mmwsIcm"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/bootstrap',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/bootstrap"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/bx-bases',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/bx-bases"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/common',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/common"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/examples',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/examples"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/gossonot',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/gossonot"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/lcnt',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/lcnt"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/currents',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/currents"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/platform',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/platform"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/things',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/things"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/marme',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/marme"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/core',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/core"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/coreDist',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/coreDist"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'bisos-pip/full',
-              "cd {root}/bisos-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/bisos-pip/full"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-
-
-    directory('blee-pip')
-    command(  'blee-pip/overview',
-              "cd {root}/blee-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/blee-pip/overview"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'blee-pip/namespace',
-              "cd {root}/blee-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/blee-pip/namespace"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'blee-pip/elispDist',
-              "cd {root}/blee-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/blee-pip/elispDist"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-    command(  'blee-pip/icmPlayer',
-              "cd {root}/blee-pip; git clone https://{gitUserName}:{gitPasswd}@github.com/blee-pip/icmPlayer"
-              .format(root=root, gitUserName=gitUserName, gitPasswd=gitPasswd))
-
 
     
     
