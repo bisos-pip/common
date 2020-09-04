@@ -854,8 +854,7 @@ def pbdDict_bisosRoot(
     directory('apps')
     symLink('apps/bxtex', 'git/bxRepos/bxlcnt/bxtex')
     symLink('apps/comeega', 'git/bxRepos/bisos/comeega')
-    directory('apps/defaults')
-    symLink('apps/defaults/bashrc', 'git/bxRepos/bisos/defaults/bashrc')    
+    symLink('apps/defaults', 'git/bxRepos/bisos/defaults')    
     
     directory('panels')
     directory('panels/bisos')
