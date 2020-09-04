@@ -869,7 +869,13 @@ def pbdDict_bisosRoot(
     symLink('panels/blee/model', 'git/bxRepos/blee-binders/blee-model')        
     symLink('panels/bxde/core', 'git/bxRepos/blee-binders/bxde-core')
     symLink('panels/bxde/dev', 'git/bxRepos/blee-binders/bxde-dev')
-    symLink('panels/bxde/model', 'git/bxRepos/blee-binders/bxde-model')        
+    symLink('panels/bxde/model', 'git/bxRepos/blee-binders/bxde-model')
+
+    directory('gatherer')
+    directory('gatherer/here')
+    symLink('gatherer/here/collective', '/bisos/git/bxRepos/bisos/gatherer/collective')
+    symLink('gatherer/bisos', '/bisos/git/bxRepos/bisos/gatherer')
+    symLink('gatherer/active', 'bisos-r3/gatherer/bisos')
 
     directory('groupAcct')
      
@@ -920,16 +926,17 @@ def pbdDict_deRunRoot(
     directory('bisos-r3')
     
     directory('bisos-r3/pkgs')
-    directory('bisos-r3/pkgs/marmee')
-    directory('bisos-r3/pkgs/marmee/control')
-    directory('bisos-r3/pkgs/marmee/pkgInfo')
-    directory('bisos-r3/pkgs/marmee/admin')
+    # directory('bisos-r3/pkgs/marmee')
+    # directory('bisos-r3/pkgs/marmee/control')
+    # directory('bisos-r3/pkgs/marmee/pkgInfo')
+    # directory('bisos-r3/pkgs/marmee/admin')
 
-    directory('bisos-r3/gatherer')
-    directory('bisos-r3/gatherer/here')
-    symLink('bisos-r3/gatherer/here/collective', '/bisos/git/bxRepos/bisos/gatherer/collective')
-    symLink('bisos-r3/gatherer/bisos', '/bisos/git/bxRepos/bisos/gatherer')
-    symLink('bisos-r3/gatherer/active', 'bisos-r3/gatherer/bisos')
+    # directory('bisos-r3/gatherer')
+    # directory('bisos-r3/gatherer/here')
+    # symLink('bisos-r3/gatherer/here/collective', '/bisos/git/bxRepos/bisos/gatherer/collective')
+    # symLink('bisos-r3/gatherer/bisos', '/bisos/git/bxRepos/bisos/gatherer')
+    # symLink('bisos-r3/gatherer/active', 'bisos-r3/gatherer/bisos')
+    
     symLink('bisos', 'bisos-r3')    
     
     return pbdDict
