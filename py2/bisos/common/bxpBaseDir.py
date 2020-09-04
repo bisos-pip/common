@@ -824,9 +824,14 @@ def pbdDict_bisosRoot(
     directory('control/bisos')    
     directory('control/bisos/site')    
 
-    directory('var')
-    directory('var/bisos')
-    directory('var/bisos/icmsPkg')        
+    symLink('var', '/var/bisos')    
+    directory('var/core')
+    directory('var/srcPkgs')    
+    directory('var/icmsPkg')
+    directory('var/icmsPkg/marmee')
+    directory('var/icmsPkg/marmee/control')
+    directory('var/icmsPkg/marmee/pkgInfo')
+    directory('var/icmsPkg/marmee/admin')    
     
     directory('tmp')
 
@@ -1710,7 +1715,6 @@ def bxpObjGet_symLink(
 ####+END:
 
 
-
 ####+BEGIN: bx:dblock:python:class :className "BxpBaseDir" :superClass "object" :comment "Expected to be subclassed" :classType "basic"
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Class-basic    :: /BxpBaseDir/ object =Expected to be subclassed=  [[elisp:(org-cycle)][| ]]
@@ -2041,182 +2045,11 @@ class BxpBaseDir_GitClone(BxpBaseDir):
         )
     
 
-####+BEGIN: bx:dblock:python:section :title "Slice Definitions PipPkgsList Classes"
-"""
-*  [[elisp:(beginning-of-buffer)][Top]] ################ [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(delete-other-windows)][(1)]]    *Slice Definitions PipPkgsList Classes*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] 
-"""
-####+END:
-    
-
 ####+BEGIN: bx:dblock:python:subSection :title "Junk Yard"
 """
 *  [[elisp:(beginning-of-buffer)][Top]] ================ [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(delete-other-windows)][(1)]]          *Junk Yard*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] 
 """
 ####+END:
-
-
-####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxpRootObsoleted" :comment "pbd Dictionary" :funcType "Init" :retType "bxpRootBaseDirsDict" :argsList "baseDir" :deco ""
-"""
-*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Func-Init      :: /pbdDict_bxpRootObsoleted/ =pbd Dictionary= retType=bxpRootBaseDirsDict argsList=(baseDir)  [[elisp:(org-cycle)][| ]]
-"""
-def pbdDict_bxpRootObsoleted(
-    baseDir,
-):
-####+END:
-
-    pbdDict = collections.OrderedDict()
-
-    root = bxpRoot_baseObtain(baseDir)
-    pbdDict['/'] = bxpObjGet_baseDir(root, '')
-
-    
-    def fullDestPathGet(dstPathRel):
-        return( os.path.join(
-            root, dstPathRel,
-        ))
-
-    def directory(pathRel):
-        pbdDict[pathRel] = bxpObjGet_baseDir(root, pathRel)
-
-    def symLink(dstPathRel, srcPath, srcPathType='internal'):
-        pbdDict[dstPathRel] = bxpObjGet_symLink(root, dstPathRel, srcPath, srcPathType=srcPathType)
-
-    def command(dstPathRel, createCmnd):
-        pbdDict[dstPathRel] = BxpBaseDir_Command(
-            destPathRoot=root,
-            destPathRel=dstPathRel,
-            createCommand=createCmnd,
-        )
-        
-    directory('dist')
-    directory('dist/venv')
-    command(  'dist/venv/py2-bisos-3',
-              "virtualenv --python=python2 {fullDestPathGet}"
-              .format(fullDestPathGet=fullDestPathGet('dist/venv/py2-bisos-3')))
-    command(  'dist/venv/dev-py2-bisos-3',
-              "virtualenv --python=python2 {fullDestPathGet}"
-              .format(fullDestPathGet=fullDestPathGet('dist/venv/dev-py2-bisos-3')))
-    command(  'dist/venv/py3-bisos-3',
-              "virtualenv --python=python3 {fullDestPathGet}"
-              .format(fullDestPathGet=fullDestPathGet('dist/venv/py3-bisos-3')))
-    command(  'dist/venv/dev-py3-bisos-3',
-              "virtualenv --python=python3 {fullDestPathGet}"
-              .format(fullDestPathGet=fullDestPathGet('dist/venv/dev-py3-bisos-3')))
-    directory('dist/pip')
-    directory('dist/pip/bisos')
-    directory('dist/pip/bisos/bin')
-    directory('dist/pip/bisos/input')                
-    directory('dist/pip/blee')
-    directory('dist/pip/bsip')    
-    
-    directory('vcAuth')
-    directory('vcAuth/bisos')
-    
-    directory('vcAnon')
-    directory('vcAnon/bisos')    
-
-    directory('control')
-    directory('control/bisos')    
-    directory('control/bisos/site')    
-
-    directory('var')
-    directory('var/bisos')
-    directory('var/bisos/icmsPkg')        
-    
-    directory('tmp')
-    
-    directory('log')
-    directory('log/bisos')
-
-    directory('bisos')
-    symLink(  'bisos/bin', 'dist/pip/bisos/bin')
-    symLink(  'bisos/input', 'dist/pip/bisos/input')
-    symLink(  'bisos/var', 'var/bisos')
-    symLink(  'bisos/tmp', 'tmp')
-    symLink(  'bisos/log', 'log/bisos')                
-              
-    directory('bsip')
-    
-    directory('blee')
-
-    return pbdDict
-
-
-####+BEGIN: bx:dblock:python:icmItem :itemType "List" :itemTitle "pbdList_bystar" :comment "=OBSOLETED="
-"""
-*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || List           :: pbdList_bystar ==OBSOLETED==  [[elisp:(org-cycle)][| ]]
-"""
-####+END:
-
-pbdList_bystarObsoleted = [
-    "/"
-    "var",
-    "control",
-    "data",
-    "tmp",
-    "log",    
-    "dist",
-    "vcAuth",
-    "vcAnon",
-    "bisos",
-    "bsip",
-    "blee",    
-]
-
-
-####+BEGIN: bx:icm:python:cmnd:classHead :cmndName "pbdListUpdate_Obsoleted" :parsMand "" :parsOpt "baseDir pbdName" :argsMin "1" :argsMax "1000" :asFunc "" :interactiveP ""
-"""
-*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || ICM-Cmnd       :: /pbdListUpdate_Obsoleted/ parsMand= parsOpt=baseDir pbdName argsMin=1 argsMax=1000 asFunc= interactive=  [[elisp:(org-cycle)][| ]]
-"""
-class pbdListUpdate_Obsoleted(icm.Cmnd):
-    cmndParamsMandatory = [ ]
-    cmndParamsOptional = [ 'baseDir', 'pbdName', ]
-    cmndArgsLen = {'Min': 1, 'Max': 1000,}
-
-    @icm.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
-    def cmnd(self,
-        interactive=False,        # Can also be called non-interactively
-        baseDir=None,         # or Cmnd-Input
-        pbdName=None,         # or Cmnd-Input
-        argsList=[],         # or Args-Input
-    ):
-        cmndOutcome = self.getOpOutcome()
-        if interactive:
-            if not self.cmndLineValidate(outcome=cmndOutcome):
-                return cmndOutcome
-            effectiveArgsList = G.icmRunArgsGet().cmndArgs
-        else:
-            effectiveArgsList = argsList
-
-        callParamsDict = {'baseDir': baseDir, 'pbdName': pbdName, }
-        if not icm.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
-            return cmndOutcome
-        baseDir = callParamsDict['baseDir']
-        pbdName = callParamsDict['pbdName']
-
-        cmndArgsSpecDict = self.cmndArgsSpec()
-        if not self.cmndArgsValidate(effectiveArgsList, cmndArgsSpecDict, outcome=cmndOutcome):
-            return cmndOutcome
-####+END:
-	def cmndDesc(): """
-** Doc String Outside Of Dblock.
-"""
-        icm.ANN_write("{}".format(baseDir))
-
-        for eachArg in  effectiveArgsList:
-            pbdList = eval('{}'.format(eachArg))
-            for each in pbdList:
-                pbdUpdate().cmnd(
-                    interactive=False,
-                    baseDir=baseDir,
-                    argsList=each.split(),
-                )
-
-        return cmndOutcome.set(
-            opError=icm.OpError.Success,
-            opResults=None,
-        )
-
 
 
 ####+BEGIN: bx:icm:python:section :title "End Of Editable Text"
