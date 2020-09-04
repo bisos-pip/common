@@ -874,7 +874,7 @@ def pbdDict_bisosRoot(
     directory('gatherer/here')
     symLink('gatherer/here/collective', '/bisos/git/bxRepos/bisos/gatherer/collective')
     symLink('gatherer/bisos', '/bisos/git/bxRepos/bisos/gatherer')
-    symLink('gatherer/active', 'bisos-r3/gatherer/bisos')
+    symLink('gatherer/active', 'gatherer/bisos')
 
     directory('groupAcct')
      
