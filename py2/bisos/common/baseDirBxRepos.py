@@ -909,17 +909,17 @@ def pbdDict_bxReposRoot(
     # So, gitCloneBase should be renamed gitReposCollectionBase and gitRepoBase
     #
 
-    directory('mohsenBanan')  # Don't have a base for gitCloneBase
+    gitCloneBase('ByStar', 'ByStar/base', vcMode)    
+    gitClone('ByStar/overview', 'ByStar/overview', vcMode)
+
+    gitCloneBase('mohsenBanan', 'ByStar/mohsenBananBase', vcMode)    
     gitClone('mohsenBanan/ReposOverview', 'mohsenBanan/ReposOverview', vcMode)
     gitClone('mohsenBanan/StartHere', 'mohsenBanan/StartHere', vcMode)        
-
-    gitCloneBase('ByStar', 'ByStar/base', vcMode)    
-    gitClone( 'ByStar/overview',  'ByStar/overview', vcMode)
   
-    gitCloneBase( 'unisos',  'bx-unisos/base', vcMode)
-    gitClone( 'unisos/overview',  'bx-unisos/overview', vcMode)
+    gitCloneBase('unisos', 'bx-unisos/base', vcMode)
+    gitClone('unisos/overview', 'bx-unisos/overview', vcMode)
 
-    gitCloneBase( 'bisos',  'bisos/base', vcMode)
+    gitCloneBase('bisos', 'bisos/base', vcMode)
     gitClone('bisos/overview',  'bisos/overview', vcMode)
     gitClone('bisos/bsip4',  'bisos/bsip4', vcMode)
     gitClone('bisos/bpip1',  'bisos/bpip1', vcMode)
@@ -927,7 +927,7 @@ def pbdDict_bxReposRoot(
     gitClone('bisos/gatherer',  'bisos/gatherer', vcMode)
     gitClone('bisos/defaults',  'bisos/defaults', vcMode)    
     
-    gitCloneBase( 'blee',  'bx-blee/base',  vcMode)
+    gitCloneBase('blee', 'bx-blee/base',  vcMode)
     gitClone(
         'blee/overview',
         'bx-blee/overview',
@@ -953,101 +953,69 @@ def pbdDict_bxReposRoot(
         'bx-blee/persian-input-method',
         vcMode
     )
+
+    gitCloneBase('bxGenesis', 'bxGenesis/base', vcMode)
+    gitClone('bxGenesis/overview', 'bxGenesis/overview', vcMode)
+    gitClone('bxGenesis/vagrants', 'bxGenesis/vagrants', vcMode)
+    gitClone('bxGenesis/vagrantBue', 'bxGenesis/vagrantBue', vcMode)    
+    gitClone('bxGenesis/fbxoPkgs', 'bxGenesis/fbxoPkgs', vcMode)
+    gitClone('bxGenesis/provisioners', 'bxGenesis/provisioners', vcMode)    
+
+    gitCloneBase('unisos-pip', 'unisos-pip/base', vcMode)
+    gitClone('unisos-pip/overview', 'unisos-pip/overview', vcMode)    
+    gitClone('unisos-pip/namespace', 'unisos-pip/namespace', vcMode)
+    gitClone('unisos-pip/common', 'unisos-pip/common', vcMode)
+    gitClone('unisos-pip/ucf', 'unisos-pip/ucf', vcMode)
+    gitClone('unisos-pip/icm',  'unisos-pip/icm', vcMode)
+    gitClone('unisos-pip/icmExamples',  'unisos-pip/icmExamples', vcMode)
+    gitClone('unisos-pip/x822Msg',  'unisos-pip/x822Msg', vcMode)
+    gitClone('unisos-pip/utils',  'unisos-pip/utils', vcMode)
+    gitClone('unisos-pip/githubApi',  'unisos-pip/githubApi', vcMode)        
     
-
-    gitCloneBase( 'bxGenesis',  'bxGenesis/base', vcMode)
-    gitClone( 'bxGenesis/overview',  'bxGenesis/overview', vcMode)
-
-    gitClone( 'bxGenesis/vagrants',  'bxGenesis/vagrants', vcMode)
-    gitClone( 'bxGenesis/vagrantBue',  'bxGenesis/vagrantBue', vcMode)    
-    gitClone( 'bxGenesis/fbxoPkgs',  'bxGenesis/fbxoPkgs', vcMode)
-    gitClone( 'bxGenesis/provisioners',  'bxGenesis/provisioners', vcMode)    
-
-
-    gitCloneBase( 'unisos-pip',  'unisos-pip/base', vcMode)
-    gitClone( 'unisos-pip/overview',  'unisos-pip/overview', vcMode)    
-
-    gitClone( 'unisos-pip/namespace',  'unisos-pip/namespace', vcMode)
-
-    gitClone( 'unisos-pip/common',  'unisos-pip/common', vcMode)
-
-    gitClone( 'unisos-pip/ucf',  'unisos-pip/ucf', vcMode)
-
-    gitClone( 'unisos-pip/icm',  'unisos-pip/icm', vcMode)
-
-    gitClone( 'unisos-pip/icmExamples',  'unisos-pip/icmExamples', vcMode)
-
-    gitClone( 'unisos-pip/x822Msg',  'unisos-pip/x822Msg', vcMode)
-
-    gitClone( 'unisos-pip/utils',  'unisos-pip/utils', vcMode)
-
-    gitClone( 'unisos-pip/githubApi',  'unisos-pip/githubApi', vcMode)        
-    
-    gitCloneBase( 'bisos-pip',  'bisos-pip/base', vcMode)
-    gitClone( 'bisos-pip/overview',  'bisos-pip/overview', vcMode)    
-
-    gitClone( 'bisos-pip/namespace',  'bisos-pip/namespace', vcMode)
-
-    gitClone( 'bisos-pip/mmwsIcm',  'bisos-pip/mmwsIcm', vcMode)
-
-    gitClone( 'bisos-pip/bootstrap',  'bisos-pip/bootstrap', vcMode)
-
+    gitCloneBase('bisos-pip',  'bisos-pip/base', vcMode)
+    gitClone('bisos-pip/overview',  'bisos-pip/overview', vcMode)    
+    gitClone('bisos-pip/namespace',  'bisos-pip/namespace', vcMode)
+    gitClone('bisos-pip/mmwsIcm',  'bisos-pip/mmwsIcm', vcMode)
+    gitClone('bisos-pip/bootstrap',  'bisos-pip/bootstrap', vcMode)
     # /bisos/git/auth/bxRepos/bisos-pip/bootstrap/dev/bisos
-    gitCloneBase( 'bisos-pip/bootstrap/dev/bisos/bootstrap-vagrants',  'bxGenesis/vagrants', vcMode)    
+    gitCloneBase(
+        'bisos-pip/bootstrap/dev/bisos/bootstrap-vagrants',
+        'bxGenesis/vagrants',
+        vcMode
+    )
+    gitClone('bisos-pip/bx-bases',  'bisos-pip/bx-bases', vcMode)
+    gitClone('bisos-pip/common',  'bisos-pip/common', vcMode)
+    gitClone('bisos-pip/examples',  'bisos-pip/examples', vcMode)
+    gitClone('bisos-pip/gossonot',  'bisos-pip/gossonot', vcMode)
+    gitClone('bisos-pip/lcnt',  'bisos-pip/lcnt', vcMode)
+    gitClone('bisos-pip/currents',  'bisos-pip/currents', vcMode)
+    gitClone('bisos-pip/platform',  'bisos-pip/platform', vcMode)
+    gitClone('bisos-pip/things',  'bisos-pip/things', vcMode)
+    gitClone('bisos-pip/marme',  'bisos-pip/marme', vcMode)
+    gitClone('bisos-pip/core',  'bisos-pip/core', vcMode)
+    gitClone('bisos-pip/coreDist',  'bisos-pip/coreDist', vcMode)
+    gitClone('bisos-pip/full',  'bisos-pip/full', vcMode)
 
-    gitClone( 'bisos-pip/bx-bases',  'bisos-pip/bx-bases', vcMode)
+    gitCloneBase('blee-pip',  'blee-pip/base', vcMode)
+    gitClone('blee-pip/overview',  'blee-pip/overview', vcMode)    
+    gitClone('blee-pip/namespace',  'blee-pip/namespace', vcMode)
+    gitClone('blee-pip/elispDist',  'blee-pip/elispDist', vcMode)
+    gitClone('blee-pip/icmPlayer',  'blee-pip/icmPlayer', vcMode)
 
-    gitClone( 'bisos-pip/common',  'bisos-pip/common', vcMode)
-
-    gitClone( 'bisos-pip/examples',  'bisos-pip/examples', vcMode)
-
-    gitClone( 'bisos-pip/gossonot',  'bisos-pip/gossonot', vcMode)
-
-    gitClone( 'bisos-pip/lcnt',  'bisos-pip/lcnt', vcMode)
-
-    gitClone( 'bisos-pip/currents',  'bisos-pip/currents', vcMode)
-
-    gitClone( 'bisos-pip/platform',  'bisos-pip/platform', vcMode)
-
-    gitClone( 'bisos-pip/things',  'bisos-pip/things', vcMode)
-
-    gitClone( 'bisos-pip/marme',  'bisos-pip/marme', vcMode)
-
-    gitClone( 'bisos-pip/core',  'bisos-pip/core', vcMode)
-
-    gitClone( 'bisos-pip/coreDist',  'bisos-pip/coreDist', vcMode)
-
-    gitClone( 'bisos-pip/full',  'bisos-pip/full', vcMode)
-
-
-    gitCloneBase( 'blee-pip',  'blee-pip/base', vcMode)
-    gitClone( 'blee-pip/overview',  'blee-pip/overview', vcMode)    
-
-    gitClone( 'blee-pip/namespace',  'blee-pip/namespace', vcMode)
-
-    gitClone( 'blee-pip/elispDist',  'blee-pip/elispDist', vcMode)
-
-    gitClone( 'blee-pip/icmPlayer',  'blee-pip/icmPlayer', vcMode)
-
+    gitCloneBase('roPerf-pip',  'roPerf-pip/base', vcMode)
+    gitClone('roPerf-pip/overview',  'roPerf-pip/overview', vcMode)    
+    gitClone('roPerf-pip/namespace',  'roPerf-pip/namespace', vcMode)
+    gitClone('roPerf-pip/bearerTokenExample',  'roPerf-pip/bearerTokenExample', vcMode)
     
-    gitCloneBase( 'roPerf-pip',  'roPerf-pip/base', vcMode)
-    gitClone( 'roPerf-pip/overview',  'roPerf-pip/overview', vcMode)    
-
-    gitClone( 'roPerf-pip/namespace',  'roPerf-pip/namespace', vcMode)
-
-    gitClone( 'roPerf-pip/bearerTokenExample',  'roPerf-pip/bearerTokenExample', vcMode)
-
-    
-    gitCloneBase( 'efficientProtocols',  'efficientProtocols/base', vcMode)
-    gitClone( 'efficientProtocols/overview',  'efficientProtocols/overview', vcMode)    
-
-    gitClone( 'efficientProtocols/OCP',  'efficientProtocols/OCP', vcMode)        
+    gitCloneBase('efficientProtocols',  'efficientProtocols/base', vcMode)
+    gitClone('efficientProtocols/overview',  'efficientProtocols/overview', vcMode)    
+    gitClone('efficientProtocols/OCP',  'efficientProtocols/OCP', vcMode)        
     gitClone('efficientProtocols/ESRO',  'efficientProtocols/ESRO', vcMode)
-    gitClone( 'efficientProtocols/EMSD',  'efficientProtocols/EMSD', vcMode)        
-    
+    gitClone('efficientProtocols/EMSD',  'efficientProtocols/EMSD', vcMode)        
 
-    directory('blee-binders')
-    gitClone('blee-binders/bisos-core',  'blee-binders/bisos-core', vcMode)
+    gitCloneBase('blee-binders',  'blee-binders/base', vcMode)    
+    gitClone('blee-binders/overview',  'blee-binders/overview', vcMode)
+    gitClone('blee-binders/bisos-core',  'blee-binders/bisos-core', vcMode)    
     gitClone('blee-binders/bisos-model',  'blee-binders/bisos-model', vcMode)
     gitClone('blee-binders/bisos-dev',  'blee-binders/bisos-dev', vcMode)
     gitClone('blee-binders/blee-core',  'blee-binders/blee-core', vcMode)
@@ -1057,11 +1025,15 @@ def pbdDict_bxReposRoot(
     gitClone('blee-binders/bxde-model',  'blee-binders/bxde-model', vcMode)
     gitClone('blee-binders/bxde-dev',  'blee-binders/bxde-dev', vcMode)
 
-    gitCloneBase( 'bxexamples',  'bxexamples/base', vcMode)
+    gitCloneBase('bxexamples',  'bxexamples/base', vcMode)
+    gitClone('bxexamples/overview',  'bxexamples/overview', vcMode)    
     gitClone('bxexamples/bashIcm',  'bxexamples/bashIcm', vcMode)
+    gitClone('bxexamples/bashProcessArgsAndStdin',  'bxexamples/bashProcessArgsAndStdin', vcMode)
+    gitClone('bxexamples/roVerifier-petstore',  'bxexamples/roVerifier-petstore', vcMode)
 
-    directory('bxlcnt')
-    gitClone('bxlcnt/bxtex',  'bxlcnt/bxtex', vcMode)
+    gitCloneBase('bxlcnt',  'bxlcnt/base', vcMode)    
+    gitClone('bxlcnt/overview',  'bxlcnt/overview', vcMode)
+    gitClone('bxlcnt/bxtex',  'bxlcnt/bxtex', vcMode)    
     gitClone('bxlcnt/facilities',  'bxlcnt/facilities', vcMode)
     gitClone('bxlcnt/results',  'bxlcnt/results', vcMode)
 
