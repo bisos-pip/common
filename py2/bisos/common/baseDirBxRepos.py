@@ -944,11 +944,6 @@ def pbdDict_bxReposRoot(
         vcMode
     )
     gitClone(
-        'blee/org-img-link',
-        'bx-blee/org-img-link',
-        vcMode
-    )
-    gitClone(
         'blee/persian-input-method',
         'bx-blee/persian-input-method',
         vcMode
@@ -1057,16 +1052,15 @@ def pbdDict_extRepos(
 
     pbdDict = collections.OrderedDict()
 
-    #root = bxReposRoot_baseObtain(baseDir)
+    # root = bxReposRoot_baseObtain(baseDir)
     root = baseDir
     pbdDict['/'] = bxpBaseDir.bxpObjGet_baseDir(root, '')
 
     if not vcMode:
         vcMode = "anon"
     
-    
     def fullDestPathGet(dstPathRel):
-        return( os.path.join(
+        return(os.path.join(
             root, dstPathRel,
         ))
 
