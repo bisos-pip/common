@@ -965,7 +965,10 @@ def pbdDict_bxReposRoot(
     gitClone('unisos-pip/icmExamples',  'unisos-pip/icmExamples', vcMode)
     gitClone('unisos-pip/x822Msg',  'unisos-pip/x822Msg', vcMode)
     gitClone('unisos-pip/utils',  'unisos-pip/utils', vcMode)
-    gitClone('unisos-pip/githubApi',  'unisos-pip/githubApi', vcMode)        
+    gitClone('unisos-pip/githubApi',  'unisos-pip/githubApi', vcMode)
+    gitClone('unisos-pip/cryptKeyring',  'unisos-pip/cryptKeyring', vcMode)
+    gitClone('unisos-pip/gcipher',  'unisos-pip/gcipher', vcMode)        
+    gitClone('unisos-pip/symCrypt',  'unisos-pip/symCrypt', vcMode)            
     
     gitCloneBase('bisos-pip',  'bisos-pip/base', vcMode)
     gitClone('bisos-pip/overview',  'bisos-pip/overview', vcMode)    
@@ -990,6 +993,8 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/core',  'bisos-pip/core', vcMode)
     gitClone('bisos-pip/coreDist',  'bisos-pip/coreDist', vcMode)
     gitClone('bisos-pip/full',  'bisos-pip/full', vcMode)
+    gitClone('bisos-pip/bashStandaloneIcmSeed',  'bisos-pip/bashStandaloneIcmSeed', vcMode)
+    gitClone('bisos-pip/provision',  'bisos-pip/provision', vcMode)    
 
     gitCloneBase('blee-pip',  'blee-pip/base', vcMode)
     gitClone('blee-pip/overview',  'blee-pip/overview', vcMode)    
