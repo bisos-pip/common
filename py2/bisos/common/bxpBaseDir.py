@@ -815,10 +815,10 @@ def pbdDict_bisosRoot(
 
     directory('git')
     directory('git/auth')
-    directory('git/auth/bxRepos')
+    # directory('git/auth/bxRepos')  
     directory('git/anon')    
-    directory('git/anon/bxRepos')
-    symLink('git/bxRepos',  'git/anon/bxRepos')    
+    # directory('git/anon/bxRepos')
+    symLink('git/bxRepos',  'git/anon/bxRepos')    # anon/bxRepos will get be git cloned
     
     directory('control')
     directory('control/bisos')    

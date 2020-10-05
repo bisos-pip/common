@@ -688,7 +688,7 @@ def pbdDict_bxReposCollection(
         repoName = os.path.basename(remGitRepoPath)
 
         # This is the before the move to locPathRel location
-        locDirnamePlusRepoRel = os.path.join(locDirnameRel, repoName)        
+        #locDirnamePlusRepoRel = os.path.join(locDirnameRel, repoName)        
         
         if vcMode == "anon":
             # git clone git://github.com/SomeUser/SomeRepo.git
@@ -737,7 +737,7 @@ def pbdDict_bxReposCollection(
         else:
             icm.EH_problem_usageError("")
             
-    command('bxReposBasedir', "mkdir -p {root}".format(root=root))
+    #command('bxReposBasedir', "mkdir -p {root}".format(root=root))
     
     gitCloneBase('bxRepos', 'ByStar/bxReposBase', vcMode)    
     
@@ -839,7 +839,7 @@ def pbdDict_bxReposRoot(
         repoName = os.path.basename(remGitRepoPath)
 
         # This is the before the move to locPathRel location
-        locDirnamePlusRepoRel = os.path.join(locDirnameRel, repoName)        
+        #locDirnamePlusRepoRel = os.path.join(locDirnameRel, repoName)        
         
         if vcMode == "anon":
             # git clone git://github.com/SomeUser/SomeRepo.git
