@@ -849,7 +849,8 @@ def pbdDict_bisosRoot(
     symLink('core/tmp', 'tmp')
     symLink('core/log', 'log/core')
 
-    # directory('bsip')
+    symLink('bsip', 'git/bxRepos/bisos/bsip4')
+    symLink('bpip', 'git/bxRepos/bisos/bpip1')    
 
     directory('apps')
     symLink('apps/bxtex', 'git/bxRepos/bxlcnt/bxtex')
