@@ -925,7 +925,9 @@ def pbdDict_bxReposRoot(
     gitClone('bisos/bpip1',  'bisos/bpip1', vcMode)
     gitClone('bisos/comeega',  'bisos/comeega', vcMode)
     gitClone('bisos/gatherer',  'bisos/gatherer', vcMode)
-    gitClone('bisos/defaults',  'bisos/defaults', vcMode)    
+    gitClone('bisos/defaults',  'bisos/defaults', vcMode)
+    gitClone('bisos/bxio',  'bisos/bxio', vcMode)
+    gitClone('bisos/bxso',  'bisos/bxso', vcMode)            
     
     gitCloneBase('blee', 'bx-blee/base',  vcMode)
     gitClone(
