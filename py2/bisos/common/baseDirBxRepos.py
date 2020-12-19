@@ -928,6 +928,7 @@ def pbdDict_bxReposRoot(
     gitClone('bisos/defaults',  'bisos/defaults', vcMode)
     gitClone('bisos/bxio',  'bisos/bxio', vcMode)
     gitClone('bisos/bxso',  'bisos/bxso', vcMode)
+    gitClone('bisos/asc',  'bisos/asc', vcMode)    
 
     gitCloneBase('bxObjects', 'bxObjects/base', vcMode)
     gitClone('bxObjects/overview',  'bxObjects/overview', vcMode)
@@ -1030,7 +1031,11 @@ def pbdDict_bxReposRoot(
     gitClone('blee-binders/bxde-core',  'blee-binders/bxde-core', vcMode)
     gitClone('blee-binders/bxde-model',  'blee-binders/bxde-model', vcMode)
     gitClone('blee-binders/bxde-dev',  'blee-binders/bxde-dev', vcMode)
-
+    gitClone('blee-binders/bisos-apps',  'blee-binders/bisos-apps', vcMode)
+    gitClone('blee-binders/bisos-periphery',  'blee-binders/bisos-periphery', vcMode)
+    gitClone('blee-binders/espoused',  'blee-binders/espoused', vcMode)
+    gitClone('blee-binders/panelsRoot',  'blee-binders/panelsRoot', vcMode)
+    
     gitCloneBase('bxexamples',  'bxexamples/base', vcMode)
     gitClone('bxexamples/overview',  'bxexamples/overview', vcMode)    
     gitClone('bxexamples/bashIcm',  'bxexamples/bashIcm', vcMode)
