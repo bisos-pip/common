@@ -875,6 +875,7 @@ def pbdDict_bisosRoot(
     symLink('panels/bisos-apps', 'git/bxRepos/blee-binders/bisos-apps')
     symLink('panels/bisos-periphery', 'git/bxRepos/blee-binders/bisos-periphery')
     symLink('panels/espoused', 'git/bxRepos/blee-binders/espoused')
+    symLink('panels/non-libre-halaal', 'git/bxRepos/blee-binders/non-libre-halaal')    
     symLink('panels/panelsRoot', 'git/bxRepos/blee-binders/panelsRoot')    
 
     directory('gatherer')
