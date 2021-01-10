@@ -320,6 +320,17 @@ def commonParamsSpecify(
     )
 
     icmParams.parDictAdd(
+        parName='gitLabel',
+        parDescription="Corresponding to an entry in ~/.ssh/config",
+        parDataType=None,
+        parDefault="github.com",
+        parChoices=["any"],
+        parScope=icm.ICM_ParamScope.TargetParam,
+        argparseShortOpt=None,
+        argparseLongOpt='--gitLabel',
+    )
+    
+    icmParams.parDictAdd(
         parName='pbdName',
         parDescription="Platform BaseDirs Dict Name",
         parDataType=None,
@@ -445,7 +456,8 @@ def examples_bxReposBaseDirsFull():
 
     cmndName = "pbdUpdate" ; cmndArgs = "all" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/auth';
-    cps['pbdName'] = 'bxReposCollection' ; cps['vcMode'] = 'auth'
+    cps['pbdName'] = 'bxReposCollection' ; cps['vcMode'] = 'auth' ;
+    cps['gitLabel'] = 'github.com'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
     
@@ -603,13 +615,14 @@ def bxReposGroupName_obtain():
 ####+END:
 
 
-####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxReposCollection" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None" :deco ""
+####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxReposCollection" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None gitLabel='github.com'" :deco ""
 """
-*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposCollection/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None)  [[elisp:(org-cycle)][| ]]
+*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposCollection/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None gitLabel='github.com')  [[elisp:(org-cycle)][| ]]
 """
 def pbdDict_bxReposCollection(
     baseDir,
     vcMode=None,
+    gitLabel='github.com',
 ):
 ####+END:
     """
@@ -655,10 +668,11 @@ def pbdDict_bxReposCollection(
             #               "cd {root}/{baseDir} && git clone git@github.com:{gitRepoPath}.git"
             command(
                 dstPathRel,
-                "cd {root}/{baseDir} && git clone git://github.com/{gitRepoPath}.git"
+                "cd {root}/{baseDir} && git clone git://{gitLabel}/{gitRepoPath}.git"
                 .format(
                     root=root,
                     baseDir=baseDir,
+                    gitLabel=gitLabel,
                     gitRepoPath=gitRepoPath,
                 )
             )
@@ -669,10 +683,11 @@ def pbdDict_bxReposCollection(
             # )
             command(
                 dstPathRel,
-                "cd {root}/{baseDir} && git clone git@github.com:{gitRepoPath}.git"
+                "cd {root}/{baseDir} && git clone git@{gitLabel}:{gitRepoPath}.git"
                 .format(
                     root=root,
                     baseDir=baseDir,
+                    gitLabel=gitLabel,
                     gitRepoPath=gitRepoPath,
                 )
             )           
@@ -699,10 +714,11 @@ def pbdDict_bxReposCollection(
             #
             command(
                 locPathRel,
-                "cd {locDirnameFull} && git clone git://github.com/{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
+                "cd {locDirnameFull} && git clone git://{gitLabel}/{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
                 .format(
                     locDirnameFull=locDirnameFull,
                     remGitRepoPath=remGitRepoPath,
+                    gitLabel=gitLabel,
                     repoName=repoName,
                     locBasenameRel=locBasenameRel,
                 )
@@ -725,10 +741,11 @@ def pbdDict_bxReposCollection(
             #   )
             # )
             command(locPathRel,
-                    "cd {locDirnameFull} && git clone git@github.com:{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
+                    "cd {locDirnameFull} && git clone git@{gitLabel}:{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
                     .format(
                         locDirnameFull=locDirnameFull,
                         remGitRepoPath=remGitRepoPath,
+                        gitLabel=gitLabel,                        
                         repoName=repoName,
                         locBasenameRel=locBasenameRel
                     )
@@ -739,19 +756,20 @@ def pbdDict_bxReposCollection(
             
     #command('bxReposBasedir', "mkdir -p {root}".format(root=root))
     
-    gitCloneBase('bxRepos', 'ByStar/bxReposBase', vcMode)    
+    gitCloneBase('bxRepos', 'ByStar/bxReposBase', vcMode, gitLabel)    
     
     return pbdDict
 
 
 
-####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxReposRoot" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None" :deco ""
+####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxReposRoot" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None gitLabel='github.com'" :deco ""
 """
-*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposRoot/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None)  [[elisp:(org-cycle)][| ]]
+*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposRoot/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None gitLabel='github.com')  [[elisp:(org-cycle)][| ]]
 """
 def pbdDict_bxReposRoot(
     baseDir,
     vcMode=None,
+    gitLabel='github.com',
 ):
 ####+END:
     """
@@ -806,10 +824,11 @@ def pbdDict_bxReposRoot(
             #               "cd {root}/{baseDir} && git clone git@github.com:{gitRepoPath}.git"
             command(
                 dstPathRel,
-                "cd {root}/{baseDir} && git clone git://github.com/{gitRepoPath}.git"
+                "cd {root}/{baseDir} && git clone git://{gitLabel}/{gitRepoPath}.git"
                 .format(
                     root=root,
                     baseDir=baseDir,
+                    gitLabel=gitLabel,
                     gitRepoPath=gitRepoPath,
                 )
             )
@@ -820,10 +839,11 @@ def pbdDict_bxReposRoot(
             # )
             command(
                 dstPathRel,
-                "cd {root}/{baseDir} && git clone git@github.com:{gitRepoPath}.git"
+                "cd {root}/{baseDir} && git clone git@{gitLabel}:{gitRepoPath}.git"
                 .format(
                     root=root,
                     baseDir=baseDir,
+                    gitLabel=gitLabel,                    
                     gitRepoPath=gitRepoPath,
                 )
             )           
@@ -850,9 +870,10 @@ def pbdDict_bxReposRoot(
             #
             command(
                 locPathRel,
-                "cd {locDirnameFull} && git clone git://github.com/{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
+                "cd {locDirnameFull} && git clone git://{gitLabel}/{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
                 .format(
                     locDirnameFull=locDirnameFull,
+                    gitLabel=gitLabel,                                        
                     remGitRepoPath=remGitRepoPath,
                     repoName=repoName,
                     locBasenameRel=locBasenameRel,
@@ -876,9 +897,10 @@ def pbdDict_bxReposRoot(
             #   )
             # )
             command(locPathRel,
-                    "cd {locDirnameFull} && git clone git@github.com:{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
+                    "cd {locDirnameFull} && git clone git@{gitLabel}:{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
                     .format(
                         locDirnameFull=locDirnameFull,
+                        gitLabel=gitLabel,                                                                
                         remGitRepoPath=remGitRepoPath,
                         repoName=repoName,
                         locBasenameRel=locBasenameRel
@@ -1053,13 +1075,14 @@ def pbdDict_bxReposRoot(
 
 
 
-####+BEGIN: bx:dblock:python:func :funcName "pbdDict_extRepos" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None" :deco ""
+####+BEGIN: bx:dblock:python:func :funcName "pbdDict_extRepos" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None gitLabel='github.com'" :deco ""
 """
-*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_extRepos/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None)  [[elisp:(org-cycle)][| ]]
+*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_extRepos/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None gitLabel='github.com')  [[elisp:(org-cycle)][| ]]
 """
 def pbdDict_extRepos(
     baseDir,
     vcMode=None,
+    gitLabel='github.com',
 ):
 ####+END:
     """
@@ -1114,10 +1137,11 @@ def pbdDict_extRepos(
             #               "cd {root}/{baseDir} && git clone git@github.com:{gitRepoPath}.git"
             command(
                 dstPathRel,
-                "cd {root}/{baseDir} && git clone git://github.com/{gitRepoPath}.git"
+                "cd {root}/{baseDir} && git clone git://{gitLabel}/{gitRepoPath}.git"
                 .format(
                     root=root,
                     baseDir=baseDir,
+                    gitLabel=gitLabel,
                     gitRepoPath=gitRepoPath,
                 )
             )
@@ -1128,10 +1152,11 @@ def pbdDict_extRepos(
             # )
             command(
                 dstPathRel,
-                "cd {root}/{baseDir} && git clone git@github.com:{gitRepoPath}.git"
+                "cd {root}/{baseDir} && git clone git@{gitLabel}:{gitRepoPath}.git"
                 .format(
                     root=root,
                     baseDir=baseDir,
+                    gitLabel=gitLabel,                    
                     gitRepoPath=gitRepoPath,
                 )
             )
@@ -1160,9 +1185,10 @@ def pbdDict_extRepos(
             #
             command(
                 locPathRel,
-                "cd {locDirnameFull} && git clone git://github.com/{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
+                "cd {locDirnameFull} && git clone git://{gitLabel}/{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
                 .format(
                     locDirnameFull=locDirnameFull,
+                    gitLabel=gitLabel,
                     remGitRepoPath=remGitRepoPath,
                     repoName=repoName,
                     locBasenameRel=locBasenameRel,
@@ -1187,9 +1213,10 @@ def pbdDict_extRepos(
             # )
             command(
                 locPathRel,
-                "cd {locDirnameFull} && git clone git@github.com:{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
+                "cd {locDirnameFull} && git clone git@{gitLabel}:{remGitRepoPath}.git && mv {repoName} {locBasenameRel}"
                 .format(
                     locDirnameFull=locDirnameFull,
+                    gitLabel=gitLabel,                    
                     remGitRepoPath=remGitRepoPath,
                     repoName=repoName,
                     locBasenameRel=locBasenameRel,
@@ -1496,13 +1523,13 @@ class pbdVerify(icm.Cmnd):
             opResults=None,
         )
  
-####+BEGIN: bx:icm:python:cmnd:classHead :cmndName "pbdUpdate" :parsMand "" :parsOpt "baseDir pbdName vcMode" :argsMin "1" :argsMax "1000" :asFunc "" :interactiveP ""
+####+BEGIN: bx:icm:python:cmnd:classHead :cmndName "pbdUpdate" :parsMand "" :parsOpt "baseDir pbdName vcMode gitLabel" :argsMin "1" :argsMax "1000" :asFunc "" :interactiveP ""
 """
-*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  ICM-Cmnd       :: /pbdUpdate/ parsMand= parsOpt=baseDir pbdName vcMode argsMin=1 argsMax=1000 asFunc= interactive=  [[elisp:(org-cycle)][| ]]
+*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  ICM-Cmnd       :: /pbdUpdate/ parsMand= parsOpt=baseDir pbdName vcMode gitLabel argsMin=1 argsMax=1000 asFunc= interactive=  [[elisp:(org-cycle)][| ]]
 """
 class pbdUpdate(icm.Cmnd):
     cmndParamsMandatory = [ ]
-    cmndParamsOptional = [ 'baseDir', 'pbdName', 'vcMode', ]
+    cmndParamsOptional = [ 'baseDir', 'pbdName', 'vcMode', 'gitLabel', ]
     cmndArgsLen = {'Min': 1, 'Max': 1000,}
 
     @icm.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
@@ -1511,6 +1538,7 @@ class pbdUpdate(icm.Cmnd):
         baseDir=None,         # or Cmnd-Input
         pbdName=None,         # or Cmnd-Input
         vcMode=None,         # or Cmnd-Input
+        gitLabel=None,         # or Cmnd-Input
         argsList=[],         # or Args-Input
     ):
         cmndOutcome = self.getOpOutcome()
@@ -1521,19 +1549,24 @@ class pbdUpdate(icm.Cmnd):
         else:
             effectiveArgsList = argsList
 
-        callParamsDict = {'baseDir': baseDir, 'pbdName': pbdName, 'vcMode': vcMode, }
+        callParamsDict = {'baseDir': baseDir, 'pbdName': pbdName, 'vcMode': vcMode, 'gitLabel': gitLabel, }
         if not icm.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
             return cmndOutcome
         baseDir = callParamsDict['baseDir']
         pbdName = callParamsDict['pbdName']
         vcMode = callParamsDict['vcMode']
+        gitLabel = callParamsDict['gitLabel']
 
         cmndArgsSpecDict = self.cmndArgsSpec()
         if not self.cmndArgsValidate(effectiveArgsList, cmndArgsSpecDict, outcome=cmndOutcome):
             return cmndOutcome
 ####+END:
-        icm.ANN_here("baseDir={baseDir} -- pbdName={pbdName}".format(baseDir=baseDir, pbdName=pbdName))
+        icm.ANN_here("baseDir={baseDir} -- pbdName={pbdName} -- gitLabel={gitLabel}".format(
+            baseDir=baseDir, pbdName=pbdName, gitLabel=gitLabel))
 
+        if not gitLabel:
+            gitLabel = 'github.com'
+        
         if not pbdName:
             #pbdName = 'bxReposRoot'
             pbdName = 'bxReposRoot'
@@ -1542,12 +1575,12 @@ class pbdUpdate(icm.Cmnd):
             vcName = 'anon'
             
         if baseDir:
-            pbdDict = eval("""pbdDict_{pbdName}("{baseDir}", vcMode="{vcMode}")""".format(
-                pbdName=pbdName, baseDir=baseDir, vcMode=vcMode))
+            pbdDict = eval("""pbdDict_{pbdName}("{baseDir}", vcMode="{vcMode}", gitLabel="{gitLabel}")""".format(
+                pbdName=pbdName, baseDir=baseDir, vcMode=vcMode, gitLabel=gitLabel))
         else:
             # Do Not Quote None in eval
-            pbdDict = eval("""pbdDict_{pbdName}({baseDir}, vcMode="{vcMode}")""".format(
-                pbdName=pbdName, baseDir=baseDir, vcMode=vcMode))
+            pbdDict = eval("""pbdDict_{pbdName}({baseDir}, vcMode="{vcMode}", gitLabel="{gitLabel}")""".format(
+                pbdName=pbdName, baseDir=baseDir, vcMode=vcMode, gitLabel=gitLabel))
 
         def procEach(pbdItem):
             #icm.ANN_here("pbdItem={pbdItem}".format(pbdItem=pbdItem))
