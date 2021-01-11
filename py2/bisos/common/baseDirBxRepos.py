@@ -494,17 +494,17 @@ def examples_bxReposBaseDirsFull():
 
     cmndName = "pbdUpdate" ; cmndArgs = "all" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/anon/bxRepos';
-    cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'anon'
+    cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'anon' ; cps['gitLabel'] = 'github.com'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
     cmndName = "pbdUpdate" ; cmndArgs = "all" ;
     cps = collections.OrderedDict() ; cps['baseDir'] = '/bisos/git/auth/bxRepos';
-    cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'auth'
+    cps['pbdName'] = 'bxReposRoot' ; cps['vcMode'] = 'auth' ; cps['gitLabel'] = 'github.com'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
     cmndName = "pbdUpdate" ; cmndArgs = "all" ;
     cps = collections.OrderedDict(); cps['baseDir'] = '/bisos/git/anon/ext';
-    cps['pbdName'] = 'extRepos' ; cps['vcMode'] = 'anon'
+    cps['pbdName'] = 'extRepos' ; cps['vcMode'] = 'anon' ; cps['gitLabel'] = 'github.com'
     icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
 
     
