@@ -756,7 +756,7 @@ def pbdDict_bxReposCollection(
             
     #command('bxReposBasedir', "mkdir -p {root}".format(root=root))
     
-    gitCloneBase('bxRepos', 'ByStar/bxReposBase', vcMode, gitLabel)    
+    gitCloneBase('bxRepos', 'ByStar/bxReposBase', vcMode)    
     
     return pbdDict
 
