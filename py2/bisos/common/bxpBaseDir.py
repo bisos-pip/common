@@ -1066,22 +1066,22 @@ def pbdDict_bleeRoot(
     symLink('blee/env',
             'git/bxRepos/blee/env'
             )
-   symLink('blee/env2',
+    symLink('blee/env2',
             'git/bxRepos/blee/env2'
             )
-   symLink('blee/doom-emacs-framework',
+    symLink('blee/doom-emacs-framework',
             'git/bxRepos/blee/doom-emacs-framework'
             )
-   symLink('blee/doom-emacs-init',
+    symLink('blee/doom-emacs-init',
             'git/bxRepos/blee/doom-emacs-init'
             )
-   symLink('blee/doom-blee-init',
+    symLink('blee/doom-blee-init',
             'git/bxRepos/blee/doom-blee-init'
             )
-   symLink('blee/doom-base',
+    symLink('blee/doom-base',
             'git/bxRepos/blee/doom-base'
             )
-   symLink('blee/doom-blee-base',
+    symLink('blee/doom-blee-base',
             'git/bxRepos/blee/doom-blee-base'
             )
 

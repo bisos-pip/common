@@ -977,7 +977,7 @@ def pbdDict_bxReposRoot(
         'bx-blee/persian-input-method',
         vcMode
     )
-   gitClone(
+    gitClone(
         'blee/env2',
         'bx-blee/env2',
         vcMode
@@ -997,12 +997,12 @@ def pbdDict_bxReposRoot(
         'bx-blee/doom-blee-init',
         vcMode
     )
-   gitClone(
+    gitClone(
         'blee/doom-base',
         'bx-blee/doom-base',
         vcMode
     )
-   gitClone(
+    gitClone(
         'blee/doom-blee-base',
         'bx-blee/doom-blee-base',
         vcMode
