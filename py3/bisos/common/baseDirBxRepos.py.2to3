@@ -1,0 +1,27 @@
+RefactoringTool: Skipping optional fixer: buffer
+RefactoringTool: Skipping optional fixer: idioms
+RefactoringTool: Skipping optional fixer: set_literal
+RefactoringTool: Skipping optional fixer: ws_comma
+RefactoringTool: Refactored ./common/py3/bisos/common/baseDirBxRepos.py
+RefactoringTool: Files that were modified:
+RefactoringTool: ./common/py3/bisos/common/baseDirBxRepos.py
+--- ./common/py3/bisos/common/baseDirBxRepos.py	(original)
++++ ./common/py3/bisos/common/baseDirBxRepos.py	(refactored)
+@@ -168,7 +168,7 @@
+             argChoices.pop(0)
+             actions = argChoices
+         for each in actions:
+-            print each
++            print(each)
+             if interactive:
+                 #print( str( __doc__ ) )  # This is the Summary: from the top doc-string
+                 #version(interactive=True)
+@@ -1734,7 +1734,7 @@
+             gid = grp.getgrnam(bxReposGroupName).gr_gid
+             os.chown(rootDir, uid, gid)
+ 
+-            os.chmod(rootDir, 0775)            
++            os.chmod(rootDir, 0o775)            
+ 
+             outcome = icm.subProc_bash("""\
+ ls -ld  {rootDir}"""
