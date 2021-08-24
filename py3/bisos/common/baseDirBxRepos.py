@@ -1053,7 +1053,8 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/coreDist',  'bisos-pip/coreDist', vcMode)
     gitClone('bisos-pip/full',  'bisos-pip/full', vcMode)
     gitClone('bisos-pip/bashStandaloneIcmSeed',  'bisos-pip/bashStandaloneIcmSeed', vcMode)
-    gitClone('bisos-pip/provision',  'bisos-pip/provision', vcMode)    
+    gitClone('bisos-pip/provision',  'bisos-pip/provision', vcMode)
+    gitClone('bisos-pip/bxoGitlab',  'bisos-pip/bxoGitlab', vcMode)
 
     gitCloneBase('blee-pip',  'blee-pip/base', vcMode)
     gitClone('blee-pip/overview',  'blee-pip/overview', vcMode)    

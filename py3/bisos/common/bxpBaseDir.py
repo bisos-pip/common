@@ -891,6 +891,8 @@ def pbdDict_bisosRoot(
     directory('blee')
     # blee directory is then populated with pbdDict_bleeRoot
 
+    directory('pipx')
+
     return pbdDict
 
 
