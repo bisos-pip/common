@@ -783,16 +783,17 @@ def pbdDict_bisosRoot(
     # directory('dist/pip/bsip')
 
     directory('venv')
-    directory('venv/py2')    
 
-    command('venv/py2/bisos3',
-            "virtualenv --python=python2 {fullDestPathGet}"
-            .format(fullDestPathGet=fullDestPathGet('venv/py2/bisos3')))
-    
-    directory('venv/py2/dev')        
-    command('venv/py2/dev/bisos3',
-            "virtualenv --python=python2 {fullDestPathGet}"
-            .format(fullDestPathGet=fullDestPathGet('venv/py2/dev/bisos3')))
+    # directory('venv/py2')
+
+    # command('venv/py2/bisos3',
+    #         "virtualenv --python=python2 {fullDestPathGet}"
+    #         .format(fullDestPathGet=fullDestPathGet('venv/py2/bisos3')))
+
+    # directory('venv/py2/dev')
+    # command('venv/py2/dev/bisos3',
+    #         "virtualenv --python=python2 {fullDestPathGet}"
+    #         .format(fullDestPathGet=fullDestPathGet('venv/py2/dev/bisos3')))
 
     directory('venv/py3')
     
