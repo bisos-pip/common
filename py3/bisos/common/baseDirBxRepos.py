@@ -1096,6 +1096,7 @@ def pbdDict_bxReposRoot(
     gitClone('blee-binders/espoused',  'blee-binders/espoused', vcMode)
     gitClone('blee-binders/non-libre-halaal',  'blee-binders/non-libre-halaal', vcMode)
     gitClone('blee-binders/panelsRoot',  'blee-binders/panelsRoot', vcMode)
+    gitClone('blee-binders/system-container',  'blee-binders/system-container', vcMode)
     
     gitCloneBase('bxexamples',  'bxexamples/base', vcMode)
     gitClone('bxexamples/overview',  'bxexamples/overview', vcMode)    
