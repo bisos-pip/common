@@ -888,7 +888,7 @@ def pbdDict_bisosRoot(
     # symLink('panels/non-libre-halaal', 'git/bxRepos/blee-binders/non-libre-halaal')    
     # symLink('panels/panelsRoot', 'git/bxRepos/blee-binders/panelsRoot')    
 
-    symLink('usg', '/var/usg')
+    symLink('usg', 'var/usg')
     directory('usg/lcnt')
     directory('usg/mail')
 
