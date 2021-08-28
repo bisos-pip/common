@@ -832,8 +832,9 @@ def pbdDict_bisosRoot(
     directory('var/icmsPkg/marmee')
     directory('var/icmsPkg/marmee/control')
     directory('var/icmsPkg/marmee/pkgInfo')
-    directory('var/icmsPkg/marmee/admin')    
-    
+    directory('var/icmsPkg/marmee/admin')
+    directory('var/usg')
+
     directory('tmp')
 
     directory('log')
@@ -848,7 +849,10 @@ def pbdDict_bisosRoot(
     symLink('core/bpip', 'git/bxRepos/bisos/bpip1')
     symLink('core/bxio', 'git/bxRepos/bisos/bxio')
     symLink('core/bxso', 'git/bxRepos/bisos/bxso')
-    symLink('core/asc', 'git/bxRepos/bisos/asc')        
+    symLink('core/asc', 'git/bxRepos/bisos/asc')
+    symLink('core/lcnt', 'git/bxRepos/bisos/lcnt')
+    symLink('core/mail', 'git/bxRepos/bisos/mail')
+
     symLink('core/var', 'var/core')
     symLink('core/tmp', 'tmp')
     symLink('core/log', 'log/core')
@@ -859,9 +863,12 @@ def pbdDict_bisosRoot(
     directory('apps')
     symLink('apps/bxtex', 'git/bxRepos/bxlcnt/bxtex')
     symLink('apps/comeega', 'git/bxRepos/bisos/comeega')
-    symLink('apps/defaults', 'git/bxRepos/bisos/defaults')    
+    symLink('apps/defaults', 'git/bxRepos/bisos/defaults')
+    symLink('apps/gimp', 'git/bxRepos/bisos/apps/gimp')
 
     symLink('panels', 'git/bxRepos/blee-binders')
+
+    symLink('aais', 'git/bxRepos/bisos/aais')
     
     # directory('panels')
     # directory('panels/bisos')
@@ -880,6 +887,10 @@ def pbdDict_bisosRoot(
     # symLink('panels/espoused', 'git/bxRepos/blee-binders/espoused')
     # symLink('panels/non-libre-halaal', 'git/bxRepos/blee-binders/non-libre-halaal')    
     # symLink('panels/panelsRoot', 'git/bxRepos/blee-binders/panelsRoot')    
+
+    symLink('usg', '/var/usg')
+    directory('usg/lcnt')
+    directory('usg/mail')
 
     directory('gatherer')
     directory('gatherer/here')
