@@ -849,7 +849,6 @@ def pbdDict_bisosRoot(
     symLink('core/bpip', 'git/bxRepos/bisos/bpip1')
     symLink('core/bxio', 'git/bxRepos/bisos/bxio')
     symLink('core/bxso', 'git/bxRepos/bisos/bxso')
-    symLink('core/asc', 'git/bxRepos/bisos/asc')
     symLink('core/lcnt', 'git/bxRepos/bisos/lcnt')
     symLink('core/mail', 'git/bxRepos/bisos/mail')
 
@@ -857,8 +856,10 @@ def pbdDict_bisosRoot(
     symLink('core/tmp', 'tmp')
     symLink('core/log', 'log/core')
 
-    symLink('bsip', 'git/bxRepos/bisos/bsip4')
-    symLink('bpip', 'git/bxRepos/bisos/bpip1')    
+    # symLink('bsip', 'git/bxRepos/bisos/bsip4')
+    # symLink('bpip', 'git/bxRepos/bisos/bpip1')
+
+    symLink('asc', 'git/bxRepos/bisos/asc')
 
     directory('apps')
     symLink('apps/bxtex', 'git/bxRepos/bxlcnt/bxtex')
@@ -888,9 +889,9 @@ def pbdDict_bisosRoot(
     # symLink('panels/non-libre-halaal', 'git/bxRepos/blee-binders/non-libre-halaal')    
     # symLink('panels/panelsRoot', 'git/bxRepos/blee-binders/panelsRoot')    
 
-    symLink('usg', 'var/usg')
-    directory('usg/lcnt')
-    directory('usg/mail')
+    # symLink('usg', 'var/usg')
+    # directory('usg/lcnt')
+    # directory('usg/mail')
 
     directory('gatherer')
     directory('gatherer/here')
@@ -960,7 +961,11 @@ def pbdDict_deRunRoot(
     # symLink('bisos-r3/gatherer/bisos', '/bisos/git/bxRepos/bisos/gatherer')
     # symLink('bisos-r3/gatherer/active', 'bisos-r3/gatherer/bisos')
     
-    symLink('bisos', 'bisos-r3')    
+    symLink('bisos', 'bisos-r3')
+
+    directory('sys')
+    directory('sys/lcnt')
+    directory('sys/mail')
     
     return pbdDict
 
