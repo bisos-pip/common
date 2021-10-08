@@ -473,6 +473,28 @@ def commonParamsSpecify(
         argparseShortOpt=None,
         argparseLongOpt='--sr',
     )
+
+    icmParams.parDictAdd(
+        parName='bpoId',
+        parDescription="Bx Portable ObjectId",
+        parDataType=None,
+        parDefault=None,
+        parChoices=["any"],
+        parScope=icm.ICM_ParamScope.TargetParam,
+        argparseShortOpt=None,
+        argparseLongOpt='--bpoId',
+    )
+
+    icmParams.parDictAdd(
+        parName='si',
+        parDescription="Service Instance Path (sr/marme/dsnProc)",
+        parDataType=None,
+        parDefault=None,
+        parChoices=["any"],
+        parScope=icm.ICM_ParamScope.TargetParam,
+        argparseShortOpt=None,
+        argparseLongOpt='--si',
+    )
     
         
 ####+BEGIN: bx:dblock:python:section :title "Common Examples Sections"
