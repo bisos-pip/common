@@ -1,8 +1,0 @@
-RefactoringTool: Skipping optional fixer: buffer
-RefactoringTool: Skipping optional fixer: idioms
-RefactoringTool: Skipping optional fixer: set_literal
-RefactoringTool: Skipping optional fixer: ws_comma
-RefactoringTool: Can't parse ./common/py3/bisos/common/baseDirBisos.py: ParseError: bad input: type=5, value='     ', context=('\n', (807, 0))
-RefactoringTool: No files need to be modified.
-RefactoringTool: There was 1 error:
-RefactoringTool: Can't parse ./common/py3/bisos/common/baseDirBisos.py: ParseError: bad input: type=5, value='     ', context=('\n', (807, 0))

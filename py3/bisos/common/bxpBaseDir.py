@@ -843,12 +843,12 @@ def pbdDict_bisosRoot(
     directory('core')
     # symLink(  'core/bin', 'dist/pip/core/bin')
     # symLink(  'core/input', 'dist/pip/core/input')
-    symLink('core/bsip4', 'git/bxRepos/bisos/bsip4')
+    # symLink('core/bsip4', 'git/bxRepos/bisos/bsip4')
     symLink('core/bsip', 'git/bxRepos/bisos/bsip4')    
-    symLink('core/bpip1', 'git/bxRepos/bisos/bpip1')
+    # symLink('core/bpip1', 'git/bxRepos/bisos/bpip1')
     symLink('core/bpip', 'git/bxRepos/bisos/bpip1')
-    symLink('core/bxio', 'git/bxRepos/bisos/bxio')
-    symLink('core/bxso', 'git/bxRepos/bisos/bxso')
+    # symLink('core/bxio', 'git/bxRepos/bisos/bxio')
+    # symLink('core/bxso', 'git/bxRepos/bisos/bxso')
     symLink('core/lcnt', 'git/bxRepos/bisos/lcnt')
     symLink('core/mail', 'git/bxRepos/bisos/mail')
 
@@ -869,7 +869,7 @@ def pbdDict_bisosRoot(
 
     symLink('panels', 'git/bxRepos/blee-binders')
 
-    symLink('aais', 'git/bxRepos/bisos/aais')
+    symLink('pals', 'git/bxRepos/bisos/pals')
     
     # directory('panels')
     # directory('panels/bisos')
