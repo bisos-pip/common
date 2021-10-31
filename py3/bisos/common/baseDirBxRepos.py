@@ -955,6 +955,7 @@ def pbdDict_bxReposRoot(
     gitClone('bisos/lcnt',  'bisos/lcnt', vcMode)
     gitClone('bisos/mail',  'bisos/mail', vcMode)
     gitClone('bisos/pals',  'bisos/pals', vcMode)
+    gitClone('bisos/dev',  'bisos/dev', vcMode)
 
     gitCloneBase('bxObjects', 'bxObjects/base', vcMode)
     gitClone('bxObjects/overview',  'bxObjects/overview', vcMode)
@@ -1059,6 +1060,11 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/bashStandaloneIcmSeed',  'bisos-pip/bashStandaloneIcmSeed', vcMode)
     gitClone('bisos-pip/provision',  'bisos-pip/provision', vcMode)
     gitClone('bisos-pip/bxoGitlab',  'bisos-pip/bxoGitlab', vcMode)
+    gitClone('bisos-pip/basics',  'bisos-pip/basics', vcMode)
+    gitClone('bisos-pip/bpo',  'bisos-pip/bpo', vcMode)
+    gitClone('bisos-pip/cntnr',  'bisos-pip/cntnr', vcMode)
+    gitClone('bisos-pip/icm',  'bisos-pip/icm', vcMode)
+    gitClone('bisos-pip/pals',  'bisos-pip/pals', vcMode)
 
     gitCloneBase('blee-pip',  'blee-pip/base', vcMode)
     gitClone('blee-pip/overview',  'blee-pip/overview', vcMode)    
