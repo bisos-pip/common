@@ -851,6 +851,7 @@ def pbdDict_bisosRoot(
     # symLink('core/bxso', 'git/bxRepos/bisos/bxso')
     symLink('core/lcnt', 'git/bxRepos/bisos/lcnt')
     symLink('core/mail', 'git/bxRepos/bisos/mail')
+    symLink('core/dev', 'git/bxRepos/bisos/dev')
 
     symLink('core/var', 'var/core')
     symLink('core/tmp', 'tmp')
