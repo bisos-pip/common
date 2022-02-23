@@ -764,7 +764,7 @@ def pbdDict_bxReposCollection(
 
 ####+BEGIN: bx:dblock:python:func :funcName "pbdDict_bxReposRoot" :comment "pbd Dictionary" :funcType "Init" :retType "bxReposRootBaseDirsDict" :argsList "baseDir vcMode=None gitLabel='github.com'" :deco ""
 """
-*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposRoot/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None gitLabel='github.com')  [[elisp:(org-cycle)][| ]]
+1*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  Func-Init      :: /pbdDict_bxReposRoot/ =pbd Dictionary= retType=bxReposRootBaseDirsDict argsList=(baseDir vcMode=None gitLabel='github.com')  [[elisp:(org-cycle)][| ]]
 """
 def pbdDict_bxReposRoot(
     baseDir,
@@ -1012,6 +1012,12 @@ def pbdDict_bxReposRoot(
         'bx-blee/doom-blee-base',
         vcMode
     )
+    gitClone(
+        'blee/tutorials',
+        'bx-blee/tutorials',
+        vcMode
+    )
+
 
     gitCloneBase('bxGenesis', 'bxGenesis/base', vcMode)
     gitClone('bxGenesis/overview', 'bxGenesis/overview', vcMode)
@@ -1109,6 +1115,7 @@ def pbdDict_bxReposRoot(
     gitClone('bxexamples/bashIcm',  'bxexamples/bashIcm', vcMode)
     gitClone('bxexamples/bashProcessArgsAndStdin',  'bxexamples/bashProcessArgsAndStdin', vcMode)
     gitClone('bxexamples/roVerifier-petstore',  'bxexamples/roVerifier-petstore', vcMode)
+    gitClone('bxexamples/usbTetheredMobilePhoneLinuxRouter',  'bxexamples/usbTetheredMobilePhoneLinuxRouter', vcMode)
 
     gitCloneBase('bxlcnt',  'bxlcnt/base', vcMode)    
     gitClone('bxlcnt/overview',  'bxlcnt/overview', vcMode)
