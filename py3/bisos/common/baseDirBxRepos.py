@@ -1017,6 +1017,31 @@ def pbdDict_bxReposRoot(
         'bx-blee/tutorials',
         vcMode
     )
+    gitClone(
+        'blee/blee-dblocks',
+        'bx-blee/blee-dblocks',
+        vcMode
+    )
+    gitClone(
+        'blee/blee-lib',
+        'bx-blee/blee-lib',
+        vcMode
+    )
+    gitClone(
+        'blee/comeega',
+        'bx-blee/comeega',
+        vcMode
+    )
+    gitClone(
+        'blee/comment-block',
+        'bx-blee/comment-block',
+        vcMode
+    )
+    gitClone(
+        'blee/poly-dblock',
+        'bx-blee/poly-dblock',
+        vcMode
+    )
 
 
     gitCloneBase('bxGenesis', 'bxGenesis/base', vcMode)
@@ -1068,6 +1093,7 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/bxoGitlab',  'bisos-pip/bxoGitlab', vcMode)
     gitClone('bisos-pip/basics',  'bisos-pip/basics', vcMode)
     gitClone('bisos-pip/bpo',  'bisos-pip/bpo', vcMode)
+    gitClone('bisos-pip/bpf',  'bisos-pip/bpf', vcMode)
     gitClone('bisos-pip/cntnr',  'bisos-pip/cntnr', vcMode)
     gitClone('bisos-pip/icm',  'bisos-pip/icm', vcMode)
     gitClone('bisos-pip/pals',  'bisos-pip/pals', vcMode)
@@ -1116,6 +1142,7 @@ def pbdDict_bxReposRoot(
     gitClone('bxexamples/bashProcessArgsAndStdin',  'bxexamples/bashProcessArgsAndStdin', vcMode)
     gitClone('bxexamples/roVerifier-petstore',  'bxexamples/roVerifier-petstore', vcMode)
     gitClone('bxexamples/usbTetheredMobilePhoneLinuxRouter',  'bxexamples/usbTetheredMobilePhoneLinuxRouter', vcMode)
+    gitClone('bxexamples/comeega',  'bxexamples/comeega', vcMode)
 
     gitCloneBase('bxlcnt',  'bxlcnt/base', vcMode)    
     gitClone('bxlcnt/overview',  'bxlcnt/overview', vcMode)
