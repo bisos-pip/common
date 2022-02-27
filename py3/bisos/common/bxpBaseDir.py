@@ -1867,7 +1867,7 @@ comment={comment}
     def verify(self):
         destFullPath = self.destPathFullGet()        
         if os.path.isdir(destFullPath):
-            icm.ANN_here("{} Exists -- As Expected".format(destFullPath))
+            icm.ANN_write("{}".format(destFullPath))
         else:
             icm.ANN_here("{} Missing -- Un-Expected".format(destFullPath))
         
