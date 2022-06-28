@@ -973,13 +973,8 @@ def pbdDict_bxReposRoot(
         vcMode
     )
     gitClone(
-        'blee/org-img-link',
-        'bx-blee/org-img-link',
-        vcMode
-    )
-    gitClone(
-        'blee/persian-input-method',
-        'bx-blee/persian-input-method',
+        'blee/envsShar',
+        'bx-blee/envsShar',
         vcMode
     )
     gitClone(
@@ -988,16 +983,26 @@ def pbdDict_bxReposRoot(
         vcMode
     )
     gitClone(
+        'blee/env3',
+        'bx-blee/env3',
+        vcMode
+    )
+    #
+    # Doom Bases
+    #
+    gitClone(
         'blee/doom-emacs-framework',
         'bx-blee/doom-emacs-framework',
         vcMode
     )
+    # NOTYET defunct doom-emacs-init
     gitClone(
         'blee/doom-emacs-init',
         'bx-blee/doom-emacs-init',
         vcMode
     )
-    gitClone(
+    # NOTYET defunct doom-blee-init
+    gitClone( 
         'blee/doom-blee-init',
         'bx-blee/doom-blee-init',
         vcMode
@@ -1013,10 +1018,23 @@ def pbdDict_bxReposRoot(
         vcMode
     )
     gitClone(
-        'blee/tutorials',
-        'bx-blee/tutorials',
+        'blee/doom-base-emacs',
+        'bx-blee/doom-base-emacs',
         vcMode
     )
+    gitClone(
+        'blee/doom-base-blee2',
+        'bx-blee/doom-base-blee2',
+        vcMode
+    )
+    gitClone(
+        'blee/doom-base-blee3',
+        'bx-blee/doom-base-blee3',
+        vcMode
+    )
+    #
+    # Blee Packages
+    #
     gitClone(
         'blee/blee-dblocks',
         'bx-blee/blee-dblocks',
@@ -1042,7 +1060,41 @@ def pbdDict_bxReposRoot(
         'bx-blee/poly-dblock',
         vcMode
     )
-
+    gitClone(
+        'blee/pkgs-profile',
+        'bx-blee/pkgs-profile',
+        vcMode
+    )
+    gitClone(
+        'blee/blee3-pkgs-profile',
+        'bx-blee/blee3-pkgs-profile',
+        vcMode
+    )
+    gitClone(
+        'blee/mcdt',
+        'bx-blee/mcdt',
+        vcMode
+    )
+    gitClone(
+        'blee/mua-abstract',
+        'bx-blee/mua-abstract',
+        vcMode
+    )
+    gitClone(
+        'blee/tutorials',
+        'bx-blee/tutorials',
+        vcMode
+    )
+    gitClone(
+        'blee/org-img-link',
+        'bx-blee/org-img-link',
+        vcMode
+    )
+    gitClone(
+        'blee/persian-input-method',
+        'bx-blee/persian-input-method',
+        vcMode
+    )
 
     gitCloneBase('bxGenesis', 'bxGenesis/base', vcMode)
     gitClone('bxGenesis/overview', 'bxGenesis/overview', vcMode)
@@ -1097,6 +1149,8 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/cntnr',  'bisos-pip/cntnr', vcMode)
     gitClone('bisos-pip/icm',  'bisos-pip/icm', vcMode)
     gitClone('bisos-pip/pals',  'bisos-pip/pals', vcMode)
+    gitClone('bisos-pip/marmee',  'bisos-pip/marmee', vcMode)
+    gitClone('bisos-pip/gmail-oauth2-facilities',  'bisos-pip/gmail-oauth2-facilities', vcMode)        
 
     gitCloneBase('blee-pip',  'blee-pip/base', vcMode)
     gitClone('blee-pip/overview',  'blee-pip/overview', vcMode)    
@@ -1317,7 +1371,12 @@ def pbdDict_extRepos(
     #
 
     directory('emacs')
-    
+
+    gitClone(
+        'emacs/doomemacs',
+        'doomemacs/doomemacs',
+        vcMode
+    )
     gitClone(
         'emacs/emacs-application-framework',
         'manateelazycat/emacs-application-framework',
