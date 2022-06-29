@@ -1083,6 +1083,9 @@ def pbdDict_bleeRoot(
     directory('blee/28f/run')
     directory('blee/28f/tmp')
 
+    directory('blee/emacsVers')
+    directory('blee/emacsVers/28.1')
+    
     symLink('blee/env',
             'git/bxRepos/blee/env'
             )

@@ -973,8 +973,8 @@ def pbdDict_bxReposRoot(
         vcMode
     )
     gitClone(
-        'blee/envsShar',
-        'bx-blee/envsShar',
+        'blee/envsShare',
+        'bx-blee/envsShare',
         vcMode
     )
     gitClone(
