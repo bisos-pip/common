@@ -1041,8 +1041,8 @@ def pbdDict_bxReposRoot(
         vcMode
     )
     gitClone(
-        'blee/blee-lib',
-        'bx-blee/blee-lib',
+        'blee/blee-libs',
+        'bx-blee/blee-libs',
         vcMode
     )
     gitClone(
@@ -1095,7 +1095,12 @@ def pbdDict_bxReposRoot(
         'bx-blee/persian-input-method',
         vcMode
     )
-
+    gitClone(
+        'blee/fshell',
+        'bx-blee/fshell',
+        vcMode
+    )
+    
     gitCloneBase('bxGenesis', 'bxGenesis/base', vcMode)
     gitClone('bxGenesis/overview', 'bxGenesis/overview', vcMode)
     gitClone('bxGenesis/vagrants', 'bxGenesis/vagrants', vcMode)
@@ -1398,7 +1403,23 @@ def pbdDict_extRepos(
         vcMode
     )
 
-    
+    directory('blee3')
+
+    gitClone(
+        'blee3/straight.el',
+        'radian-software/straight.el',
+        vcMode
+    )
+    gitClone(
+        'blee3/s.el',
+        'magnars/s.el',
+        vcMode
+    )
+    gitClone(
+        'blee3/loop.el',
+        'Wilfred/loop.el',
+        vcMode
+    )
     
     return pbdDict
 
