@@ -1249,7 +1249,7 @@ def pbdDict_extRepos(
         pbdDict[dstPathRel] = bxpBaseDir.bxpObjGet_symLink(root, dstPathRel, srcPath, srcPathType=srcPathType)
 
     def command(dstPathRel, createCmnd):
-        print("AAAA Entering command {createCmnd}".format(createCmnd=createCmnd))
+        # print("AAAA Entering command {createCmnd}".format(createCmnd=createCmnd))
         pbdDict[dstPathRel] = bxpBaseDir.BxpBaseDir_Command(
             destPathRoot=root,
             destPathRel=dstPathRel,
@@ -1275,9 +1275,7 @@ def pbdDict_extRepos(
             #               "cd {root}/{baseDir} && git clone git@github.com:{gitRepoPath}.git"
             command(
                 dstPathRel,
-                # "cd {root}/{baseDir} && git clone git://{gitLabel}/{gitRepoPath}.git"
-                # As of 2022, above line no longer works, so we use the below line
-                "cd {root}/{baseDir} && git clone https://{gitLabel}/{gitRepoPath}.git"
+                "cd {root}/{baseDir} && git clone git://{gitLabel}/{gitRepoPath}.git"
                 .format(
                     root=root,
                     baseDir=baseDir,
@@ -1306,7 +1304,6 @@ def pbdDict_extRepos(
 
 
     def gitCloneBase(locPathRel, remGitRepoPath, vcMode):
-
         locBasenameRel = os.path.basename(locPathRel)
         locDirnameRel = os.path.dirname(locPathRel)
         
