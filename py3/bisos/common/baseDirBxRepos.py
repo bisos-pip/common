@@ -962,144 +962,50 @@ def pbdDict_bxReposRoot(
     gitClone('bxObjects/a-ig-ub-cur-small',  'bxObjects/a-ig-ub-cur-small', vcMode)    
     
     gitCloneBase('blee', 'bx-blee/base',  vcMode)
-    gitClone(
-        'blee/overview',
-        'bx-blee/overview',
-        vcMode
-    )
-    gitClone(
-        'blee/env',
-        'bx-blee/env',
-        vcMode
-    )
-    gitClone(
-        'blee/envsShare',
-        'bx-blee/envsShare',
-        vcMode
-    )
-    gitClone(
-        'blee/env2',
-        'bx-blee/env2',
-        vcMode
-    )
-    gitClone(
-        'blee/env3',
-        'bx-blee/env3',
-        vcMode
-    )
+    gitClone('blee/overview', 'bx-blee/overview', vcMode)
+    gitClone('blee/env', 'bx-blee/env', vcMode)
+    gitClone('blee/envsShare', 'bx-blee/envsShare', vcMode)
+    gitClone('blee/env2', 'bx-blee/env2', vcMode)
+    gitClone('blee/env3', 'bx-blee/env3', vcMode)
     #
     # Doom Bases
     #
-    gitClone(
-        'blee/doom-emacs-framework',
-        'bx-blee/doom-emacs-framework',
-        vcMode
-    )
+    gitClone('blee/doom-emacs-framework', 'bx-blee/doom-emacs-framework', vcMode)
     # NOTYET defunct doom-emacs-init
-    gitClone(
-        'blee/doom-emacs-init',
-        'bx-blee/doom-emacs-init',
-        vcMode
-    )
+    gitClone('blee/doom-emacs-init', 'bx-blee/doom-emacs-init', vcMode)
     # NOTYET defunct doom-blee-init
-    gitClone( 
-        'blee/doom-blee-init',
-        'bx-blee/doom-blee-init',
-        vcMode
-    )
-    gitClone(
-        'blee/doom-base',
-        'bx-blee/doom-base',
-        vcMode
-    )
-    gitClone(
-        'blee/doom-blee-base',
-        'bx-blee/doom-blee-base',
-        vcMode
-    )
-    gitClone(
-        'blee/doom-base-emacs',
-        'bx-blee/doom-base-emacs',
-        vcMode
-    )
-    gitClone(
-        'blee/doom-base-blee2',
-        'bx-blee/doom-base-blee2',
-        vcMode
-    )
-    gitClone(
-        'blee/doom-base-blee3',
-        'bx-blee/doom-base-blee3',
-        vcMode
-    )
+    gitClone('blee/doom-blee-init', 'bx-blee/doom-blee-init', vcMode)
+    gitClone('blee/doom-base', 'bx-blee/doom-base', vcMode)
+    gitClone('blee/doom-blee-base', 'bx-blee/doom-blee-base', vcMode)
+    gitClone('blee/doom-base-emacs', 'bx-blee/doom-base-emacs', vcMode)
+    gitClone('blee/doom-base-blee2', 'bx-blee/doom-base-blee2', vcMode)
+    gitClone('blee/doom-base-blee3', 'bx-blee/doom-base-blee3', vcMode)
     #
     # Blee Packages
     #
-    gitClone(
-        'blee/blee-dblocks',
-        'bx-blee/blee-dblocks',
-        vcMode
-    )
-    gitClone(
-        'blee/blee-libs',
-        'bx-blee/blee-libs',
-        vcMode
-    )
-    gitClone(
-        'blee/comeega',
-        'bx-blee/comeega',
-        vcMode
-    )
-    gitClone(
-        'blee/comment-block',
-        'bx-blee/comment-block',
-        vcMode
-    )
-    gitClone(
-        'blee/poly-dblock',
-        'bx-blee/poly-dblock',
-        vcMode
-    )
-    gitClone(
-        'blee/pkgs-profile',
-        'bx-blee/pkgs-profile',
-        vcMode
-    )
-    gitClone(
-        'blee/blee3-pkgs-profile',
-        'bx-blee/blee3-pkgs-profile',
-        vcMode
-    )
-    gitClone(
-        'blee/mcdt',
-        'bx-blee/mcdt',
-        vcMode
-    )
-    gitClone(
-        'blee/mua-abstract',
-        'bx-blee/mua-abstract',
-        vcMode
-    )
-    gitClone(
-        'blee/tutorials',
-        'bx-blee/tutorials',
-        vcMode
-    )
-    gitClone(
-        'blee/org-img-link',
-        'bx-blee/org-img-link',
-        vcMode
-    )
-    gitClone(
-        'blee/persian-input-method',
-        'bx-blee/persian-input-method',
-        vcMode
-    )
-    gitClone(
-        'blee/fshell',
-        'bx-blee/fshell',
-        vcMode
-    )
+    gitClone('blee/blee-dblocks', 'bx-blee/blee-dblocks', vcMode)
+    gitClone('blee/blee-libs', 'bx-blee/blee-libs', vcMode)
+    gitClone('blee/comeega', 'bx-blee/comeega', vcMode)
+    gitClone('blee/comment-block', 'bx-blee/comment-block', vcMode)
+    gitClone('blee/poly-dblock', 'bx-blee/poly-dblock', vcMode)
+    gitClone('blee/pkgs-profile', 'bx-blee/pkgs-profile', vcMode)
+    gitClone('blee/blee3-pkgs-profile', 'bx-blee/blee3-pkgs-profile', vcMode)
+    gitClone('blee/mcdt', 'bx-blee/mcdt', vcMode)
+    gitClone('blee/mtdt', 'bx-blee/mtdt', vcMode)
+    gitClone('blee/mua-abstract', 'bx-blee/mua-abstract', vcMode)
+    gitClone('blee/tutorials', 'bx-blee/tutorials', vcMode)
+    gitClone('blee/org-img-link', 'bx-blee/org-img-link', vcMode)
+    gitClone('blee/persian-input-method', 'bx-blee/persian-input-method', vcMode)
+    gitClone('blee/fshell', 'bx-blee/fshell', vcMode)
+    gitClone('blee/bidi-menu', 'bx-blee/bidi-menu', vcMode)
+    gitClone('blee/bisos', 'bx-blee/bisos', vcMode)
+    gitClone('blee/chatGptInv', 'bx-blee/chatGptInv', vcMode)
+    #
+    # Blee Misc
+    #
+    gitClone('blee/bbdb-filters-0.51', 'bx-blee/bbdb-filters-0.51', vcMode)
+    gitClone('blee/emacs-developers-requests', 'bx-blee/emacs-developers-requests', vcMode)
+
     
     gitCloneBase('bxGenesis', 'bxGenesis/base', vcMode)
     gitClone('bxGenesis/overview', 'bxGenesis/overview', vcMode)
