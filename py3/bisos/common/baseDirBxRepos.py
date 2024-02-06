@@ -1175,6 +1175,7 @@ def pbdDict_bxReposRoot(
     gitClone('blee-pip/namespace',  'blee-pip/namespace', vcMode)
     gitClone('blee-pip/elispDist',  'blee-pip/elispDist', vcMode)
     gitClone('blee-pip/icmPlayer',  'blee-pip/icmPlayer', vcMode)
+    gitClone('blee-pip/csPlayer',  'blee-pip/csPlayer', vcMode)
 
     gitCloneBase('roPerf-pip',  'roPerf-pip/base', vcMode)
     gitClone('roPerf-pip/overview',  'roPerf-pip/overview', vcMode)    
