@@ -1072,6 +1072,7 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/qmail',  'bisos-pip/qmail', vcMode)
     gitClone('bisos-pip/regfps', 'bisos-pip/regfps', vcMode)
     gitClone('bisos-pip/siteRegistrars', 'bisos-pip/siteRegistrars', vcMode)
+    gitClone('bisos-pip/banna', 'bisos-pip/banna', vcMode)
     # gitClone('bisos-pip/sites', 'bisos-pip/sites', vcMode)
     gitClone('bisos-pip/transit', 'bisos-pip/transit', vcMode)
     gitClone('bisos-pip/usgAcct', 'bisos-pip/usgAcct', vcMode)
