@@ -871,6 +871,7 @@ def pbdDict_bisosRoot(
     symLink('panels', 'git/bxRepos/blee-binders')
 
     symLink('pals', 'git/bxRepos/bisos/pals')
+    symLink('admin', 'git/bxRepos/bisos/admin')
     
     # directory('panels')
     # directory('panels/bisos')

@@ -956,6 +956,7 @@ def pbdDict_bxReposRoot(
     gitClone('bisos/mail',  'bisos/mail', vcMode)
     gitClone('bisos/pals',  'bisos/pals', vcMode)
     gitClone('bisos/dev',  'bisos/dev', vcMode)
+    gitClone('bisos/admin',  'bisos/admin', vcMode)
 
     gitCloneBase('bxObjects', 'bxObjects/base', vcMode)
     gitClone('bxObjects/overview',  'bxObjects/overview', vcMode)
