@@ -998,7 +998,7 @@ def pbdDict_bxReposRoot(
     gitClone('blee/org-img-link', 'bx-blee/org-img-link', vcMode)
     gitClone('blee/persian-input-method', 'bx-blee/persian-input-method', vcMode)
     gitClone('blee/fshell', 'bx-blee/fshell', vcMode)
-    gitClone('blee/sr-speedbar', 'bx-blee/sr-speedbar', vcMode)
+    gitClone('blee/repub_sr-speedbar', 'bx-blee/repub_sr-speedbar', vcMode)
     gitClone('blee/bidi-menu', 'bx-blee/bidi-menu', vcMode)
     gitClone('blee/bisos', 'bx-blee/bisos', vcMode)
     gitClone('blee/chatGptInv', 'bx-blee/chatGptInv', vcMode)
