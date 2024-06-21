@@ -1083,6 +1083,7 @@ def pbdDict_bxReposRoot(
     # gitClone('bisos-pip/sites', 'bisos-pip/sites', vcMode)
     gitClone('bisos-pip/transit', 'bisos-pip/transit', vcMode)
     gitClone('bisos-pip/usgAcct', 'bisos-pip/usgAcct', vcMode)
+    gitClone('bisos-pip/facter', 'bisos-pip/facter', vcMode)
 
     gitCloneBase('blee-pip',  'blee-pip/base', vcMode)
     gitClone('blee-pip/overview',  'blee-pip/overview', vcMode)    
