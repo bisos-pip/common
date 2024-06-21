@@ -1894,7 +1894,8 @@ comment={comment}
         if os.path.isdir(destFullPath):
             icm.ANN_write("{}".format(destFullPath))
         else:
-            icm.ANN_here("{} Missing -- Un-Expected".format(destFullPath))
+            icm.ANN_write("{}".format(destFullPath))
+            icm.EH_problem_usageError("{} Missing -- Un-Expected".format(destFullPath))
         
     def show(self):
         icm.ANN_write("{}".format(self.__str__()))
@@ -2091,9 +2092,9 @@ comment={comment}
         if os.path.isdir(destFullPath):
             icm.ANN_write("{}".format(destFullPath))   # To support listings
         else:
-            icm.ANN_here("{} Missing -- Un-Expected".format(destFullPath))
-            
-        
+            icm.ANN_write("{}".format(destFullPath))
+            icm.EH_problem_usageError("{} Missing -- Un-Expected".format(destFullPath))
+
     def show(self):
         icm.ANN_write("{}".format(self.__str__()))
         
