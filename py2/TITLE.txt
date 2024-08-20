@@ -1,2 +1,0 @@
-Common BISOS (ByStar Internet Services OS) Library contains general purpose modules which build on UnISOS sub-layer capabilities.
-

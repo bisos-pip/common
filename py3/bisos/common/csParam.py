@@ -107,7 +107,9 @@ A common use is for specification of generic values in panels.
     parMappedVal = parValue
 
     cmndOutcome = b.op.Outcome()
-    currentsConfig.curParsGetAsDictValue_wOp("", cmndOutcome)
+    funcRes = currentsConfig.curParsGetAsDictValue_wOp("", cmndOutcome)
+    if funcRes is None:
+        return parMappedVal
     results = cmndOutcome.results
 
     if invokerId:

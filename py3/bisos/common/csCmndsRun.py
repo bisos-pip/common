@@ -3,9 +3,9 @@
 * TODO *[Summary]* ::  A /library/ with ICM Cmnds to support ByStar facilities
 """
 
-####+BEGIN: bx:icm:python:top-of-file :partof "bystar" :copyleft "halaal+minimal"
+####+BEGIN: bx:cs:python:top-of-file :partof "bystar" :copyleft "halaal+minimal"
 """
-*  This file:/acct/smb/com/dev-py/LUE/Sync/pypi/pkgs/unisos/common/dev/unisos/common/new-icmCmndsRun.py :: [[elisp:(org-cycle)][| ]]
+*  This file:/acct/smb/com/dev-py/LUE/Sync/pypi/pkgs/unisos/common/dev/unisos/common/new-csCmndsRun.py :: [[elisp:(org-cycle)][| ]]
 ** is part of The Libre-Halaal ByStar Digital Ecosystem. http://www.by-star.net
 ** *CopyLeft*  This Software is a Libre-Halaal Poly-Existential. See http://www.freeprotocols.org
 ** A Python Interactively Command Module (PyICM). Part Of ByStar.
@@ -20,7 +20,7 @@
 """
 
 ####+BEGIN: bx:global:lib:name-py :style "fileName"
-__libName__ = "new-icmCmndsRun"
+__libName__ = "new-csCmndsRun"
 ####+END:
 
 ####+BEGIN: bx:global:timestamp:version-py :style "date"
@@ -33,18 +33,24 @@ __status__ = "Production"
 
 __credits__ = [""]
 
-####+BEGIN: bx:dblock:global:file-insert-cond :cond "./blee.el" :file "/libre/ByStar/InitialTemplates/update/sw/icm/py/icmInfo-mbNedaGpl.py"
-icmInfo = {
-    'authors':         ["[[http://mohsen.1.banan.byname.net][Mohsen Banan]]"],
-    'copyright':       "Copyright 2017, [[http://www.neda.com][Neda Communications, Inc.]]",
-    'licenses':        ["[[https://www.gnu.org/licenses/agpl-3.0.en.html][Affero GPL]]", "Libre-Halaal Services License", "Neda Commercial License"],
-    'maintainers':     ["[[http://mohsen.1.banan.byname.net][Mohsen Banan]]",],
-    'contacts':        ["[[http://mohsen.1.banan.byname.net/contact]]",],
-    'partOf':          ["[[http://www.by-star.net][Libre-Halaal ByStar Digital Ecosystem]]",]
-}
+
+####+BEGIN: b:python:file/particulars-csInfo :status "inUse"
+""" #+begin_org
+* *[[elisp:(org-cycle)][| Particulars-csInfo |]]*
+#+end_org """
+import typing
+csInfo: typing.Dict[str, typing.Any] = { 'moduleName': ['boxRegfps'], }
+csInfo['version'] = '202402043414'
+csInfo['status']  = 'inUse'
+csInfo['panel'] = 'boxRegfps-Panel.org'
+csInfo['groupingType'] = 'IcmGroupingType-pkged'
+csInfo['cmndParts'] = 'IcmCmndParts[common] IcmCmndParts[param]'
 ####+END:
 
-####+BEGIN: bx:icm:python:topControls 
+####+BEGINNOT: bx:dblock:global:file-insert-cond :cond "./blee.el" :file "/libre/ByStar/InitialTemplates/update/sw/icm/py/csInfo-mbNedaGpl.py"
+####+END:
+
+####+BEGIN: bx:cs:python:topControls 
 """
 *  [[elisp:(org-cycle)][|/Controls/| ]] :: [[elisp:(org-show-subtree)][|=]] [[elisp:(show-all)][Show-All]]  [[elisp:(org-shifttab)][Overview]]  [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[file:Panel.org][Panel]] | [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] | [[elisp:(bx:org:run-me)][Run]] | [[elisp:(bx:org:run-me-eml)][RunEml]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]]  [[elisp:(save-buffer)][Save]]  [[elisp:(kill-buffer)][Quit]] [[elisp:(org-cycle)][| ]]
 ** /Version Control/ ::  [[elisp:(call-interactively (quote cvs-update))][cvs-update]]  [[elisp:(vc-update)][vc-update]] | [[elisp:(bx:org:agenda:this-file-otherWin)][Agenda-List]]  [[elisp:(bx:org:todo:this-file-otherWin)][ToDo-List]]
@@ -59,7 +65,7 @@ icmInfo = {
 """
 
 
-####+BEGIN: bx:icm:python:section :title "ContentsList"
+####+BEGIN: bx:cs:python:section :title "ContentsList"
 """
 *  [[elisp:(beginning-of-buffer)][Top]] ################ [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(delete-other-windows)][(1)]]    *ContentsList*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] 
 """
@@ -99,14 +105,18 @@ import enum
 import sys
 import time
 
-# NOTYET, should become a dblock with its own subItem
-from unisos import ucf
-from unisos import icm
 
-G = icm.IcmGlobalContext()
-G.icmLibsAppend = __file__
-G.icmCmndsLibsAppend = __file__
-# NOTYET DBLOCK Ends -- Rest of bisos libs follow;
+####+BEGIN: b:py3:cs:framework/imports :basedOn "classification"
+""" #+begin_org
+** Imports Based On Classification=cs-u
+#+end_org """
+from bisos import b
+from bisos.b import cs
+from bisos.b import b_io
+from bisos.common import csParam
+
+import collections
+####+END:
 
 
 ####+BEGIN: bx:dblock:python:section :title "Library Description (Overview)"
@@ -115,31 +125,27 @@ G.icmCmndsLibsAppend = __file__
 """
 ####+END:
 
-####+BEGIN: bx:dblock:python:icm:cmnd:classHead :modPrefix "new" :cmndName "icmCmndsRun_LibOverview" :parsMand "" :parsOpt "" :argsMin "0" :argsMax "3" :asFunc "" :interactiveP ""
-"""
-*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || ICM-Cmnd       :: /icmCmndsRun_LibOverview/ parsMand= parsOpt= argsMin=0 argsMax=3 asFunc= interactive=  [[elisp:(org-cycle)][| ]]
-"""
-class icmCmndsRun_LibOverview(icm.Cmnd):
+####+BEGIN: b:py3:cs:cmnd/classHead :modPrefix "new" :cmndName "csCmndsRun_LibOverview" :parsMand "" :parsOpt "" :argsMin 0 :argsMax 3 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<csCmndsRun_LibOverview>>  =verify= argsMax=3 ro=cli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class csCmndsRun_LibOverview(cs.Cmnd):
     cmndParamsMandatory = [ ]
     cmndParamsOptional = [ ]
     cmndArgsLen = {'Min': 0, 'Max': 3,}
 
-    @icm.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
     def cmnd(self,
-        interactive=False,        # Can also be called non-interactively
-        argsList=None,         # or Args-Input
-    ):
-        cmndOutcome = self.getOpOutcome()
-        if interactive:
-            if not self.cmndLineValidate(outcome=cmndOutcome):
-                return cmndOutcome
-            effectiveArgsList = G.icmRunArgsGet().cmndArgs
-        else:
-            effectiveArgsList = argsList
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+             argsList: typing.Optional[list[str]]=None,  # CsArgs
+    ) -> b.op.Outcome:
 
+        failed = b_io.eh.badOutcome
         callParamsDict = {}
-        if not icm.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
-            return cmndOutcome
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, argsList).isProblematic():
+            return failed(cmndOutcome)
+        cmndArgsSpecDict = self.cmndArgsSpec()
 ####+END:
 
         moduleDescription="""
@@ -169,7 +175,7 @@ This module is part of BISOS and its primary documentation is in  http://www.by-
         for each in effectiveArgsList:
             if each in cmndArgsValid:
                 print(each)
-                if interactive:
+                if rtInv.outs:
                     #print( str( __doc__ ) )  # This is the Summary: from the top doc-string
                     #version(interactive=True)
                     exec("""print({})""".format(each))
@@ -184,7 +190,7 @@ This module is part of BISOS and its primary documentation is in  http://www.by-
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Class-IIF       ::  cmndsRun    [[elisp:(org-cycle)][| ]]
 """
-class cmndsRun(icm.Cmnd):
+class cmndsRun(cs.Cmnd):
     """
 ** Run each of Args as a command. Pass params to each of the args.
 """
@@ -193,22 +199,22 @@ class cmndsRun(icm.Cmnd):
     cmndParamsOptional = []        
     cmndArgsLen = {'Min': 1, 'Max': 1024,}
 
-####+BEGIN: bx:dblock:python:icm:cmnd:parsValidate :par "" :args "" :asFunc ""
-    @icm.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
+####+BEGIN: bx:dblock:python:icm:cmnd:parsValidate :par "" :args "" :pyInv ""
+    @io.track.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
     def cmnd(self,
         interactive=False,        # Can also be called non-interactively
     ):
         cmndOutcome = self.getOpOutcome()
         
-        if interactive:
+        if rtInv.outs:
             if not self.cmndLineValidate(outcome=cmndOutcome):
                 return cmndOutcome
 
         callParamsDict = {}
-        if not icm.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
+        if not cs.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
             return cmndOutcome
 ####+END:
-        G = icm.IcmGlobalContext()
+        G = cs.globalContext.get()
         argsList = G.icmRunArgsGet().cmndArgs
 
         G_myFullName = sys.argv[0]
@@ -219,7 +225,7 @@ class cmndsRun(icm.Cmnd):
                     icmName=G_myFullName, command=eachArg, 
                 )
             ).log()
-            if outcome.isProblematic(): return(icm.EH_badOutcome(outcome))
+            if outcome.isProblematic(): return(io.eh.badOutcome(outcome))
 
             # eval("""{command}().cmnd(interactive=False,)""".format(
             #     command=eachArg,
@@ -231,7 +237,7 @@ class cmndsRun(icm.Cmnd):
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Class-IIF       ::  cmndsRunPeriodically    [[elisp:(org-cycle)][| ]]
 """
-class cmndsRunPeriodically(icm.Cmnd):
+class cmndsRunPeriodically(cs.Cmnd):
     """
 ** Run each of Args as a command periodically according to --periodicity. Pass params to each of the args.
 """
@@ -240,23 +246,23 @@ class cmndsRunPeriodically(icm.Cmnd):
     cmndParamsOptional = ['periodicity']        
     cmndArgsLen = {'Min': 1, 'Max': 1024,}
 
-####+BEGIN: bx:dblock:python:icm:cmnd:parsValidate :par "periodicity" :args "" :asFunc ""
-    @icm.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
+####+BEGIN: bx:dblock:python:icm:cmnd:parsValidate :par "periodicity" :args " :pyInv ""
+    @io.track.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
     def cmnd(self,
         interactive=False,        # Can also be called non-interactively
         periodicity=None,         # or Cmnd-Input
     ):
         cmndOutcome = self.getOpOutcome()
-        if interactive:
+        if rtInv.outs:
             if not self.cmndLineValidate(outcome=cmndOutcome):
                 return cmndOutcome
 
         callParamsDict = {'periodicity': periodicity, }
-        if not icm.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
+        if not cs.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
             return cmndOutcome
         periodicity = callParamsDict['periodicity']
 ####+END:
-        G = icm.IcmGlobalContext()
+        G = cs.globalContext.get()
         argsList = G.icmRunArgsGet().cmndArgs
 
         G_myFullName = sys.argv[0]
@@ -268,7 +274,7 @@ class cmndsRunPeriodically(icm.Cmnd):
                         icmName=G_myFullName, command=eachArg, 
                     )
                 ).log()
-                if outcome.isProblematic(): return(icm.EH_badOutcome(outcome))
+                if outcome.isProblematic(): return(io.eh.badOutcome(outcome))
 
             icm.ANN_note("sleeping for: {periodicity}".format(periodicity=periodicity))
             
@@ -282,7 +288,7 @@ class cmndsRunPeriodically(icm.Cmnd):
     
     
 
-####+BEGIN: bx:icm:python:section :title "End Of Editable Text"
+####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :title " ~End Of Editable Text~ "
 """
 *  [[elisp:(beginning-of-buffer)][Top]] ################ [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(delete-other-windows)][(1)]]    *End Of Editable Text*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] 
 """

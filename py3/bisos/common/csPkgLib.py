@@ -3,15 +3,15 @@
 * *[Summary]* ::  A /library/ to support icmsPkg facilities based on the pkgThis information
 """
 
-####+BEGIN: bx:icm:python:top-of-file :partof "bystar" :copyleft "halaal+minimal"
-"""
-*  This file:/acct/smb/com/dev-py/LUE/Sync/pypi/pkgs/unisos/common/dev/unisos/common/icmsPkgLib.py :: [[elisp:(org-cycle)][| ]]
+####+BEGIN: bx:cs:python:top-of-file :partof "bystar" :copyleft "halaal+minimal"
+""" #+begin_org
+*  This file:/bisos/git/bxRepos/bisos-pip/common/py3/bisos/common/csPkgLib.py :: [[elisp:(org-cycle)][| ]]
  is part of The Libre-Halaal ByStar Digital Ecosystem. http://www.by-star.net
  *CopyLeft*  This Software is a Libre-Halaal Poly-Existential. See http://www.freeprotocols.org
- A Python Interactively Command Module (PyICM). Part Of ByStar.
+ A Python Interactively Command Module (PyICM).
  Best Developed With COMEEGA-Emacs And Best Used With Blee-ICM-Players.
- Warning: All edits wityhin Dynamic Blocks may be lost.
-"""
+ *WARNING*: All edits wityhin Dynamic Blocks may be lost.
+#+end_org """
 ####+END:
 
 
@@ -33,18 +33,23 @@ __status__ = "Production"
 
 __credits__ = [""]
 
-####+BEGIN: bx:dblock:global:file-insert-cond :cond "./blee.el" :file "/libre/ByStar/InitialTemplates/update/sw/icm/py/icmInfo-mbNedaGpl.py"
-icmInfo = {
-    'authors':         ["[[http://mohsen.1.banan.byname.net][Mohsen Banan]]"],
-    'copyright':       "Copyright 2017, [[http://www.neda.com][Neda Communications, Inc.]]",
-    'licenses':        ["[[https://www.gnu.org/licenses/agpl-3.0.en.html][Affero GPL]]", "Libre-Halaal Services License", "Neda Commercial License"],
-    'maintainers':     ["[[http://mohsen.1.banan.byname.net][Mohsen Banan]]",],
-    'contacts':        ["[[http://mohsen.1.banan.byname.net/contact]]",],
-    'partOf':          ["[[http://www.by-star.net][Libre-Halaal ByStar Digital Ecosystem]]",]
-}
+####+BEGIN: b:python:file/particulars-csInfo :status "inUse"
+""" #+begin_org
+* *[[elisp:(org-cycle)][| Particulars-csInfo |]]*
+#+end_org """
+import typing
+csInfo: typing.Dict[str, typing.Any] = { 'moduleName': ['boxRegfps'], }
+csInfo['version'] = '202402043414'
+csInfo['status']  = 'inUse'
+csInfo['panel'] = 'boxRegfps-Panel.org'
+csInfo['groupingType'] = 'IcmGroupingType-pkged'
+csInfo['cmndParts'] = 'IcmCmndParts[common] IcmCmndParts[param]'
 ####+END:
 
-####+BEGIN: bx:icm:python:topControls 
+####+BEGINNOT: bx:dblock:global:file-insert-cond :cond "./blee.el" :file "/libre/ByStar/InitialTemplates/update/sw/icm/py/csInfo-mbNedaGpl.py"
+####+END:
+
+####+BEGIN: bx:cs:python:topControls 
 """
 *  [[elisp:(org-cycle)][|/Controls/| ]] :: [[elisp:(org-show-subtree)][|=]]  [[elisp:(show-all)][Show-All]]  [[elisp:(org-shifttab)][Overview]]  [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[file:Panel.org][Panel]] | [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] | [[elisp:(bx:org:run-me)][Run]] | [[elisp:(bx:org:run-me-eml)][RunEml]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]]  [[elisp:(save-buffer)][Save]]  [[elisp:(kill-buffer)][Quit]] [[elisp:(org-cycle)][| ]]
 ** /Version Control/ ::  [[elisp:(call-interactively (quote cvs-update))][cvs-update]]  [[elisp:(vc-update)][vc-update]] | [[elisp:(bx:org:agenda:this-file-otherWin)][Agenda-List]]  [[elisp:(bx:org:todo:this-file-otherWin)][ToDo-List]]
@@ -59,7 +64,7 @@ icmInfo = {
 """
 
 
-####+BEGIN: bx:icm:python:section :title "ContentsList"
+####+BEGIN: bx:cs:python:section :title "ContentsList"
 """
 *  [[elisp:(beginning-of-buffer)][Top]] ################ [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(delete-other-windows)][(1)]]    *ContentsList*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] 
 """
@@ -76,20 +81,23 @@ import os
 import collections
 #import enum
 
-####+BEGIN: bx:dblock:global:file-insert :file "/libre/ByStar/InitialTemplates/update/sw/icm/py/importUcfIcmG.py"
-from unisos import ucf
-from unisos import icm
+####+BEGIN: b:py3:cs:framework/imports :basedOn "classification"
+""" #+begin_org
+** Imports Based On Classification=cs-u
+#+end_org """
+from bisos import b
+from bisos.b import cs
+from bisos.b import b_io
+from bisos.common import csParam
 
-icm.unusedSuppressForEval(ucf.__file__)  # in case icm and ucf are not used
+import collections
+####+END:
 
-G = icm.IcmGlobalContext()
-G.icmLibsAppend = __file__
-G.icmCmndsLibsAppend = __file__
 
+####+BEGINNOT: bx:dblock:global:file-insert :file "/libre/ByStar/InitialTemplates/update/sw/icm/py/importUcfIcmG.py"
 ####+END:
 
 from bisos.common import serviceObject
-# from unisos.marme import marmePkgThis     # Should Delete This Line
 
 
 ####+BEGIN: bx:dblock:python:section :title "Library Description (Overview)"
@@ -98,35 +106,27 @@ from bisos.common import serviceObject
 """
 ####+END:
 
-####+BEGIN: bx:icm:python:cmnd:classHead :cmndName "icmsPkgLib_libOverview" :comment "" :parsMand "" :parsOpt "" :argsMin "0" :argsMax "3" :asFunc "" :interactiveP ""
-"""
-*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || ICM-Cmnd       :: /icmsPkgLib_libOverview/ parsMand= parsOpt= argsMin=0 argsMax=3 asFunc= interactive=  [[elisp:(org-cycle)][| ]]
-"""
-class icmsPkgLib_libOverview(icm.Cmnd):
+####+BEGIN: b:py3:cs:cmnd/classHead :cmndName "icmsPkgLib_libOverview" :comment "" :parsMand "" :parsOpt "" :argsMin 0 :argsMax 3 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<icmsPkgLib_libOverview>>  =verify= argsMax=3 ro=cli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class icmsPkgLib_libOverview(cs.Cmnd):
     cmndParamsMandatory = [ ]
     cmndParamsOptional = [ ]
     cmndArgsLen = {'Min': 0, 'Max': 3,}
 
-    @icm.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
     def cmnd(self,
-        interactive=False,        # Can also be called non-interactively
-        argsList=[],         # or Args-Input
-    ):
-        cmndOutcome = self.getOpOutcome()
-        if interactive:
-            if not self.cmndLineValidate(outcome=cmndOutcome):
-                return cmndOutcome
-            effectiveArgsList = G.icmRunArgsGet().cmndArgs
-        else:
-            effectiveArgsList = argsList
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+             argsList: typing.Optional[list[str]]=None,  # CsArgs
+    ) -> b.op.Outcome:
 
+        failed = b_io.eh.badOutcome
         callParamsDict = {}
-        if not icm.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
-            return cmndOutcome
-
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, argsList).isProblematic():
+            return failed(cmndOutcome)
         cmndArgsSpecDict = self.cmndArgsSpec()
-        if not self.cmndArgsValidate(effectiveArgsList, cmndArgsSpecDict, outcome=cmndOutcome):
-            return cmndOutcome
 ####+END:
 
         moduleDescription="""
@@ -152,40 +152,7 @@ This module is part of BISOS and its primary documentation is in  http://www.by-
 **      [End-Of-Status]
 """
 ####+BEGIN: bx:dblock:global:file-insert-cond :cond "./blee.el" :file "/libre/ByStar/InitialTemplates/update/sw/icm/py/moduleOverview.py"
-        icm.unusedSuppressForEval(moduleUsage, moduleStatus)
-        actions = self.cmndArgsGet("0&2", cmndArgsSpecDict, effectiveArgsList)
-        if actions[0] == "all":
-            cmndArgsSpec = cmndArgsSpecDict.argPositionFind("0&2")
-            argChoices = cmndArgsSpec.argChoicesGet()
-            argChoices.pop(0)
-            actions = argChoices
-        for each in actions:
-            print(each)
-            if interactive:
-                #print( str( __doc__ ) )  # This is the Summary: from the top doc-string
-                #version(interactive=True)
-                exec("""print({})""".format(each))
-                
-        return(format(str(__doc__)+moduleDescription))
 
-    """
-**  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Method-anyOrNone :: /cmndArgsSpec/ retType=bool argsList=nil deco=default  [[elisp:(org-cycle)][| ]]
-"""
-    @icm.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
-    def cmndArgsSpec(self):
-        """
-***** Cmnd Args Specification
-"""
-        cmndArgsSpecDict = icm.CmndArgsSpecDict()
-        cmndArgsSpecDict.argsDictAdd(
-            argPosition="0&2",
-            argName="actions",
-            argDefault='all',
-            argChoices=['all', 'moduleDescription', 'moduleUsage', 'moduleStatus'],
-            argDescription="Output relevant information",
-        )
-
-        return cmndArgsSpecDict
 ####+END:
 
 
@@ -206,7 +173,7 @@ def pkgInfoBaseDir_obtain():
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Func         ::  pkgInputsBaseDir_obtain    [[elisp:(org-cycle)][| ]]
 """
-####+BEGIN: bx:icm:python:func :funcName "pkgInputsBaseDir_obtain" :funcType "anyOrNone" :retType "str" :deco "" :argsList "icmsPkgInputsBaseDir"
+####+BEGIN: bx:cs:python:func :funcName "pkgInputsBaseDir_obtain" :funcType "anyOrNone" :retType "str" :deco "" :argsList "icmsPkgInputsBaseDir"
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Func-anyOrNone :: /pkgInputsBaseDir_obtain/ retType=str argsList=(icmsPkgInputsBaseDir)  [[elisp:(org-cycle)][| ]]
 """
@@ -219,10 +186,10 @@ def pkgInputsBaseDir_obtain(
             "{}".format(icmsPkgInputsBaseDir)
         )
     else:
-        return icm.EH_problem_usageError("Missing BaseDir")        
+        return b_io.eh.problem_usageError("Missing BaseDir")        
 
 
-####+BEGIN: bx:icm:python:func :funcName "pkgInfoFpBaseDir_obtain" :funcType "anyOrNone" :retType "str" :deco "" :argsList "icmsPkgInfoBaseDir"
+####+BEGIN: bx:cs:python:func :funcName "pkgInfoFpBaseDir_obtain" :funcType "anyOrNone" :retType "str" :deco "" :argsList "icmsPkgInfoBaseDir"
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Func-anyOrNone :: /pkgInfoFpBaseDir_obtain/ retType=str argsList=(icmsPkgInfoBaseDir)  [[elisp:(org-cycle)][| ]]
 """
@@ -235,9 +202,9 @@ def pkgInfoFpBaseDir_obtain(
             "{}/pkgInfo/fp".format(icmsPkgInfoBaseDir)
         )
     else:
-        return icm.EH_problem_usageError("Missing BaseDir")        
+        return b_io.eh.problem_usageError("Missing BaseDir")        
 
-####+BEGIN: bx:icm:python:func :funcName "controlBaseDir_obtain" :funcType "anyOrNone" :retType "str" :deco "" :argsList "icmsPkgInfoBaseDir bxoId=None sr=None"
+####+BEGIN: bx:cs:python:func :funcName "controlBaseDir_obtain" :funcType "anyOrNone" :retType "str" :deco "" :argsList "icmsPkgInfoBaseDir bxoId=None sr=None"
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Func-anyOrNone :: /controlBaseDir_obtain/ retType=str argsList=(icmsPkgInfoBaseDir bxoId=None sr=None)  [[elisp:(org-cycle)][| ]]
 """
@@ -257,13 +224,13 @@ def controlBaseDir_obtain(
     
     if icmsPkgInfoBaseDir:
         return(
-            icm.FILE_ParamValueReadFrom(
+            b.fp.FileParamValueReadFrom(
                 parRoot= os.path.abspath("{}/pkgInfo/fp".format(icmsPkgInfoBaseDir)),
                 parName="icmsPkgControlBaseDir")
         )
     else:
         return(
-            icm.FILE_ParamValueReadFrom(
+            b.fp.FileParamValueReadFrom(
                 parRoot="../pkgInfo/fp",
                 parName="icmsPkgControlBaseDir")
         )
@@ -284,13 +251,13 @@ def logBaseDir_obtain(
 
     if icmsPkgInfoBaseDir:
         return(
-            icm.FILE_ParamValueReadFrom(
+            b.fp.FileParamValueReadFrom(
                 parRoot= os.path.abspath("{}/pkgInfo/fp".format(icmsPkgInfoBaseDir)),
                 parName="icmsPkgLogBaseDir")
         )
     else:
         return(
-            icm.FILE_ParamValueReadFrom(
+            b.fp.FileParamValueReadFrom(
                 parRoot="../pkgInfo/fp",
                 parName="icmsPkgLogBaseDir")
         )
@@ -313,13 +280,13 @@ def varBaseDir_obtain(
         )
     if icmsPkgInfoBaseDir:
         return(
-            icm.FILE_ParamValueReadFrom(
+            b.fp.FileParamValueReadFrom(
                 parRoot= os.path.abspath("{}/pkgInfo/fp".format(icmsPkgInfoBaseDir)),
                 parName="icmsPkgVarBaseDir")
         )
     else:
         return(
-            icm.FILE_ParamValueReadFrom(
+            b.fp.FileParamValueReadFrom(
                 parRoot="../pkgInfo/fp",
                 parName="icmsPkgVarBaseDir")
         )
@@ -358,13 +325,13 @@ def tmpBaseDir_obtain(
         )
     if icmsPkgInfoBaseDir:
         return(
-            icm.FILE_ParamValueReadFrom(
+            b.fp.FileParamValueReadFrom(
                 parRoot= os.path.abspath("{}/pkgInfo/fp".format(icmsPkgInfoBaseDir)),
                 parName="icmsPkgTmpBaseDir")
         )
     else:
         return(
-            icm.FILE_ParamValueReadFrom(
+            b.fp.FileParamValueReadFrom(
                 parRoot="../pkgInfo/fp",
                 parName="icmsPkgTmpBaseDir")
         )
@@ -396,7 +363,7 @@ def icmsPkgName_fpObtain(
         icmsPkgInfoBaseDir=None,
 ):
     """NOTYET -- Called obtain to leave Get for the IIF"""
-    return icm.FILE_ParamValueReadFrom(
+    return b.fp.FileParamValueReadFrom(
         parRoot=os.path.join(
             pkgInfoFpBaseDir_obtain(icmsPkgInfoBaseDir=icmsPkgInfoBaseDir),
         ),
@@ -408,7 +375,7 @@ def icmsPkgName_fpObtain(
 """
 def icmsPkgControlBaseDir_fpObtain():
     """NOTYET -- Called obtain to leave Get for the IIF"""
-    return icm.FILE_ParamValueReadFrom(
+    return b.fp.FileParamValueReadFrom(
         parRoot=os.path.join(
             pkgInfoFpBaseDir_obtain(),            
         ),
@@ -425,84 +392,84 @@ def icmsPkgControlBaseDir_fpObtain():
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Func         ::  commonParamsSpecify    [[elisp:(org-cycle)][| ]]
 """
 def commonParamsSpecify(
-        icmParams,
+        csParams,
 ):
     
-    icmParams.parDictAdd(
+    csParams.parDictAdd(
         parName='icmsPkgName',
         parDescription="ICMs Package Name",
         parDataType=None,
         parDefault=None,
         parChoices=["any"],
-        parScope=icm.ICM_ParamScope.TargetParam,
+        parScope=cs.CmndParamScope.TargetParam,
         argparseShortOpt=None,
         argparseLongOpt='--icmsPkgName',
     )
 
-    icmParams.parDictAdd(
+    csParams.parDictAdd(
         parName='icmsPkgInfoBaseDir',
         parDescription="ICMs Package Info Environment -- A BaseDir for var/log/tmp (bxo=current bxo)",
         parDataType=None,
         parDefault=None,
         parChoices=["any"],
-        parScope=icm.ICM_ParamScope.TargetParam,
+        parScope=cs.CmndParamScope.TargetParam,
         argparseShortOpt=None,
         argparseLongOpt='--icmsPkgInfoBaseDir',
     )
     
-    icmParams.parDictAdd(
+    csParams.parDictAdd(
         parName='icmsPkgRunBaseDir',
         parDescription="ICMs Package Run Environment -- A BaseDir for var/log/tmp (bxo=current bxo)",
         parDataType=None,
         parDefault=None,
         parChoices=["any"],
-        parScope=icm.ICM_ParamScope.TargetParam,
+        parScope=cs.CmndParamScope.TargetParam,
         argparseShortOpt=None,
         argparseLongOpt='--icmsPkgRunBaseDir',
     )
     
-    icmParams.parDictAdd(
+    csParams.parDictAdd(
         parName='icmsPkgControlBaseDir',
         parDescription="ICMs Package Control Base Directory",
         parDataType=None,
         parDefault=None,
         parChoices=["any"],
-        parScope=icm.ICM_ParamScope.TargetParam,
+        parScope=cs.CmndParamScope.TargetParam,
         argparseShortOpt=None,
         argparseLongOpt='--icmsPkgControlBaseDir',
     )
     
-    icmParams.parDictAdd(
+    csParams.parDictAdd(
         parName='icmsPkgVarBaseDir',
         parDescription="ICMs Package Var Base Directory",
         parDataType=None,
         parDefault=None,
         parChoices=["any"],
-        parScope=icm.ICM_ParamScope.TargetParam,
+        parScope=cs.CmndParamScope.TargetParam,
         argparseShortOpt=None,
         argparseLongOpt='--icmsPkgVarBaseDir',
     )
 
     
-    icmParams.parDictAdd(
+    csParams.parDictAdd(
         parName='icmsPkgLogBaseDir',
         parDescription="ICMs Package Log Base Directory",
         parDataType=None,
         parDefault=None,
         parChoices=["any"],
-        parScope=icm.ICM_ParamScope.TargetParam,
+        parScope=cs.CmndParamScope.TargetParam,
         argparseShortOpt=None,
         argparseLongOpt='--icmsPkgLogBaseDir',
     )
 
         
-    icmParams.parDictAdd(
+    csParams.parDictAdd(
         parName='icmsPkgTmpBaseDir',
         parDescription="ICMs Package Tmp Base Directory",
         parDataType=None,
         parDefault=None,
         parChoices=["any"],
-        parScope=icm.ICM_ParamScope.TargetParam,
+        parScope=cs.CmndParamScope.TargetParam,
         argparseShortOpt=None,
         argparseLongOpt='--icmsPkgTmpBaseDir',
     )
@@ -520,14 +487,14 @@ def examples_pkgInfoPars():
     """
 ** Auxiliary examples to be commonly used.
 """
-    icm.cmndExampleMenuChapter('* =FP Values=  pkgInfo Parameters')
+    cs.examples.menuChapter('* =FP Values=  pkgInfo Parameters')
 
     cmndAction = " -i inMailAcctParsGet" ; cmndArgs = ""
     menuLine = """{cmndAction} {cmndArgs}""".format(cmndAction=cmndAction, cmndArgs=cmndArgs)
-    icm.cmndExampleMenuItem(menuLine, verbosity='none')
+    cs.cmndExampleMenuItem(menuLine, verbosity='none')
 
     menuLine = """"""
-    icm.cmndExampleMenuItem(menuLine, icmName="pkgManage.py", verbosity='none')    
+    cs.cmndExampleMenuItem(menuLine, icmName="pkgManage.py", verbosity='none')
 
     
 """
@@ -544,48 +511,48 @@ def examples_pkgInfoParsFull(
 ** Auxiliary examples to be commonly used.
 """
     
-    icm.cmndExampleMenuChapter(' =Pkg/Module BaseDirs=  *Admin Panel*')
+    cs.examples.menuChapter(' =Pkg/Module BaseDirs=  *Admin Panel*')
 
     print(("{icmsPkgInfoBaseDir}  # pkgInfo/fp/icmsPkgName ## Rest is obsolete".format(icmsPkgInfoBaseDir=icmsPkgInfoBaseDir)))
     print(("{icmsPkgModuleBaseDir} #  admin,inputs".format(icmsPkgModuleBaseDir=icmsPkgModuleBaseDir))) 
     print(("{panel}".format(panel=os.path.join(icmsPkgModuleBaseDir, "admin", "Panel.org"))))
         
     
-    icm.cmndExampleMenuChapter(' =FP Values=  *pkgInfo Get Parameters*')
+    cs.examples.menuChapter(' =FP Values=  *pkgInfo Get Parameters*')
 
     cmndName = "pkgInfoParsGet" ; cmndArgs = "" ;
     cps = collections.OrderedDict() ;  cps['icmsPkgInfoBaseDir'] = icmsPkgInfoBaseDir 
-    icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+    cs.examples.cmndInsert(cmndName, cps, cmndArgs, verbosity='little')
 
     # cmndAction = " -i pkgInfoParsGet" ; cmndArgs = ""
     # menuLine = """{cmndAction} {cmndArgs}""".format(cmndAction=cmndAction, cmndArgs=cmndArgs)
     # icm.cmndExampleMenuItem(menuLine, verbosity='none')
 
-    # icm.cmndExampleMenuChapter(' =FP Values=  *PkgInfo Defaults ParsSet  --*')
+    # cs.examples.menuChapter(' =FP Values=  *PkgInfo Defaults ParsSet  --*')
 
     # cmndName = "pkgInfoParsDefaultsSet" ; cmndArgs = "bisosPolicy" ;
     # cps = collections.OrderedDict() ; cps['icmsPkgName'] = icmsPkgName ; cps['icmsPkgControlBaseDir'] = icmsPkgControlBaseDir ; cps['icmsPkgInfoBaseDir'] = icmsPkgInfoBaseDir 
-    # icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+    # cs.examples.cmndInsert(cmndName, cps, cmndArgs, verbosity='little')
     
     # cmndName = "pkgInfoParsDefaultsSet" ; cmndArgs = "bxoPolicy" ;
     # cps = collections.OrderedDict() ; cps['icmsPkgName'] = icmsPkgName ; cps['icmsPkgControlBaseDir'] = icmsPkgControlBaseDir 
-    # icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+    # cs.examples.cmndInsert(cmndName, cps, cmndArgs, verbosity='little')
     
     # cmndName = "pkgInfoParsDefaultsSet" ; cmndArgs = "runBaseDirPolicy" ;
     # cps = collections.OrderedDict() ; cps['icmsPkgName'] = icmsPkgName
     # cps['icmsPkgControlBaseDir'] = icmsPkgControlBaseDir ; cps['icmsPkgRunBaseDir'] = icmsPkgRunBaseDir
-    # icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+    # cs.examples.cmndInsert(cmndName, cps, cmndArgs, verbosity='little')
     
     # cmndName = "pkgInfoParsDefaultsSet" ; cmndArgs = "debianPolicy" ;
     # cps = collections.OrderedDict() ; cps['icmsPkgName'] = icmsPkgName 
-    # icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+    # cs.examples.cmndInsert(cmndName, cps, cmndArgs, verbosity='little')
     
     # cmndName = "pkgInfoParsDefaultsSet" ; cmndArgs = "centosPolicy" ;
     # cps = collections.OrderedDict() ; cps['icmsPkgName'] = icmsPkgName 
-    # icm.ex_gCmndMenuItem(cmndName, cps, cmndArgs, verbosity='little')
+    # cs.examples.cmndInsert(cmndName, cps, cmndArgs, verbosity='little')
     
 
-    # icm.cmndExampleMenuChapter(' =FP Values=  *PkgInfo ParsSet -- Set Parameters Explicitly*')
+    # cs.examples.menuChapter(' =FP Values=  *PkgInfo ParsSet -- Set Parameters Explicitly*')
 
     # cmndAction = " -i pkgInfoParsSet" ; cmndArgs = ""
     # menuLine = """--icmsPkgName="pkgName" {cmndAction} {cmndArgs}""".format(cmndAction=cmndAction, cmndArgs=cmndArgs)
@@ -609,7 +576,7 @@ def examples_pkgInfoParsFull(
     #     tmpPath=tmpPath, cmndAction=cmndAction, cmndArgs=cmndArgs)
     # icm.cmndExampleMenuItem(menuLine, icmWrapper="echo", verbosity='none')
   
-    # icm.cmndExampleMenuChapter(' =RunEnv=  *Run Environment (BaseDirs) Setups/Clean*')    
+    # cs.examples.menuChapter(' =RunEnv=  *Run Environment (BaseDirs) Setups/Clean*')    
 
     # cmndAction = " -i icmsRunEnvsPreps" ; cmndArgs = ""
     # menuLine = """{cmndAction} {cmndArgs}""".format(cmndAction=cmndAction, cmndArgs=cmndArgs)
@@ -619,7 +586,7 @@ def examples_pkgInfoParsFull(
     # menuLine = """{cmndAction} {cmndArgs}""".format(cmndAction=cmndAction, cmndArgs=cmndArgs)
     # icm.cmndExampleMenuItem(menuLine, icmWrapper="", verbosity='none')
 
-    # icm.cmndExampleMenuChapter(' =RunEnv=  *SymLinks To var/log/tmp/ Setups/Clean*')    
+    # cs.examples.menuChapter(' =RunEnv=  *SymLinks To var/log/tmp/ Setups/Clean*')    
 
     # cmndAction = " -i icmsRunEnvsLinks" ; cmndArgs = ""
     # menuLine = """{cmndAction} {cmndArgs}""".format(cmndAction=cmndAction, cmndArgs=cmndArgs)
@@ -629,7 +596,7 @@ def examples_pkgInfoParsFull(
     # menuLine = """{cmndAction} {cmndArgs}""".format(cmndAction=cmndAction, cmndArgs=cmndArgs)
     # icm.cmndExampleMenuItem(menuLine, icmWrapper="", verbosity='none')
 
-    # icm.cmndExampleMenuChapter(' =RunEnv=  *SymLinks To Libraries Setups/Clean*')    
+    # cs.examples.menuChapter(' =RunEnv=  *SymLinks To Libraries Setups/Clean*')    
     
     # cmndAction = " -i icmsLibsLinks" ; cmndArgs = ""
     # menuLine = """{cmndAction} {cmndArgs}""".format(cmndAction=cmndAction, cmndArgs=cmndArgs)
@@ -667,30 +634,27 @@ def FP_readTreeAtBaseDir_CmndOutput(
     )
 
 
-####+BEGIN: bx:icm:python:cmnd:classHead :modPrefix "new" :cmndName "pkgInfoParsGet" :comment "" :parsMand "icmsPkgInfoBaseDir" :parsOpt "" :argsMin "0" :argsMax "0" :asFunc "" :interactiveP ""
-"""
-*  [[elisp:(org-cycle)][| ]] [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(bx:orgm:indirectBufOther)][|>]] [[elisp:(bx:orgm:indirectBufMain)][|I]] [[elisp:(blee:ppmm:org-mode-toggle)][|N]] [[elisp:(org-top-overview)][|O]] [[elisp:(progn (org-shifttab) (org-content))][|C]] [[elisp:(delete-other-windows)][|1]]  ICM-Cmnd       :: /pkgInfoParsGet/ parsMand=icmsPkgInfoBaseDir parsOpt= argsMin=0 argsMax=0 asFunc= interactive=  [[elisp:(org-cycle)][| ]]
-"""
-class pkgInfoParsGet(icm.Cmnd):
+####+BEGIN: b:py3:cs:cmnd/classHead :modPrefix "new" :cmndName "pkgInfoParsGet" :comment "" :parsMand "icmsPkgInfoBaseDir" :parsOpt "" :argsMin 0 :argsMax 0 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<pkgInfoParsGet>>  =verify= parsMand=icmsPkgInfoBaseDir ro=cli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class pkgInfoParsGet(cs.Cmnd):
     cmndParamsMandatory = [ 'icmsPkgInfoBaseDir', ]
     cmndParamsOptional = [ ]
     cmndArgsLen = {'Min': 0, 'Max': 0,}
 
-    @icm.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
     def cmnd(self,
-        interactive=False,        # Can also be called non-interactively
-        icmsPkgInfoBaseDir=None,         # or Cmnd-Input
-    ):
-        cmndOutcome = self.getOpOutcome()
-        if interactive:
-            if not self.cmndLineValidate(outcome=cmndOutcome):
-                return cmndOutcome
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+             icmsPkgInfoBaseDir: typing.Optional[str]=None,  # Cs Mandatory Param
+    ) -> b.op.Outcome:
 
+        failed = b_io.eh.badOutcome
         callParamsDict = {'icmsPkgInfoBaseDir': icmsPkgInfoBaseDir, }
-        if not icm.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
-            return cmndOutcome
-        icmsPkgInfoBaseDir = callParamsDict['icmsPkgInfoBaseDir']
-
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
+            return failed(cmndOutcome)
+        icmsPkgInfoBaseDir = csParam.mappedValue('icmsPkgInfoBaseDir', icmsPkgInfoBaseDir)
 ####+END:
 
         #if not icmsPkgInfoBaseDir:
@@ -712,45 +676,42 @@ class pkgInfoParsGet(icm.Cmnd):
 """
 
 
-####+BEGIN: bx:icm:python:cmnd:classHead :modPrefix "new" :cmndName "pkgInfoParsSet" :comment "" :parsMand "" :parsOpt "icmsPkgInfoBaseDir icmsPkgName icmsPkgControlBaseDir icmsPkgVarBaseDir icmsPkgTmpBaseDir icmsPkgBasesPolicy icmsPkgLogBaseDir" :argsMin "0" :argsMax "0" :asFunc "" :interactiveP ""
-"""
-*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || ICM-Cmnd       :: /pkgInfoParsSet/ parsMand= parsOpt=icmsPkgInfoBaseDir icmsPkgName icmsPkgControlBaseDir icmsPkgVarBaseDir icmsPkgTmpBaseDir icmsPkgBasesPolicy icmsPkgLogBaseDir argsMin=0 argsMax=0 asFunc= interactive=  [[elisp:(org-cycle)][| ]]
-"""
-class pkgInfoParsSet(icm.Cmnd):
+####+BEGIN: b:py3:cs:cmnd/classHead :modPrefix "new" :cmndName "pkgInfoParsSet" :comment "" :parsMand "" :parsOpt "icmsPkgInfoBaseDir icmsPkgName icmsPkgControlBaseDir icmsPkgVarBaseDir icmsPkgTmpBaseDir icmsPkgBasesPolicy icmsPkgLogBaseDir" :argsMin 0 :argsMax 0 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<pkgInfoParsSet>>  =verify= parsOpt=icmsPkgInfoBaseDir icmsPkgName icmsPkgControlBaseDir icmsPkgVarBaseDir icmsPkgTmpBaseDir icmsPkgBasesPolicy icmsPkgLogBaseDir ro=cli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class pkgInfoParsSet(cs.Cmnd):
     cmndParamsMandatory = [ ]
     cmndParamsOptional = [ 'icmsPkgInfoBaseDir', 'icmsPkgName', 'icmsPkgControlBaseDir', 'icmsPkgVarBaseDir', 'icmsPkgTmpBaseDir', 'icmsPkgBasesPolicy', 'icmsPkgLogBaseDir', ]
     cmndArgsLen = {'Min': 0, 'Max': 0,}
 
-    @icm.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
     def cmnd(self,
-        interactive=False,        # Can also be called non-interactively
-        icmsPkgInfoBaseDir=None,         # or Cmnd-Input
-        icmsPkgName=None,         # or Cmnd-Input
-        icmsPkgControlBaseDir=None,         # or Cmnd-Input
-        icmsPkgVarBaseDir=None,         # or Cmnd-Input
-        icmsPkgTmpBaseDir=None,         # or Cmnd-Input
-        icmsPkgBasesPolicy=None,         # or Cmnd-Input
-        icmsPkgLogBaseDir=None,         # or Cmnd-Input
-    ):
-        cmndOutcome = self.getOpOutcome()
-        if interactive:
-            if not self.cmndLineValidate(outcome=cmndOutcome):
-                return cmndOutcome
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+             icmsPkgInfoBaseDir: typing.Optional[str]=None,  # Cs Optional Param
+             icmsPkgName: typing.Optional[str]=None,  # Cs Optional Param
+             icmsPkgControlBaseDir: typing.Optional[str]=None,  # Cs Optional Param
+             icmsPkgVarBaseDir: typing.Optional[str]=None,  # Cs Optional Param
+             icmsPkgTmpBaseDir: typing.Optional[str]=None,  # Cs Optional Param
+             icmsPkgBasesPolicy: typing.Optional[str]=None,  # Cs Optional Param
+             icmsPkgLogBaseDir: typing.Optional[str]=None,  # Cs Optional Param
+    ) -> b.op.Outcome:
 
+        failed = b_io.eh.badOutcome
         callParamsDict = {'icmsPkgInfoBaseDir': icmsPkgInfoBaseDir, 'icmsPkgName': icmsPkgName, 'icmsPkgControlBaseDir': icmsPkgControlBaseDir, 'icmsPkgVarBaseDir': icmsPkgVarBaseDir, 'icmsPkgTmpBaseDir': icmsPkgTmpBaseDir, 'icmsPkgBasesPolicy': icmsPkgBasesPolicy, 'icmsPkgLogBaseDir': icmsPkgLogBaseDir, }
-        if not icm.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
-            return cmndOutcome
-        icmsPkgInfoBaseDir = callParamsDict['icmsPkgInfoBaseDir']
-        icmsPkgName = callParamsDict['icmsPkgName']
-        icmsPkgControlBaseDir = callParamsDict['icmsPkgControlBaseDir']
-        icmsPkgVarBaseDir = callParamsDict['icmsPkgVarBaseDir']
-        icmsPkgTmpBaseDir = callParamsDict['icmsPkgTmpBaseDir']
-        icmsPkgBasesPolicy = callParamsDict['icmsPkgBasesPolicy']
-        icmsPkgLogBaseDir = callParamsDict['icmsPkgLogBaseDir']
-
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, None).isProblematic():
+            return failed(cmndOutcome)
+        icmsPkgInfoBaseDir = csParam.mappedValue('icmsPkgInfoBaseDir', icmsPkgInfoBaseDir)
+        icmsPkgName = csParam.mappedValue('icmsPkgName', icmsPkgName)
+        icmsPkgControlBaseDir = csParam.mappedValue('icmsPkgControlBaseDir', icmsPkgControlBaseDir)
+        icmsPkgVarBaseDir = csParam.mappedValue('icmsPkgVarBaseDir', icmsPkgVarBaseDir)
+        icmsPkgTmpBaseDir = csParam.mappedValue('icmsPkgTmpBaseDir', icmsPkgTmpBaseDir)
+        icmsPkgBasesPolicy = csParam.mappedValue('icmsPkgBasesPolicy', icmsPkgBasesPolicy)
+        icmsPkgLogBaseDir = csParam.mappedValue('icmsPkgLogBaseDir', icmsPkgLogBaseDir)
 ####+END:
 
-        #G = icm.IcmGlobalContext()        
+        #G = cs.globalContext.get()        
 
         def createPathAndFpWrite(
                 fpPath,
@@ -763,20 +724,20 @@ class pkgInfoParsSet(icm.Cmnd):
                 if not os.path.isdir(valuePath):
                     raise
             
-            icm.FILE_ParamWriteToPath(
+            icm.b.fp.FileParamWriteToPath(
                 parNameFullPath=fpPath,
                 parValue=valuePath,
             )
 
             
         if icmsPkgName:
-            icm.FILE_ParamWriteToPath(
+            icm.b.fp.FileParamWriteToPath(
                 parNameFullPath=os.path.join(pkgInfoFpBaseDir_obtain(icmsPkgInfoBaseDir=icmsPkgInfoBaseDir), "icmsPkgName"),
                 parValue=icmsPkgName,
             )
 
         if icmsPkgBasesPolicy:
-            icm.FILE_ParamWriteToPath(
+            icm.b.fp.FileParamWriteToPath(
                 parNameFullPath=os.path.join(pkgInfoFpBaseDir_obtain(icmsPkgInfoBaseDir=icmsPkgInfoBaseDir), "icmsPkgBasesPolicy"),
                 parValue=icmsPkgBasesPolicy,
             )
@@ -805,11 +766,11 @@ class pkgInfoParsSet(icm.Cmnd):
                 icmsPkgTmpBaseDir,
             )
             
-        if interactive:
-            icm.ANN_here("pkgInfoParsSet")
+        if rtInv.outs:
+            b_io.ann.here("pkgInfoParsSet")
 
         return cmndOutcome.set(
-            opError=icm.OpError.Success,
+            opError=b.OpError.Success,
             opResults=None,
         )
 
@@ -819,45 +780,37 @@ class pkgInfoParsSet(icm.Cmnd):
 """
     
 
-####+BEGIN: bx:icm:python:cmnd:classHead :modPrefix "new" :cmndName "pkgInfoParsDefaultsSet" :comment "" :parsMand "icmsPkgName" :parsOpt "icmsPkgInfoBaseDir icmsPkgControlBaseDir icmsPkgRunBaseDir" :argsMin "0" :argsMax "1" :asFunc "" :interactiveP ""
-"""
-*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] [[elisp:(show-children 10)][|V]] [[elisp:(org-tree-to-indirect-buffer)][|>]] [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || ICM-Cmnd       :: /pkgInfoParsDefaultsSet/ parsMand=icmsPkgName parsOpt=icmsPkgInfoBaseDir icmsPkgControlBaseDir icmsPkgRunBaseDir argsMin=0 argsMax=1 asFunc= interactive=  [[elisp:(org-cycle)][| ]]
-"""
-class pkgInfoParsDefaultsSet(icm.Cmnd):
+####+BEGIN: b:py3:cs:cmnd/classHead :modPrefix "new" :cmndName "pkgInfoParsDefaultsSet" :comment "" :parsMand "icmsPkgName" :parsOpt "icmsPkgInfoBaseDir icmsPkgControlBaseDir icmsPkgRunBaseDir" :argsMin 0 :argsMax 1 :pyInv ""
+""" #+begin_org
+*  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  CmndSvc-   [[elisp:(outline-show-subtree+toggle)][||]] <<pkgInfoParsDefaultsSet>>  =verify= parsMand=icmsPkgName parsOpt=icmsPkgInfoBaseDir icmsPkgControlBaseDir icmsPkgRunBaseDir argsMax=1 ro=cli   [[elisp:(org-cycle)][| ]]
+#+end_org """
+class pkgInfoParsDefaultsSet(cs.Cmnd):
     cmndParamsMandatory = [ 'icmsPkgName', ]
     cmndParamsOptional = [ 'icmsPkgInfoBaseDir', 'icmsPkgControlBaseDir', 'icmsPkgRunBaseDir', ]
     cmndArgsLen = {'Min': 0, 'Max': 1,}
 
-    @icm.subjectToTracking(fnLoc=True, fnEntry=True, fnExit=True)
+    @cs.track(fnLoc=True, fnEntry=True, fnExit=True)
     def cmnd(self,
-        interactive=False,        # Can also be called non-interactively
-        icmsPkgName=None,         # or Cmnd-Input
-        icmsPkgInfoBaseDir=None,         # or Cmnd-Input
-        icmsPkgControlBaseDir=None,         # or Cmnd-Input
-        icmsPkgRunBaseDir=None,         # or Cmnd-Input
-        argsList=[],         # or Args-Input
-    ):
-        cmndOutcome = self.getOpOutcome()
-        if interactive:
-            if not self.cmndLineValidate(outcome=cmndOutcome):
-                return cmndOutcome
-            effectiveArgsList = G.icmRunArgsGet().cmndArgs
-        else:
-            effectiveArgsList = argsList
+             rtInv: cs.RtInvoker,
+             cmndOutcome: b.op.Outcome,
+             icmsPkgName: typing.Optional[str]=None,  # Cs Mandatory Param
+             icmsPkgInfoBaseDir: typing.Optional[str]=None,  # Cs Optional Param
+             icmsPkgControlBaseDir: typing.Optional[str]=None,  # Cs Optional Param
+             icmsPkgRunBaseDir: typing.Optional[str]=None,  # Cs Optional Param
+             argsList: typing.Optional[list[str]]=None,  # CsArgs
+    ) -> b.op.Outcome:
 
+        failed = b_io.eh.badOutcome
         callParamsDict = {'icmsPkgName': icmsPkgName, 'icmsPkgInfoBaseDir': icmsPkgInfoBaseDir, 'icmsPkgControlBaseDir': icmsPkgControlBaseDir, 'icmsPkgRunBaseDir': icmsPkgRunBaseDir, }
-        if not icm.cmndCallParamsValidate(callParamsDict, interactive, outcome=cmndOutcome):
-            return cmndOutcome
-        icmsPkgName = callParamsDict['icmsPkgName']
-        icmsPkgInfoBaseDir = callParamsDict['icmsPkgInfoBaseDir']
-        icmsPkgControlBaseDir = callParamsDict['icmsPkgControlBaseDir']
-        icmsPkgRunBaseDir = callParamsDict['icmsPkgRunBaseDir']
-
+        if self.invocationValidate(rtInv, cmndOutcome, callParamsDict, argsList).isProblematic():
+            return failed(cmndOutcome)
         cmndArgsSpecDict = self.cmndArgsSpec()
-        if not self.cmndArgsValidate(effectiveArgsList, cmndArgsSpecDict, outcome=cmndOutcome):
-            return cmndOutcome
+        icmsPkgName = csParam.mappedValue('icmsPkgName', icmsPkgName)
+        icmsPkgInfoBaseDir = csParam.mappedValue('icmsPkgInfoBaseDir', icmsPkgInfoBaseDir)
+        icmsPkgControlBaseDir = csParam.mappedValue('icmsPkgControlBaseDir', icmsPkgControlBaseDir)
+        icmsPkgRunBaseDir = csParam.mappedValue('icmsPkgRunBaseDir', icmsPkgRunBaseDir)
 ####+END:
-        #G = icm.IcmGlobalContext()
+        #G = cs.globalContext.get()
 
         #basesPolicyChoices = self.__class__.cmndArgsSpec[0]
 
@@ -877,7 +830,7 @@ class pkgInfoParsDefaultsSet(icm.Cmnd):
 
         if basesPolicy == "bisosPolicy":
             if not icmsPkgControlBaseDir:
-                return icm.EH_problem_usageError("Missing Control BaseDir")
+                return b_io.eh.problem_usageError("Missing Control BaseDir")
 
             controlPath = icmsPkgControlBaseDir
             varPath = os.path.join("/bisos", "var")
@@ -886,7 +839,7 @@ class pkgInfoParsDefaultsSet(icm.Cmnd):
 
         elif basesPolicy == "bxoPolicy":
             if not icmsPkgControlBaseDir:
-                return icm.EH_problem_usageError("")
+                return b_io.eh.problem_usageError("")
 
             controlPath = icmsPkgControlBaseDir
             varPath = os.path.join(icmsRunEnvBaseDir_obtain(), "var", icmsPkgName_fpObtain(icmsPkgInfoBaseDir=icmsPkgInfoBaseDir))
@@ -895,7 +848,7 @@ class pkgInfoParsDefaultsSet(icm.Cmnd):
 
         elif basesPolicy == "runBaseDirPolicy":
             if not icmsPkgRunBaseDir:
-                return icm.EH_problem_usageError("")
+                return b_io.eh.problem_usageError("")
             
             if icmsPkgControlBaseDir:
                 controlPath = icmsPkgControlBaseDir
@@ -919,7 +872,7 @@ class pkgInfoParsDefaultsSet(icm.Cmnd):
             tmpPath = os.path.join("/tmp/bystar", icmsPkgName)
             
         else:
-            return icm.EH_critical_oops("basesPolicy={}".format(basesPolicy))
+            return b_io.eh.critical_oops("basesPolicy={}".format(basesPolicy))
 
         pkgInfoParsSet().cmnd(
             interactive=False,
@@ -946,7 +899,7 @@ class pkgInfoParsDefaultsSet(icm.Cmnd):
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Class-IIF    ::  icmsRunEnvsPreps    [[elisp:(org-cycle)][| ]]
 """
-class icmsRunEnvsPreps(icm.Cmnd):
+class icmsRunEnvsPreps(cs.Cmnd):
     """
 ** Create run time environment directories (tmp var)
 """
@@ -958,12 +911,12 @@ class icmsRunEnvsPreps(icm.Cmnd):
 
 ####+END:
 
-        #G = icm.IcmGlobalContext()
+        #G = cs.globalContext.get()
 
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Class-IIF    ::  icmsRunEnvsClean    [[elisp:(org-cycle)][| ]]
 """        
-class icmsRunEnvsClean(icm.Cmnd):
+class icmsRunEnvsClean(cs.Cmnd):
     """
 ** Remove run time environment directories (tmp var)
     opDo rm -r "${icmsRunEnvBaseDir}/tmp/${icmsPkgName}"
@@ -977,12 +930,12 @@ class icmsRunEnvsClean(icm.Cmnd):
 
 ####+END:
 
-        #G = icm.IcmGlobalContext()
+        #G = cs.globalContext.get()
 
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Class-IIF    ::  icmsRunEnvLinks    [[elisp:(org-cycle)][| ]]
 """        
-class icmsRunEnvLinks(icm.Cmnd):
+class icmsRunEnvLinks(cs.Cmnd):
     """
 ** Create links for ../tmp ../var and ../control
     opDo rm -r "${icmsRunEnvBaseDir}/tmp/${icmsPkgName}"
@@ -996,12 +949,12 @@ class icmsRunEnvLinks(icm.Cmnd):
 
 ####+END:
 
-        #G = icm.IcmGlobalContext()
+        #G = cs.globalContext.get()
 
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Class-IIF    ::  icmsRunEnvLinksClean    [[elisp:(org-cycle)][| ]]
 """        
-class icmsRunEnvLinksClean(icm.Cmnd):
+class icmsRunEnvLinksClean(cs.Cmnd):
     """
 ** Remove links of ../tmp ../var and ../control
     opDo FN_fileSymlinkRemoveIfThere "${icmsPkgBaseDir}/tmp"
@@ -1017,12 +970,12 @@ class icmsRunEnvLinksClean(icm.Cmnd):
 
 ####+END:
 
-        #G = icm.IcmGlobalContext()
+        #G = cs.globalContext.get()
         
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Class-IIF    ::  icmsLibsLinks    [[elisp:(org-cycle)][| ]]
 """        
-class icmsLibsLinks(icm.Cmnd):
+class icmsLibsLinks(cs.Cmnd):
     """
 ** Creates links in ../lib/python/
     opDo FN_fileSymlinkUpdate /de/bx/nne/dev-py/libs/icmPkg/icm ${icmsPkgBaseDir}/lib/python/icm
@@ -1036,12 +989,12 @@ class icmsLibsLinks(icm.Cmnd):
 
 ####+END:
 
-        #G = icm.IcmGlobalContext()
+        #G = cs.globalContext.get()
 
 """
 *  [[elisp:(org-cycle)][| ]]  [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(beginning-of-buffer)][Top]] [[elisp:(delete-other-windows)][(1)]] || Class-IIF    ::  icmsLibsLinksClean    [[elisp:(org-cycle)][| ]]
 """        
-class icmsLibsLinksClean(icm.Cmnd):
+class icmsLibsLinksClean(cs.Cmnd):
     """
 ** Remove links in ../lib/python/
     opDo FN_fileSymlinkRemoveIfThere ${icmsPkgBaseDir}/lib/python/icm
@@ -1055,10 +1008,10 @@ class icmsLibsLinksClean(icm.Cmnd):
 
 ####+END:
 
-        #G = icm.IcmGlobalContext()
+        #G = cs.globalContext.get()
         
 
-####+BEGIN: bx:icm:python:section :title "End Of Editable Text"
+####+BEGIN: blee:bxPanel:foldingSection :outLevel 0 :title " ~End Of Editable Text~ "
 """
 *  [[elisp:(beginning-of-buffer)][Top]] ################ [[elisp:(blee:ppmm:org-mode-toggle)][Nat]] [[elisp:(delete-other-windows)][(1)]]    *End Of Editable Text*  [[elisp:(org-cycle)][| ]]  [[elisp:(org-show-subtree)][|=]] 
 """

@@ -1,0 +1,77 @@
+#+title: bisos.common:  CS-Units for use by BISOS tools and Apps.
+#+DATE: <2024-02-19 Mon 16:27>
+#+AUTHOR: Mohsen BANAN
+#+OPTIONS: toc:4
+
+Panel Controls:: [[elisp:(show-all)][Show-All]]  [[elisp:(org-shifttab)][Overview]]  [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] [[elisp:(save-buffer)][Save]] [[elisp:(kill-buffer)][Quit]] [[elisp:(bury-buffer)][Bury]]
+Links: [[file:./panels/_nodeBase_/fullUsagePanel-en.org]] (Package Panel)
+
+* Overview
+Common BISOS (ByStar Internet Services OS) Library contains
+general purpose modules.
+
+
+* Table of Contents     :TOC:
+- [[#overview][Overview]]
+- [[#about-bisos-----bystar-internet-services-operating-system][About BISOS --- ByStar Internet Services Operating System]]
+- [[#installation][Installation]]
+  - [[#with-pip][With pip]]
+- [[#documentation][Documentation]]
+  - [[#bisoscommon-blee-panels][bisos.common Blee-Panels]]
+- [[#support][Support]]
+
+* About BISOS --- ByStar Internet Services Operating System
+
+Layered on top of Debian, *BISOS*: (By* Internet Services Operating System) is a
+unified and universal framework for developing both internet services and
+software-service continuums that use internet services. See [[https://github.com/bxGenesis/start][Bootstrapping
+ByStar, BISOS and Blee]] for information about getting started with BISOS.
+
+bisos.common is a small piece of a much bigger picture. *BISOS* is a
+foundation for *The Libre-Halaal ByStar Digital Ecosystem* which is described as
+a cure for losses of autonomy and privacy that we are experiencing in a book
+titled: [[https://github.com/bxplpc/120033][Nature of Polyexistentials]]
+
+
+* Installation
+
+The sources for the  bisos.facter pip package is maintained at:
+https://github.com/bisos-pip/facter.
+
+The bisos.facter pip package is available at PYPI as
+https://pypi.org/project/bisos.facter
+
+You can install bisos.facter with pip or pipx.
+
+** With pip
+
+If you need access to bisos.facter as a python module, you can install it with pip:
+
+#+begin_src bash
+pip install bisos.common
+#+end_src
+
+* Documentation
+
+Part of ByStar Digital Ecosystem [[http://www.by-star.net]].
+
+This module's primary documentation is in
+[[http://www.by-star.net/PLPC/180047]]
+
+** bisos.common Blee-Panels
+
+bisos.common Blee-Panles are in ./panels directory.
+From within Blee and BISOS these panles are accessible under the
+Blee "Panels" menu.
+
+* Support
+
+For support, criticism, comments and questions; please contact the
+author/maintainer\\
+[[http://mohsen.1.banan.byname.net][Mohsen Banan]] at:
+[[http://mohsen.1.banan.byname.net/contact]]
+
+
+# Local Variables:
+# eval: (setq-local toc-org-max-depth 4)
+# End:
