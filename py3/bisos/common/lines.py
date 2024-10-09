@@ -87,7 +87,7 @@ import collections
 
 from bisos.currents import currentsConfig
 
-
+import pathlib
 
 ####+BEGIN: bx:cs:py3:section :title "Public Classes"
 """ #+begin_org
@@ -103,7 +103,11 @@ from bisos.currents import currentsConfig
 class Lines(object):
 ####+END:
     """
-** Abstraction of a dotQmail
+** Abstraction of a line in a file similar to ICM FN_lineRemoveFromFile
+*** FN_lineRemoveFromFile
+*** FN_lineAddToFile
+*** FileLine.remove(filePath, regExp)   # As static functions
+*** FileLine.add(filePath, regExpExistingLine, NewLine)
 """
 
     def __init__(
