@@ -1,12 +1,6 @@
 #+title: bisos.common:  CS-Units for use by BISOS tools and Apps.
-#+DATE: <2024-02-19 Mon 16:27>
-#+AUTHOR: Mohsen BANAN
-#+OPTIONS: toc:4
 
 
-~Blee Panel Controls~: [[elisp:(show-all)][Show-All]] | [[elisp:(org-shifttab)][Overview]] | [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] | [[elisp:(save-buffer)][Save]]  | [[elisp:(kill-buffer)][Quit]]  | [[elisp:(bury-buffer)][Bury]]  \\
-~Panel Links~:  [[file:../_nodeBase_/fullUsagePanel-en.org][Blee Panel]] | [[file:./py3/panels/bisos.facter/_nodeBase_/fullUsagePanel-en.org][Github Panel]]
-~See Also~:  [[https://github.com/bisos-pip/b][At Github]] | [[https://pypi.org/project/bisos.facter][At PYPI]] | [[https://github.com/bisos-pip/pycs][bisos.PyCS]] | [[https://github.com/bisos-pip/cmdb][bisos.cmdb]]
 
 * Overview
 Common BISOS (ByStar Internet Services OS) Library contains
@@ -74,6 +68,3 @@ author/maintainer\\
 [[http://mohsen.1.banan.byname.net/contact]]
 
 
-# Local Variables:
-# eval: (setq-local toc-org-max-depth 4)
-# End:

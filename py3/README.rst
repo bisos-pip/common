@@ -2,9 +2,6 @@
 bisos.common: CS-Units for use by BISOS tools and Apps.
 =======================================================
 
-:Author: Mohsen BANAN
-:Date:   <2024-02-19 Mon 16:27>
-
 .. contents::
    :depth: 3
 ..
