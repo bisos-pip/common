@@ -1064,6 +1064,11 @@ def pbdDict_bxReposRoot(
 
     gitClone('bisos-pip/graphviz-cs', 'bisos-pip/graphviz-cs', vcMode)
     gitClone('bisos-pip/capability', 'bisos-pip/capability', vcMode)
+    gitClone('bisos-pip/capSpecs', 'bisos-pip/capSpecs', vcMode)
+    gitClone('bisos-pip/stub', 'bisos-pip/stub', vcMode)
+    gitClone('bisos-pip/sbom', 'bisos-pip/sbom', vcMode)
+    gitClone('bisos-pip/virsh', 'bisos-pip/virsh', vcMode)
+    gitClone('bisos-pip/pycs', 'bisos-pip/pycs', vcMode)
 
     gitCloneBase('blee-pip',  'blee-pip/base', vcMode)
     gitClone('blee-pip/overview',  'blee-pip/overview', vcMode)    
