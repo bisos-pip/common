@@ -1084,11 +1084,11 @@ def pbdDict_bxReposRoot(
     # gitClone('roPerf-pip/namespace',  'roPerf-pip/namespace', vcMode)
     # gitClone('roPerf-pip/bearerTokenExample',  'roPerf-pip/bearerTokenExample', vcMode)
 
-    gitCloneBase('efficientProtocols',  'efficientProtocols/base', vcMode)
-    gitClone('efficientProtocols/overview',  'efficientProtocols/overview', vcMode)    
-    gitClone('efficientProtocols/OCP',  'efficientProtocols/OCP', vcMode)        
-    gitClone('efficientProtocols/ESRO',  'efficientProtocols/ESRO', vcMode)
-    gitClone('efficientProtocols/EMSD',  'efficientProtocols/EMSD', vcMode)        
+    # gitCloneBase('efficientProtocols',  'efficientProtocols/base', vcMode)
+    # gitClone('efficientProtocols/overview',  'efficientProtocols/overview', vcMode)
+    # gitClone('efficientProtocols/OCP',  'efficientProtocols/OCP', vcMode)
+    # gitClone('efficientProtocols/ESRO',  'efficientProtocols/ESRO', vcMode)
+    # gitClone('efficientProtocols/EMSD',  'efficientProtocols/EMSD', vcMode)
 
     gitCloneBase('blee-binders',  'blee-binders/base', vcMode)    
     gitClone('blee-binders/overview',  'blee-binders/overview', vcMode)
