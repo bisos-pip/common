@@ -87,6 +87,7 @@ import collections
 
 from bisos.currents import currentsConfig
 
+
 ####+BEGIN: b:py3:cs:func/typing :funcName "mappedValue" :funcType "eType" :retType "" :deco "default"
 """ #+begin_org
 *  _[[elisp:(blee:menu-sel:outline:popupMenu)][±]]_ _[[elisp:(blee:menu-sel:navigation:popupMenu)][Ξ]]_ [[elisp:(outline-show-branches+toggle)][|=]] [[elisp:(bx:orgm:indirectBufOther)][|>]] *[[elisp:(blee:ppmm:org-mode-toggle)][|N]]*  F-T-eType  [[elisp:(outline-show-subtree+toggle)][||]] /mappedValue/  deco=default  [[elisp:(org-cycle)][| ]]
