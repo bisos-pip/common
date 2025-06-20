@@ -981,6 +981,7 @@ def pbdDict_bxReposRoot(
     gitClone('blee/bidi-menu', 'bx-blee/bidi-menu', vcMode)
     gitClone('blee/bisos', 'bx-blee/bisos', vcMode)
     gitClone('blee/chatGptInv', 'bx-blee/chatGptInv', vcMode)
+    gitClone('blee/aiplus', 'bx-blee/aiplus', vcMode)
     #
     # Blee Misc
     #
