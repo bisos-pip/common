@@ -715,7 +715,7 @@ def pbdDict_bisosRoot(
 ####+END:
     """
 ** In /lcnt/lgpc/bystar/permanent/common/clips/bisosBasesInstall.tex
-*** See: \section{/bisos Bases Directory Structure Overview}
+*** See: section{/bisos Bases Directory Structure Overview}
     """
 
     pbdDict = collections.OrderedDict()
@@ -889,7 +889,7 @@ def pbdDict_deRunRoot(
 ####+END:
     """
 ** In /lcnt/lgpc/bystar/permanent/common/clips/bisosBasesInstall.tex
-*** See: \section{/de/run Bases Directory Structure Overview}
+*** See: section{/de/run Bases Directory Structure Overview}
     """
 
     pbdDict = collections.OrderedDict()
@@ -952,7 +952,7 @@ def pbdDict_bxoRoot(
     """
 ** BISOS Policy  baseDir="/bxo"
 ** In /lcnt/lgpc/bystar/permanent/common/clips/bisosBasesInstall.tex
-*** See: \section{/de/bxo Bases Directory Structure Overview}
+*** See: section{/de/bxo Bases Directory Structure Overview}
     """
 
     pbdDict = collections.OrderedDict()

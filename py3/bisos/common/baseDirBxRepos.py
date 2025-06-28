@@ -602,7 +602,7 @@ def pbdDict_bxReposCollection(
     """
 ** TODO PROBLEM -- NOTYET, still uses https git auth -- 
 ** In /lcnt/lgpc/bystar/permanent/common/clips/bxReposBasesInstall.tex
-*** See: \section{/bxRepos Bases Directory Structure Overview}
+*** See: section{/bxRepos Bases Directory Structure Overview}
     """
 
     pbdDict = collections.OrderedDict()
@@ -748,7 +748,7 @@ def pbdDict_bxReposRoot(
 ####+END:
     """
 ** In /lcnt/lgpc/bystar/permanent/common/clips/bxReposBasesInstall.tex
-*** See: \section{/bxRepos Bases Directory Structure Overview}
+*** See: section{/bxRepos Bases Directory Structure Overview}
     """
 
     pbdDict = collections.OrderedDict()
@@ -1144,7 +1144,7 @@ def pbdDict_extRepos(
 ####+END:
     """
 ** In /lcnt/lgpc/bystar/permanent/common/clips/bxReposBasesInstall.tex
-*** See: \section{/bxRepos Bases Directory Structure Overview}
+*** See: section{/bxRepos Bases Directory Structure Overview}
     """
 
     pbdDict = collections.OrderedDict()
