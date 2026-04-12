@@ -982,6 +982,7 @@ def pbdDict_bxReposRoot(
     gitClone('blee/bisos', 'bx-blee/bisos', vcMode)
     gitClone('blee/chatGptInv', 'bx-blee/chatGptInv', vcMode)
     gitClone('blee/aiplus', 'bx-blee/aiplus', vcMode)
+    gitClone('blee/open-in', 'bx-blee/open-in', vcMode)
     #
     # Blee Misc
     #
@@ -1054,6 +1055,8 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/debian',  'bisos-pip/debian', vcMode)
     gitClone('bisos-pip/io',  'bisos-pip/io', vcMode)
     gitClone('bisos-pip/qmail',  'bisos-pip/qmail', vcMode)
+    gitClone('bisos-pip/qmailMua',  'bisos-pip/qmailMua', vcMode)
+    gitClone('bisos-pip/qmailSvc',  'bisos-pip/qmailSvc', vcMode)
     gitClone('bisos-pip/regfps', 'bisos-pip/regfps', vcMode)
     gitClone('bisos-pip/sites', 'bisos-pip/sites', vcMode)
     gitClone('bisos-pip/siteRegistrars', 'bisos-pip/siteRegistrars', vcMode)
@@ -1073,6 +1076,15 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/githubApi', 'bisos-pip/githubApi', vcMode)
     gitClone('bisos-pip/csPlayer', 'bisos-pip/csPlayer', vcMode)
     gitClone('bisos-pip/gcipher', 'bisos-pip/gcipher', vcMode)
+    # April 2026
+    gitClone('bisos-pip/csSeed', 'bisos-pip/csSeed', vcMode)
+    gitClone('bisos-pip/dockerProc', 'bisos-pip/dockerProc', vcMode)
+    gitClone('bisos-pip/gnome', 'bisos-pip/gnome', vcMode)
+    gitClone('bisos-pip/myLinkedIn', 'bisos-pip/myLinkedIn', vcMode)
+    gitClone('bisos-pip/tocsModules', 'bisos-pip/tocsModules', vcMode)
+    gitClone('bisos-pip/uploadAsCs', 'bisos-pip/uploadAsCs', vcMode)
+    gitClone('bisos-pip/vagrantBaseBoxes', 'bisos-pip/vagrantBaseBoxes', vcMode)
+    gitClone('bisos-pip/webCap', 'bisos-pip/webCap', vcMode)
 
     # gitCloneBase('blee-pip',  'blee-pip/base', vcMode)
     # gitClone('blee-pip/overview',  'blee-pip/overview', vcMode)
