@@ -793,6 +793,7 @@ def pbdDict_bisosRoot(
     directory('control/bisos')    
     directory('control/bisos/site')    
 
+    # /bisos/var
     symLink('var', '/var/bisos')    
     directory('var/core')
     directory('var/srcPkgs')    
@@ -802,6 +803,9 @@ def pbdDict_bisosRoot(
     directory('var/icmsPkg/marmee/pkgInfo')
     directory('var/icmsPkg/marmee/admin')
     directory('var/usg')
+    directory('var/blee')
+    directory('var/blee/emacsVers')
+    directory('var/csxu')
 
     directory('tmp')
 
@@ -870,8 +874,9 @@ def pbdDict_bisosRoot(
     symLink('gatherer/active', 'gatherer/bisos')
 
     directory('groupAcct')
-     
-    directory('blee')
+
+    symLink('blee', 'git/bxRepos/bisos/blee')
+    # directory('blee')
     # blee directory is then populated with pbdDict_bleeRoot
 
     directory('pipx')
@@ -1008,6 +1013,11 @@ def pbdDict_bleeRoot(
     """
 
     pbdDict = collections.OrderedDict()
+
+    print(f"pbdDict_bleeRoot baseDir={baseDir} IS OBOLETED -- NOTEYET, Clean the code")
+
+    # NOTYET, OBSOLETDED
+    return pbdDict
 
     root = bxpRoot_baseObtain(baseDir)
     pbdDict['/'] = bxpObjGet_baseDir(root, '')
