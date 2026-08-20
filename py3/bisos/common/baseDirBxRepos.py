@@ -1086,6 +1086,11 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/uploadAsCs', 'bisos-pip/uploadAsCs', vcMode)
     gitClone('bisos-pip/vagrantBaseBoxes', 'bisos-pip/vagrantBaseBoxes', vcMode)
     gitClone('bisos-pip/webCap', 'bisos-pip/webCap', vcMode)
+    gitClone('bisos-pip/pyDblock', 'bisos-pip/pyDblock', vcMode)
+    gitClone('bisos-pip/fileObj', 'bisos-pip/fileObj', vcMode)
+    gitClone('bisos-pip/dnsCap', 'bisos-pip/dnsCap', vcMode)
+    gitClone('bisos-pip/aiActivity', 'bisos-pip/aiActivity', vcMode)
+    gitClone('bisos-pip/pipreqsPlus', 'bisos-pip/pipreqsPlus', vcMode)
 
     # gitCloneBase('blee-pip',  'blee-pip/base', vcMode)
     # gitClone('blee-pip/overview',  'blee-pip/overview', vcMode)
