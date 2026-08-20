@@ -935,8 +935,11 @@ def pbdDict_bxReposRoot(
 
     gitCloneBase('bxObjects', 'bxObjects/base', vcMode)
     gitClone('bxObjects/overview',  'bxObjects/overview', vcMode)
-    gitClone('bxObjects/a-ig-ub-cur-small',  'bxObjects/a-ig-ub-cur-small', vcMode)    
-    
+    gitClone('bxObjects/a-ig-ub-cur-small',  'bxObjects/a-ig-ub-cur-small', vcMode)
+    gitClone('bxObjects/bro_rawBisos',  'bxObjects/bro_rawBisos', vcMode)
+    gitClone('bxObjects/bro_dockerfiles',  'bxObjects/bro_dockerfiles', vcMode)
+    gitClone('bxObjects/bro_tocsModules',  'bxObjects/bro_tocsModules', vcMode)
+
     gitCloneBase('blee', 'bx-blee/base',  vcMode)
     gitClone('blee/overview', 'bx-blee/overview', vcMode)
     gitClone('blee/env', 'bx-blee/env', vcMode)
