@@ -940,6 +940,12 @@ def pbdDict_bxReposRoot(
     gitClone('bxObjects/bro_dockerfiles',  'bxObjects/bro_dockerfiles', vcMode)
     gitClone('bxObjects/bro_tocsModules',  'bxObjects/bro_tocsModules', vcMode)
 
+    gitCloneBase('bisos-web', 'bisos-web/.github', vcMode)
+    gitClone('bisos-web/gatsby-starter-bystar-nestedSidebar',  'bisos-web/gatsby-starter-bystar-nestedSidebar', vcMode)
+    gitClone('bisos-web/csPlayer-webUi',  'bisos-web/csPlayer-webUi', vcMode)
+    gitClone('bisos-web/csLineInvoker-react',  'bisos-web/csLineInvoker-react', vcMode)
+    gitClone('bisos-web/csPlayerPerf-drf',  'bisos-web/csPlayerPerf-drf', vcMode)
+
     gitCloneBase('blee', 'bx-blee/base',  vcMode)
     gitClone('blee/overview', 'bx-blee/overview', vcMode)
     gitClone('blee/env', 'bx-blee/env', vcMode)
@@ -1016,7 +1022,8 @@ def pbdDict_bxReposRoot(
     # gitClone('unisos-pip/gcipher',  'unisos-pip/gcipher', vcMode)
     # gitClone('unisos-pip/symCrypt',  'unisos-pip/symCrypt', vcMode)
 
-    gitCloneBase('bisos-pip',  'bisos-pip/base', vcMode)
+    # gitCloneBase('bisos-pip',  'bisos-pip/base', vcMode)
+    gitCloneBase('bisos-pip',  'bisos-pip/.github', vcMode)
     gitClone('bisos-pip/overview',  'bisos-pip/overview', vcMode)    
     gitClone('bisos-pip/namespace',  'bisos-pip/namespace', vcMode)
     gitClone('bisos-pip/mmwsIcm',  'bisos-pip/mmwsIcm', vcMode)
