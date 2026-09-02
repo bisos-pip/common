@@ -1102,6 +1102,8 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/dnsCap', 'bisos-pip/dnsCap', vcMode)
     gitClone('bisos-pip/aiActivity', 'bisos-pip/aiActivity', vcMode)
     gitClone('bisos-pip/pipreqsPlus', 'bisos-pip/pipreqsPlus', vcMode)
+    gitClone('bisos-pip/airflow', 'bisos-pip/airflow', vcMode)
+
 
     # gitCloneBase('blee-pip',  'blee-pip/base', vcMode)
     # gitClone('blee-pip/overview',  'blee-pip/overview', vcMode)
