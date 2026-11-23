@@ -883,17 +883,29 @@ def pbdDict_bxReposRoot(
             
         else:
             b_io.eh.problem_usageError("")
-            
-            
+
+    def gitGroupDir(locName, srvName, vcMode, withBase=True, withDotGithub=True):
+        """ A gitGroup directory: a plain directory holding base, .github and gitGroup -> .github.
+        See bisos.gitist README.org, "The gitGroup Directory", and bxGenesis/base AI-WorkPlan Stage 2.
+        locName and srvName differ when the local name is not the server's (blee <- bx-blee).
+        """
+        directory(locName)
+        if withBase:
+            gitClone(f"{locName}/base", f"{srvName}/base", vcMode)
+        if withDotGithub:
+            gitClone(f"{locName}/.github", f"{srvName}/.github", vcMode)
+            # Relative link; symLink() would make an absolute one.
+            command(f"{locName}/gitGroup", f"cd {root}/{locName} && ln -sfn .github gitGroup")
+
     #
     # NOTYET, this is a hack for now. To Be replaced by bue.credentials
     #
 
     # with open('/acct/employee/lsipusr/gitUserName', 'r') as myfile:
-    #     gitUserName=myfile.read().replace('\n', '')        
+    #     gitUserName=myfile.read().replace('\n', '')
 
     # with open('/acct/employee/lsipusr/gitPasswd', 'r') as myfile:
-    #     gitPasswd=myfile.read().replace('\n', '')        
+    #     gitPasswd=myfile.read().replace('\n', '')
 
     #
     # NOTYET, the model of specifying one command here is wrong.
@@ -904,9 +916,11 @@ def pbdDict_bxReposRoot(
     #
     # So, gitCloneBase should be renamed gitReposCollectionBase and gitRepoBase
     #
+    # gitGroups are plain directories (gitGroupDir), no longer cloned as a repo (gitCloneBase), and
+    # their overview repos are no longer cloned --- bxGenesis/base AI-WorkPlan Stage 2.
+    #
 
-    gitCloneBase('ByStar', 'ByStar/base', vcMode)    
-    gitClone('ByStar/overview', 'ByStar/overview', vcMode)
+    gitGroupDir('ByStar', 'ByStar', vcMode)
 
     # gitCloneBase('mohsenBanan', 'ByStar/mohsenBananBase', vcMode)
     # gitClone('mohsenBanan/ReposOverview', 'mohsenBanan/ReposOverview', vcMode)
@@ -915,8 +929,7 @@ def pbdDict_bxReposRoot(
     # gitCloneBase('unisos', 'bx-unisos/base', vcMode)
     # gitClone('unisos/overview', 'bx-unisos/overview', vcMode)
 
-    gitCloneBase('bisos', 'bisos/base', vcMode)
-    gitClone('bisos/overview',  'bisos/overview', vcMode)
+    gitGroupDir('bisos', 'bisos', vcMode)
     gitClone('bisos/bsip4',  'bisos/bsip4', vcMode)
     gitClone('bisos/raw',  'bisos/raw', vcMode)
     gitClone('bisos/bpip1',  'bisos/bpip1', vcMode)
@@ -934,21 +947,19 @@ def pbdDict_bxReposRoot(
     gitClone('bisos/admin',  'bisos/admin', vcMode)
     gitClone('bisos/blee',  'bisos/blee', vcMode)
 
-    gitCloneBase('bxObjects', 'bxObjects/base', vcMode)
-    gitClone('bxObjects/overview',  'bxObjects/overview', vcMode)
+    gitGroupDir('bxObjects', 'bxObjects', vcMode)
     gitClone('bxObjects/a-ig-ub-cur-small',  'bxObjects/a-ig-ub-cur-small', vcMode)
     gitClone('bxObjects/bro_rawBisos',  'bxObjects/bro_rawBisos', vcMode)
     gitClone('bxObjects/bro_dockerfiles',  'bxObjects/bro_dockerfiles', vcMode)
     gitClone('bxObjects/bro_tocsModules',  'bxObjects/bro_tocsModules', vcMode)
 
-    gitCloneBase('bisos-web', 'bisos-web/.github', vcMode)
+    gitGroupDir('bisos-web', 'bisos-web', vcMode, withBase=False)    # no bisos-web/base on GitHub yet
     gitClone('bisos-web/gatsby-starter-bystar-nestedSidebar',  'bisos-web/gatsby-starter-bystar-nestedSidebar', vcMode)
     gitClone('bisos-web/csPlayer-webUi',  'bisos-web/csPlayer-webUi', vcMode)
     gitClone('bisos-web/csLineInvoker-react',  'bisos-web/csLineInvoker-react', vcMode)
     gitClone('bisos-web/csPlayerPerf-drf',  'bisos-web/csPlayerPerf-drf', vcMode)
 
-    gitCloneBase('blee', 'bx-blee/base',  vcMode)
-    gitClone('blee/overview', 'bx-blee/overview', vcMode)
+    gitGroupDir('blee', 'bx-blee', vcMode)
     gitClone('blee/env', 'bx-blee/env', vcMode)
     gitClone('blee/envsShare', 'bx-blee/envsShare', vcMode)
     gitClone('blee/env2', 'bx-blee/env2', vcMode)
@@ -1002,8 +1013,7 @@ def pbdDict_bxReposRoot(
     gitClone('blee/emacs-developers-requests', 'bx-blee/emacs-developers-requests', vcMode)
 
     
-    gitCloneBase('bxGenesis', 'bxGenesis/base', vcMode)
-    gitClone('bxGenesis/overview', 'bxGenesis/overview', vcMode)
+    gitGroupDir('bxGenesis', 'bxGenesis', vcMode)
     gitClone('bxGenesis/vagrants', 'bxGenesis/vagrants', vcMode)
     gitClone('bxGenesis/vagrantBue', 'bxGenesis/vagrantBue', vcMode)    
     gitClone('bxGenesis/fbxoPkgs', 'bxGenesis/fbxoPkgs', vcMode)
@@ -1024,9 +1034,7 @@ def pbdDict_bxReposRoot(
     # gitClone('unisos-pip/gcipher',  'unisos-pip/gcipher', vcMode)
     # gitClone('unisos-pip/symCrypt',  'unisos-pip/symCrypt', vcMode)
 
-    # gitCloneBase('bisos-pip',  'bisos-pip/base', vcMode)
-    gitCloneBase('bisos-pip',  'bisos-pip/.github', vcMode)
-    gitClone('bisos-pip/overview',  'bisos-pip/overview', vcMode)    
+    gitGroupDir('bisos-pip', 'bisos-pip', vcMode)
     gitClone('bisos-pip/namespace',  'bisos-pip/namespace', vcMode)
     gitClone('bisos-pip/mmwsIcm',  'bisos-pip/mmwsIcm', vcMode)
     gitClone('bisos-pip/bootstrap',  'bisos-pip/bootstrap', vcMode)
@@ -1124,8 +1132,7 @@ def pbdDict_bxReposRoot(
     # gitClone('efficientProtocols/ESRO',  'efficientProtocols/ESRO', vcMode)
     # gitClone('efficientProtocols/EMSD',  'efficientProtocols/EMSD', vcMode)
 
-    gitCloneBase('blee-binders',  'blee-binders/base', vcMode)    
-    gitClone('blee-binders/overview',  'blee-binders/overview', vcMode)
+    gitGroupDir('blee-binders', 'blee-binders', vcMode, withDotGithub=False)
     gitClone('blee-binders/bisos-core',  'blee-binders/bisos-core', vcMode)    
     # gitClone('blee-binders/bisos-model',  'blee-binders/bisos-model', vcMode)
     # gitClone('blee-binders/bisos-dev',  'blee-binders/bisos-dev', vcMode)
@@ -1146,16 +1153,14 @@ def pbdDict_bxReposRoot(
     gitClone('blee-binders/panelsRoot',  'blee-binders/panelsRoot', vcMode)
     gitClone('blee-binders/system-container',  'blee-binders/system-container', vcMode)
     
-    gitCloneBase('bxexamples',  'bxexamples/base', vcMode)
-    gitClone('bxexamples/overview',  'bxexamples/overview', vcMode)    
+    gitGroupDir('bxexamples', 'bxexamples', vcMode, withDotGithub=False)
     gitClone('bxexamples/bashIcm',  'bxexamples/bashIcm', vcMode)
     gitClone('bxexamples/bashProcessArgsAndStdin',  'bxexamples/bashProcessArgsAndStdin', vcMode)
     gitClone('bxexamples/roVerifier-petstore',  'bxexamples/roVerifier-petstore', vcMode)
     gitClone('bxexamples/usbTetheredMobilePhoneLinuxRouter',  'bxexamples/usbTetheredMobilePhoneLinuxRouter', vcMode)
     gitClone('bxexamples/comeega',  'bxexamples/comeega', vcMode)
 
-    gitCloneBase('bxlcnt',  'bxlcnt/base', vcMode)    
-    gitClone('bxlcnt/overview',  'bxlcnt/overview', vcMode)
+    gitGroupDir('bxlcnt', 'bxlcnt', vcMode, withDotGithub=False)
     gitClone('bxlcnt/bxtex',  'bxlcnt/bxtex', vcMode)    
     gitClone('bxlcnt/facilities',  'bxlcnt/facilities', vcMode)
     gitClone('bxlcnt/results',  'bxlcnt/results', vcMode)
