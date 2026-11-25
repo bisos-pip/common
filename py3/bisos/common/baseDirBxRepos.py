@@ -1038,12 +1038,13 @@ def pbdDict_bxReposRoot(
     gitClone('bisos-pip/namespace',  'bisos-pip/namespace', vcMode)
     gitClone('bisos-pip/mmwsIcm',  'bisos-pip/mmwsIcm', vcMode)
     gitClone('bisos-pip/bootstrap',  'bisos-pip/bootstrap', vcMode)
-    # /bisos/git/auth/bxRepos/bisos-pip/bootstrap/dev/bisos
-    gitCloneBase(
-        'bisos-pip/bootstrap/dev/bisos/bootstrap-vagrants',
-        'bxGenesis/vagrants',
-        vcMode
-    )
+    # bisos-pip/bootstrap has had no dev/bisos since 2021 (84f2730), so this cd failed on every install;
+    # bxGenesis/vagrants is cloned in its own gitGroup (bxGenesis/base 3.2.5).
+    # gitCloneBase(
+    #     'bisos-pip/bootstrap/dev/bisos/bootstrap-vagrants',
+    #     'bxGenesis/vagrants',
+    #     vcMode
+    # )
     gitClone('bisos-pip/bx-bases',  'bisos-pip/bx-bases', vcMode)
     gitClone('bisos-pip/common',  'bisos-pip/common', vcMode)
     gitClone('bisos-pip/examples',  'bisos-pip/examples', vcMode)
